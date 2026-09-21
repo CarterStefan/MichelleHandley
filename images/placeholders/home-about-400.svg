@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" role="img" aria-label="Placeholder: Relaxed portrait of Michelle">
+  <style>
+    .bg{fill:#f1e9df} .ln{fill:none;stroke:#c9b6a6} .ic{fill:none;stroke:#b39c8a}
+    .t{fill:#5e514a;font-family:Georgia,serif;font-style:italic}
+    .s{fill:#6a5d55;font-family:Arial,sans-serif;letter-spacing:.12em}
+    @media (prefers-color-scheme:dark){
+      .bg{fill:#2a2320} .ln{stroke:#4d4039} .ic{stroke:#6b5a4f} .t{fill:#d8ccc0} .s{fill:#bfb2a7}
+    }
+  </style>
+  <rect class="bg" width="400" height="400"/>
+  <rect class="ln" x="12" y="12" width="376" height="376" stroke-width="1"/>
+  <g class="ic" stroke-width="1" transform="translate(200.0 136.0)">
+    <rect x="-32.0" y="0" width="64.0" height="48.0" rx="4.0"/>
+    <circle cx="14.1" cy="14.4" r="5.6"/>
+    <path d="M-32.0 40.8 L-9.6 21.6 L3.2 31.2 L16.0 24.0 L32.0 38.4"/>
+  </g>
+  <text class="t" x="200.0" y="220.0" text-anchor="middle" font-size="20.0">Relaxed portrait of Michelle</text>
+  <text class="s" x="200.0" y="240.0" text-anchor="middle" font-size="8.8">PHOTO PLACEHOLDER &#183; 1:1 &#183; 400 &#215; 400</text>
+</svg>

@@ -1,0 +1,6 @@
+# PLACEHOLDER: domain. Update the sitemap URL when the site goes live.
+User-agent: *
+Allow: /
+Disallow: /thank-you.html
+
+Sitemap: https://michellehandley.example/sitemap.xml

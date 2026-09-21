@@ -1,0 +1,390 @@
+/* ==========================================================================
+   base.css
+   1. Design tokens (edit here to rebrand the whole site)
+   2. Fonts and metric-matched fallbacks
+   3. Reset
+   4. Typography
+   5. Utilities
+   ========================================================================== */
+
+
+/* 1. Design tokens
+   ========================================================================== */
+
+:root {
+  color-scheme: light dark;
+
+  /* Colour: soft neutrals plus one rich accent (claret) */
+  --color-bg: #faf6f0;          /* ivory: page background */
+  --color-surface: #f1e9df;     /* linen: alternating bands, cards */
+  --color-ink: #2a2320;         /* body text */
+  --color-ink-muted: #6a5d55;   /* captions, hints, input borders */
+  --color-accent: #7b2d3b;      /* claret: links, buttons, rules */
+  --color-accent-hover: #5c1f2b;
+  --color-on-accent: #faf6f0;   /* text on accent backgrounds */
+  --color-rule: #dccfc2;        /* hairlines */
+  --color-focus: #7b2d3b;
+  --color-band: #7b2d3b;        /* closing call-to-action band */
+  --color-on-band: #faf6f0;
+  --color-media: #2a2320;       /* letterbox behind video embeds */
+  --color-mark: #f7e3a8;        /* placeholder highlighter */
+  --color-mark-ink: #3d2f05;
+
+  /* Type families (fallbacks are metric-matched below) */
+  --font-display: "Fraunces", "Fraunces Fallback", Georgia, "Times New Roman", serif;
+  --font-body: "Instrument Sans", "Instrument Sans Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+
+  /* Fluid type scale: 320px to 1280px viewports */
+  --step--1: clamp(0.84rem, 0.82rem + 0.1vw, 0.9rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.12rem + 0.4vw, 1.45rem);
+  --step-2: clamp(1.44rem, 1.28rem + 0.8vw, 1.9rem);
+  --step-3: clamp(1.73rem, 1.45rem + 1.4vw, 2.6rem);
+  --step-4: clamp(2.07rem, 1.6rem + 2.35vw, 3.5rem);
+  --step-5: clamp(2.35rem, 1.65rem + 3.5vw, 4.6rem);
+
+  /* Fluid spacing */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-s: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --space-m: clamp(1.5rem, 1.4rem + 0.5vw, 1.75rem);
+  --space-l: clamp(2rem, 1.8rem + 1vw, 2.75rem);
+  --space-xl: clamp(3rem, 2.6rem + 2vw, 4.5rem);
+  --space-2xl: clamp(4rem, 3.2rem + 4vw, 7rem);
+  --space-3xl: clamp(5rem, 3.8rem + 6vw, 10rem);
+
+  /* Layout */
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --width-page: 74rem;
+  --width-narrow: 44rem;
+  --measure: 65ch;
+
+  /* Shape and depth */
+  --radius-s: 3px;
+  --radius-m: 6px;
+  --radius-pill: 999px;
+  --shadow-soft: 0 1px 2px rgb(42 35 32 / 0.06), 0 12px 32px -12px rgb(42 35 32 / 0.18);
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --duration: 180ms;
+}
+
+/* Warm dark theme: only colour tokens change */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #1e1917;
+    --color-surface: #2a2320;
+    --color-ink: #f3ece3;
+    --color-ink-muted: #bfb2a7;
+    --color-accent: #e3a3ae;
+    --color-accent-hover: #f0c3cb;
+    --color-on-accent: #1e1917;
+    --color-rule: #463a34;
+    --color-focus: #e3a3ae;
+    --color-band: #4d1b26;
+    --color-on-band: #f3ece3;
+    --color-media: #0f0c0b;
+    --color-mark: #574513;
+    --color-mark-ink: #f7e3a8;
+    --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.3), 0 12px 32px -12px rgb(0 0 0 / 0.5);
+  }
+}
+
+
+/* 2. Fonts (self-hosted, OFL licensed, latin subset)
+   ========================================================================== */
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces-var.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces-var-italic.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("/fonts/instrument-sans-var.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Fallbacks sized to match the web fonts, so the swap barely moves the layout.
+   Values measured against Georgia and Arial at weight 400. */
+@font-face {
+  font-family: "Fraunces Fallback";
+  src: local("Georgia");
+  size-adjust: 105.6%;
+  ascent-override: 92.7%;
+  descent-override: 24.2%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Instrument Sans Fallback";
+  src: local("Arial"), local("ArialMT");
+  size-adjust: 101.9%;
+  ascent-override: 95.2%;
+  descent-override: 24.5%;
+  line-gap-override: 0%;
+}
+
+
+/* 3. Reset
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: var(--space-l);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  min-height: 100dvh;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+svg,
+video,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding: 0;
+}
+
+/* Stop long words or URLs breaking narrow layouts */
+p,
+li,
+dd,
+h1,
+h2,
+h3,
+blockquote {
+  overflow-wrap: break-word;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* 4. Typography
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--step-5);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: var(--step-4);
+}
+
+h3 {
+  font-size: var(--step-2);
+}
+
+h4 {
+  font-size: var(--step-1);
+}
+
+/* Comfortable line length for running text */
+p,
+dd {
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color var(--duration) var(--ease);
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+  text-decoration-thickness: 2px;
+}
+
+strong {
+  font-weight: 600;
+}
+
+/* Serif italic accent inside headings, e.g. <h1>Songs for <em>your</em> day</h1> */
+:is(h1, h2, h3) em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--color-rule);
+}
+
+/* Visible, consistent focus ring for keyboard users */
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-s);
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+
+/* 5. Utilities
+   ========================================================================== */
+
+/* Hide visually, keep available to screen readers */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skip link: off screen until focused */
+.skip-link {
+  position: absolute;
+  top: var(--space-2xs);
+  left: var(--space-2xs);
+  z-index: 100;
+  padding: var(--space-2xs) var(--space-s);
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+  font-weight: 600;
+  border-radius: var(--radius-s);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+  color: var(--color-on-accent);
+}
+
+/* Placeholder marker. Every instance also sits next to a
+   <!-- PLACEHOLDER: ... --> comment. Search the project for "PLACEHOLDER". */
+.ph {
+  background-color: var(--color-mark);
+  color: var(--color-mark-ink);
+  padding: 0 0.25em;
+  border-radius: var(--radius-s);
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 0.8em;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Small uppercase label above headings, led by a short claret rule */
+.eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2xs) var(--space-xs);
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.eyebrow::before {
+  content: "";
+  flex: none;
+  width: 2rem;
+  height: 1px;
+  background-color: currentColor;
+}
+
+.lede {
+  font-size: var(--step-1);
+  line-height: 1.5;
+}
+
+.muted {
+  color: var(--color-ink-muted);
+}

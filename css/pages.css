@@ -1,0 +1,193 @@
+/* ==========================================================================
+   pages.css
+   Small, page-specific layouts that are not reused elsewhere.
+   1. Home: hero
+   2. Home: two paths
+   3. About: credentials
+   4. Contact: details panel
+   5. Message pages (thank you, 404)
+   ========================================================================== */
+
+
+/* 1. Home: hero
+   ========================================================================== */
+
+.hero {
+  padding-block: var(--space-xl) var(--space-2xl);
+}
+
+.hero__grid {
+  display: grid;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+@media (min-width: 52rem) {
+  .hero__grid {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: var(--space-2xl);
+  }
+}
+
+/* The headline is the brand moment, so it runs larger than a normal h1 */
+.hero__title {
+  font-size: clamp(2.5rem, 1.4rem + 5vw, 5.6rem);
+}
+
+.hero__actions {
+  padding-block-start: var(--space-xs);
+}
+
+
+/* 2. Home: two paths (weddings and lessons)
+   The whole panel is clickable via a stretched link on the heading.
+   ========================================================================== */
+
+.paths {
+  display: grid;
+  gap: var(--space-2xl);
+}
+
+@media (min-width: 48rem) {
+  .paths {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-xl);
+  }
+
+  /* Staggered second panel, for an editorial rather than grid feel */
+  .path:nth-child(2) {
+    margin-block-start: var(--space-3xl);
+  }
+}
+
+.path {
+  position: relative;
+}
+
+.path > * + * {
+  margin-block-start: var(--space-s);
+}
+
+.path__media {
+  overflow: hidden;
+  border-radius: var(--radius-m);
+}
+
+.path__media img {
+  width: 100%;
+  transition: transform 600ms var(--ease);
+}
+
+.path:hover .path__media img {
+  transform: scale(1.03);
+}
+
+.path__title {
+  font-size: var(--step-3);
+}
+
+.path__link {
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.path__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.path:hover .path__link {
+  color: var(--color-accent);
+}
+
+/* Draw the focus ring around the whole panel, not just the heading */
+.path__link:focus-visible {
+  outline: none;
+}
+
+.path:has(.path__link:focus-visible) {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 8px;
+  border-radius: var(--radius-m);
+}
+
+.path__cue {
+  color: var(--color-accent);
+}
+
+
+/* 3. About: credentials
+   ========================================================================== */
+
+.credentials {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0 var(--space-xl);
+}
+
+@media (min-width: 44rem) {
+  .credentials {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.credentials__item {
+  padding-block: var(--space-s);
+  border-block-start: 1px solid var(--color-rule);
+}
+
+.credentials__title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  line-height: 1.3;
+}
+
+
+/* 4. Contact: details panel
+   ========================================================================== */
+
+.contact-details {
+  display: grid;
+  gap: var(--space-m);
+  align-content: start;
+}
+
+.contact-details__list {
+  display: grid;
+  gap: var(--space-s);
+}
+
+.contact-details__list dt {
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.contact-details__list dd {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+}
+
+.contact-routes {
+  display: grid;
+  gap: var(--space-s);
+  padding-block-start: var(--space-m);
+  border-block-start: 1px solid var(--color-rule);
+}
+
+
+/* 5. Message pages (thank you, 404)
+   ========================================================================== */
+
+.message {
+  padding-block: var(--space-3xl);
+}
+
+.message__title {
+  font-size: clamp(2.5rem, 1.4rem + 5vw, 5rem);
+}

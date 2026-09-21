@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500" role="img" aria-label="Placeholder: Online lesson set-up">
+  <style>
+    .bg{fill:#f1e9df} .ln{fill:none;stroke:#c9b6a6} .ic{fill:none;stroke:#b39c8a}
+    .t{fill:#5e514a;font-family:Georgia,serif;font-style:italic}
+    .s{fill:#6a5d55;font-family:Arial,sans-serif;letter-spacing:.12em}
+    @media (prefers-color-scheme:dark){
+      .bg{fill:#2a2320} .ln{stroke:#4d4039} .ic{stroke:#6b5a4f} .t{fill:#d8ccc0} .s{fill:#bfb2a7}
+    }
+  </style>
+  <rect class="bg" width="1200" height="1500"/>
+  <rect class="ln" x="36" y="36" width="1128" height="1428" stroke-width="3.0"/>
+  <g class="ic" stroke-width="3.0" transform="translate(600.0 558.0)">
+    <rect x="-96.0" y="0" width="192.0" height="144.0" rx="12.0"/>
+    <circle cx="42.2" cy="43.2" r="16.8"/>
+    <path d="M-96.0 122.4 L-28.8 64.8 L9.6 93.6 L48.0 72.0 L96.0 115.2"/>
+  </g>
+  <text class="t" x="600.0" y="810.0" text-anchor="middle" font-size="60.0">Online lesson set-up</text>
+  <text class="s" x="600.0" y="870.0" text-anchor="middle" font-size="26.4">PHOTO PLACEHOLDER &#183; 4:5 &#183; 1200 &#215; 1500</text>
+</svg>
