@@ -1,31 +1,40 @@
-# Michelle Handley | Wedding Singer & Vocal Coach
+# Michelle Handley | Singing lessons in Stafford
 
-A static marketing site in plain HTML and CSS. There is no build step, no framework, no npm and no JavaScript. Upload the folder and it works.
+The website for Michelle Handley's singing lessons, in her October 2026 visual identity (velvet green, gold and ivory). It's plain HTML and CSS with one small script and no build step: upload the folder and it works.
 
 ## What's in the folder
 
 ```
-index.html        Home: intro, video, two paths, testimonials
-weddings.html     Offer, listen, repertoire, packages, FAQ, enquiry form
-lessons.html      Who it suits, formats, prices, first lesson, FAQ, enquiry form
-about.html        Story, credentials, photos
-contact.html      General enquiry form, email, Instagram
-thank-you.html    Where the forms redirect after sending (noindex)
+index.html        Home: hero, who lessons are for, how lessons work, meet Michelle, testimonial, enquiry form
+lessons.html      Who lessons suit, in person or online, prices, first lesson, questions, enquiry form
+about.html        Michelle's story, training and experience, a few things about her
+contact.html      Contact details and a general message form
+privacy.html      Privacy notice (a template to check before launch)
+thank-you.html    Where the forms land after sending (noindex)
 404.html          Not-found page (noindex)
-privacy.html      Privacy policy
 css/
-  base.css        Design tokens, fonts, reset, typography, utilities
-  components.css  Layout, header/nav, footer, buttons, media, FAQ, forms, etc.
-  pages.css       Small layouts used by a single page
-fonts/            Fraunces and Instrument Sans (variable woff2, OFL licensed)
+  brand.css       The brand kit's fonts, colours, type sizes and patterns (buttons, frames, rings, stave). Unchanged
+  tokens.css      The site's names for those values, plus spacing and layout
+  base.css        Reset, element styles, layout
+  components.css  Header, hero, posters, staggered photos, big steps, prices, testimonial, questions, forms, footer
+js/
+  site.js         The phone menu button, and form error messages (deferred; the site works without it)
+fonts/            Jost 400/500 (woff2) and Marcellus (the original ttf), with their OFL licences
 images/
-  placeholders/   Labelled placeholder SVGs at each size used in srcset
-  icons/          favicon.svg, apple-touch-icon.png, icon-192/512.png
-  og-image.jpg    1200 × 630 social sharing image
-audio/            Drop MP3 samples for the weddings page here
-favicon.ico, site.webmanifest, robots.txt, sitemap.xml
-_headers          Security and caching headers (Netlify and Cloudflare Pages)
+  brand/          Logos (stacked, horizontal and mark, in gold, green and ivory), the stave bands, og-image.png
+  placeholders/   Stand-ins until Michelle's photos arrive
+  home-portrait-*   The stage photo in the home page's hero
+  about-portrait-*  The stage photo in the about page's hero, also on home
+  stage-twirl-*, stage-reach-*  Stage photos on home, lessons and about
+  performing/     Original stage photos (not used by any page)
+docs/brand/       The original brief and the previous brand's summary (its photo and voice notes still apply)
+favicon.ico, favicon.svg, apple-touch-icon.png, icon-192.png, icon-512.png, site.webmanifest
+robots.txt, sitemap.xml
+.nojekyll         Tells GitHub Pages to serve the files as they are
+_headers          Security and cache headers for Netlify or Cloudflare Pages (GitHub Pages ignores it)
+BRAND.md          The brand rules: every design decision follows them
 PLACEHOLDERS.md   Every placeholder, by file and line
+PHOTOGRAPHY.md    The photos the site needs, for Michelle and her photographer
 ```
 
 ## Previewing locally
@@ -41,133 +50,109 @@ Then visit http://localhost:8000.
 
 ## Deploying
 
-### Netlify (simplest)
-1. Go to https://app.netlify.com/drop.
-2. Drag the whole `Michelle_Handley` folder onto the page.
-3. In **Domain management**, add the custom domain and follow the DNS steps.
-
-`404.html` and `_headers` are picked up automatically.
-
-### Cloudflare Pages
-1. In the Cloudflare dashboard, open **Workers & Pages → Create → Pages → Upload assets**.
-2. Name the project, upload the folder and deploy.
-3. Add the custom domain under **Custom domains**.
-
-Cloudflare Pages serves pretty URLs, so `/weddings.html` redirects to `/weddings`. Everything still works. For the tidiest SEO on Cloudflare, find and replace `.html"` in the canonical and `og:url` tags and in `sitemap.xml` with the extensionless form.
-
 ### GitHub Pages
-1. Create a repository and push the folder's contents to the `main` branch.
+1. Push the folder's contents to the `main` branch of a repository.
 2. Open **Settings → Pages**, choose **Deploy from a branch**, then `main` and `/ (root)`.
-3. Add the custom domain in the same screen. This is required: the root-relative paths only work when the site is served from the domain root, not from `username.github.io/repo-name/`.
+3. Add the custom domain on the same screen. This is required: the root paths only work when the site is served from the domain root, not from `username.github.io/repo-name/`.
 
-GitHub Pages ignores `_headers`, so the security and cache headers won't apply there.
+GitHub Pages serves `404.html` for missing pages. It ignores `_headers`, so the security and cache headers there don't apply. The `docs/` folder and the `.md` files are published too; `robots.txt` asks search engines to skip `docs/`.
+
+### Netlify or Cloudflare Pages
+Drag the folder onto https://app.netlify.com/drop, or upload it in **Workers & Pages → Create → Pages → Upload assets**. Both read `_headers`.
 
 ## Going live: the essentials
 
-1. **Domain.** Find and replace `https://michellehandley.example` across the whole project with the real domain (e.g. `https://www.michellehandley.co.uk`). This covers canonical URLs, social tags, structured data, form redirects, `sitemap.xml` and `robots.txt`.
-2. **Forms.** Create a free access key at https://web3forms.com using Michelle's email address. Replace `YOUR_WEB3FORMS_ACCESS_KEY` in `weddings.html`, `lessons.html` and `contact.html`. Send a test from each form and check it lands (and check the spam folder).
-3. **Placeholders.** Work through `PLACEHOLDERS.md`. When you're done, searching the project for `PLACEHOLDER` should only find that file.
+1. **Domain.** Find and replace `https://michellehandley.example` across the whole project with the real domain. This covers canonical URLs, social tags, structured data, form redirects, `sitemap.xml` and `robots.txt`.
+2. **Forms.** Create a free access key at https://web3forms.com using Michelle's email address. Replace `YOUR_WEB3FORMS_ACCESS_KEY` in `index.html`, `lessons.html` and `contact.html`. Send a test from each form and check it arrives (and check the spam folder).
+3. **Placeholders.** Work through `PLACEHOLDERS.md`. When you're done, searching for `PLACEHOLDER`, and for `[` followed by a capital letter, should only find that file.
 
 ### How the forms work
-Each form posts straight to Web3Forms, which emails the submission to Michelle and then redirects the visitor to `thank-you.html` using the hidden `redirect` field. The hidden `botcheck` checkbox is a honeypot: people never see it, and Web3Forms discards submissions from bots that tick it. Validation is native HTML (`required`, `type="email"`, `type="tel"` with a `pattern`, `type="date"`).
+Each form posts to Web3Forms, which emails the message to Michelle. The hidden `botcheck` checkbox is a honeypot: people never see it, and Web3Forms discards anything that ticks it.
 
-Formspree was not used because its free plan doesn't support redirecting to your own thank-you page.
+- **Without JavaScript**, the browser checks the required fields, the form posts, and Web3Forms redirects to `thank-you.html` using the hidden `redirect` field.
+- **With JavaScript**, `js/site.js` checks the fields itself and shows each problem in words under the field (linked with `aria-invalid` and `aria-describedby`), then moves focus to the first one. It sends the form in the background, goes to `thank-you.html` if it worked, and shows a message with Michelle's email address if it didn't.
+
+The wording of each error lives in the HTML, in the `data-missing` and `data-invalid` attributes of the `<p class="field__error">` after each required field.
 
 ## Swapping in real photos
 
-Each image slot is a `<picture>` with `srcset`, `sizes` and fixed `width`/`height`, pointing at labelled placeholders in `images/placeholders/`. The filename and label give the aspect ratio and the widths needed:
-
-| Ratio | Widths to export | Used for |
-|---|---|---|
-| 4:5 portrait | 480, 800, 1200 | Hero portraits, path panels, wedding moments |
-| 3:2 landscape | 640, 1024, 1600 | Page heroes, candid shots |
-| 1:1 square | 400, 800 | Home "Hello" section |
-
-Export each photo at those widths as AVIF, WebP and JPG, save them in `images/`, and replace the `<img>` with this pattern (keep the existing `sizes`, `width`, `height`, `loading` and `fetchpriority` values):
+Each photo slot points at a stand-in from `images/placeholders/`, with a small note naming the shot. `PHOTOGRAPHY.md` lists the shape and widths for each one. Export the photo at those widths as AVIF, WebP and JPG, save them in `images/`, and replace the `<img>` with this pattern. This one is for the home page's "Meet Michelle" portrait, a 5:9 capsule; keep the slot's `loading` or `fetchpriority`, and set `width` and `height` to the largest file's size:
 
 ```html
 <picture>
-  <source type="image/avif" srcset="/images/path-weddings-480.avif 480w, /images/path-weddings-800.avif 800w, /images/path-weddings-1200.avif 1200w" sizes="(min-width: 74rem) 35rem, (min-width: 48rem) 45vw, calc(100vw - 2rem)">
-  <source type="image/webp" srcset="/images/path-weddings-480.webp 480w, /images/path-weddings-800.webp 800w, /images/path-weddings-1200.webp 1200w" sizes="(min-width: 74rem) 35rem, (min-width: 48rem) 45vw, calc(100vw - 2rem)">
-  <img src="/images/path-weddings-800.jpg"
-       srcset="/images/path-weddings-480.jpg 480w, /images/path-weddings-800.jpg 800w, /images/path-weddings-1200.jpg 1200w"
-       sizes="(min-width: 74rem) 35rem, (min-width: 48rem) 45vw, calc(100vw - 2rem)"
-       width="800" height="1000"
+  <source type="image/avif" srcset="/images/home-meet-480.avif 480w, /images/home-meet-800.avif 800w" sizes="(min-width: 48em) 20rem, 16rem">
+  <source type="image/webp" srcset="/images/home-meet-480.webp 480w, /images/home-meet-800.webp 800w" sizes="(min-width: 48em) 20rem, 16rem">
+  <img src="/images/home-meet-800.jpg"
+       srcset="/images/home-meet-480.jpg 480w, /images/home-meet-800.jpg 800w"
+       sizes="(min-width: 48em) 20rem, 16rem"
+       width="800" height="1440"
        alt="Describe what is actually in the photo"
        loading="lazy" decoding="async">
 </picture>
 ```
 
-Free tools such as https://squoosh.app handle the resizing and conversion. Aim for under about 200 KB per image at 1200 px. Update each `alt` text to describe the real photo.
+Then delete the `<p class="photo-note">` beside it. The frames (`.mh-capsule` and `.mh-arch`) crop whatever goes in them to fill, so a photo in another shape still works but loses its edges. The hero portraits are like that: wider photos in 5:9 capsules, so their `sizes` ask for a wider file to allow for the crop. Their originals were also smaller than the standard widths, so they list only the widths the originals could supply. Never upscale a photo to fill the table. Free tools such as https://squoosh.app handle the resizing and conversion; aim for under about 200 KB per image at 1200 px.
 
-Also consider replacing `images/og-image.jpg` (the preview shown when the site is shared) with a 1200 × 630 photo of Michelle, and `favicon.svg` and the icon PNGs with a final logo mark.
+## The brand
 
-## Video and audio
+The brand rules are in `BRAND.md`, and every design decision follows them. In short:
 
-- **YouTube:** replace `VIDEO_ID` in `index.html` and `weddings.html` with the ID from the video URL (the part after `v=`). Embeds use `youtube-nocookie.com` and `loading="lazy"`.
-- **Vimeo instead:** swap the `src` for `https://player.vimeo.com/video/VIDEO_ID?dnt=1`. The `_headers` CSP already allows it.
-- **Audio:** add three MP3s to `/audio` (names are listed in `audio/README.txt`) and update the song titles on `weddings.html`.
+- Every brand value comes from `css/brand.css`, the brand kit's file, unchanged. `css/tokens.css` gives the site's own names to those values. Change a brand value in brand.css and it changes everywhere.
+- Fonts: Marcellus for headlines, Jost for everything else. Nothing else.
+- Colour: velvet green does most of the work, ivory is for reading, and gold is the spotlight: the logo, one solid button and one line (the stave or the rings) per screen, plus one full-width block per page. Neighbouring sections always change colour. Only the text pairings in BRAND.md's table.
+- Type: headlines are big enough to work as graphics, up to 128 px in the hero and 96 px in sections.
+- Corners are square or fully round. Portraits sit in capsules, wider photos in arches, and the stave runs along the bottom of each page's hero.
 
-## Changing the brand
+The fonts are self-hosted, so pages don't contact Google. To change a font, replace its file in `/fonts`, update the `@font-face` rules at the top of `css/brand.css`, and update the preload links in each page's `<head>`.
 
-All colours, fonts, spacing, radii and shadows are CSS custom properties at the top of `css/base.css`. The dark theme only reassigns the colour tokens. To change fonts, replace the woff2 files in `/fonts`, update the three `@font-face` rules and the preload link in each page's `<head>`, and re-measure the fallback `size-adjust` values if you want the swap to stay shift-free.
+The original brief is `docs/brand/WEBSITE-BRIEF.md`. The previous identity's summary sits beside it, kept for its photo shot list and voice notes.
 
 ## Editing the shared header and footer
 
-With no build step, the header, footer and `<head>` are repeated in every page, and the markup is identical apart from:
+There's no build step, so the header, footer and `<head>` are repeated in every page. They're identical apart from:
 
 - the `<title>`, description, canonical and social tags in `<head>`
+- `noindex` on thank-you and 404, which also have no canonical
 - `aria-current="page"` on the current page's nav link
-- the structured data block, which only appears on the home page
+- the structured data block, which only the home page has
 
-To change a nav link or footer detail, use your editor's find and replace across all `.html` files, so the pages stay identical.
+To change a nav link or footer detail, find and replace across all `.html` files so the pages stay identical.
 
-## Accessibility and performance notes
+## Accessibility and performance
 
-- One `h1` per page, logical heading order, landmarks, skip link, visible `:focus-visible` rings.
-- The mobile menu is CSS only: a real checkbox (focusable, Space toggles it) controls the panel. Closed menu links are `display: none`, so they're out of the tab order.
-- FAQs use native `<details>`/`<summary>`.
-- All colour pairs meet WCAG AA in both light and dark themes (most meet AAA).
-- `prefers-reduced-motion` and `prefers-color-scheme` are respected.
-- Lighthouse (mobile, local server) scored 98 to 100 for performance, 100 for accessibility and SEO, and 96 to 100 for best practices. The only best-practices flags come from inside the YouTube iframe. Thank-you and 404 score lower on SEO only because they are deliberately `noindex`.
+- One `h1` per page, headings in order, landmarks, a skip link, and the brand's focus ring (2 px, gold on dark sections and velvet on light ones) on everything you can tab to.
+- The Menu button appears only when JavaScript can run. Without it, the nav links simply show.
+- Questions use native `<details>`/`<summary>`.
+- Every text colour sits on a background BRAND.md lists as a passing pair.
+- `prefers-reduced-motion` turns off the button transitions and smooth scrolling.
+- On 9 November 2026, after the move to colour blocks and larger type: Lighthouse (mobile, local server) scored 98 to 99 for performance and 100 for accessibility, best practices and SEO on home, lessons, about, contact and privacy, with no layout shift. A script checked every page at 320, 390, 768, 928, 1024 and 1440 px for sideways overflow and broken images, and at 1280 px for text contrast. All passed.
+- On 28 October 2026, after the move to the new identity: Lighthouse (mobile, local server) scored 99 to 100 for performance and 100 for accessibility, best practices and SEO, with no layout shift. Thank-you and 404 score lower on SEO only because they're deliberately `noindex`. html-validate (standard rules) found no errors. A script checked every page at 375, 768 and 1280 px: each text colour against BRAND.md's pairings, and each keyboard focus stop for its 2 px ring. All passed. (The W3C validator and axe-core runs of 16 October were before the new identity.)
 
 ## Pre-launch checklist
 
 **Content**
-- [ ] Every item in `PLACEHOLDERS.md` replaced; searching for `PLACEHOLDER` finds only that file
-- [ ] Michelle has read every page and is happy with the voice and facts
-- [ ] Repertoire list, set lengths and lesson lengths confirmed
+- [ ] Every item in `PLACEHOLDERS.md` replaced
+- [ ] Michelle has read every page and is happy with the wording and facts
 - [ ] Testimonials are real, and each person has agreed to be quoted
-- [ ] Privacy policy completed and checked against local rules
+- [ ] Privacy notice checked against ICO guidance and finished
 
 **Photos**
-- [ ] All 12 photo slots replaced at the right ratios and widths (AVIF/WebP/JPG)
-- [ ] Every `alt` text rewritten to describe the real photo
-- [ ] `og-image.jpg`, favicon and app icons updated
+- [ ] Photo slots filled, following `PHOTOGRAPHY.md`
+- [ ] Every `alt` text describes the real photo, and the shot notes are deleted
 
-**Video and audio**
-- [ ] YouTube (or Vimeo) IDs in place and playing on a phone
-- [ ] MP3 samples added and playable
-
-**Prices and terms**
-- [ ] Wedding package prices, deposit, balance terms, travel distance and rate
-- [ ] Lesson prices and cancellation notice
-- [ ] FAQ answers match the booking terms
-
-**Form endpoint**
-- [ ] Web3Forms access key added to all three forms
-- [ ] Test submission from each form arrives, and the redirect lands on thank-you.html
-- [ ] Web3Forms notification emails are not going to spam
+**Forms**
+- [ ] Web3Forms access key in all three forms
+- [ ] A test from each form arrives, and lands on `thank-you.html`
+- [ ] Web3Forms emails aren't going to spam
 
 **Domain**
 - [ ] `https://michellehandley.example` replaced everywhere
-- [ ] Custom domain connected, HTTPS active, `www` and bare domain both resolve
+- [ ] Custom domain connected, HTTPS on, `www` and bare domain both working
 - [ ] `sitemap.xml` submitted in Google Search Console
 - [ ] Google Business Profile created and linked to the site
 
 **Analytics**
-- [ ] Decide whether to add analytics. A cookieless option (e.g. Plausible, Fathom or Cloudflare Web Analytics) avoids a cookie banner.
-- [ ] If added: update the privacy policy and allow the script's domain in the `_headers` Content-Security-Policy
+- [ ] None today. If any are added, update the privacy notice, and the `_headers` Content-Security-Policy if the host reads it
 
 **Final checks**
 - [ ] Lighthouse run on the live URL

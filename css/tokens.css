@@ -1,0 +1,90 @@
+/* ==========================================================================
+   Michelle Handley · site tokens
+   --------------------------------------------------------------------------
+   Load after brand.css, which holds every brand value: fonts, colours, type
+   sizes and radii (the rules are in BRAND.md). This file names the roles the
+   site's CSS uses and points each one at a brand token, then adds the site's
+   own spacing and layout values. No colour, font or radius is set here.
+
+   Never reuse a name brand.css defines (--mh-mist, --mh-measure and so on):
+   this file loads later, so it would quietly override the brand value.
+   ========================================================================== */
+
+:root {
+  /* ---- Colour: the page --------------------------------------------- */
+  --mh-color-bg: var(--mh-velvet);
+  --mh-color-text: var(--mh-ivory);
+
+  /* ---- Type ----------------------------------------------------------- */
+  --mh-font-body: var(--mh-font-text);
+  --mh-weight-regular: 400;    /* body; Marcellus's only weight */
+  --mh-weight-medium: 500;     /* Jost: buttons, labels, prices, field labels */
+
+  --mh-text-xs: var(--mh-size-label);      /* 14px  labels, small print */
+  --mh-text-sm: var(--mh-size-small);      /* 15px  captions, form hints */
+  --mh-text-base: var(--mh-size-body);     /* 17–18px  body */
+  --mh-text-lg: var(--mh-size-h3);         /* 20–24px  lead text, card titles */
+  --mh-text-xl: var(--mh-size-h2);         /* 24–30px  h3 */
+  --mh-text-2xl: var(--mh-size-h1);        /* 32–44px  h2 */
+  --mh-text-3xl: var(--mh-size-display);   /* 40–64px  sub-headlines */
+  /* The two sizes above the brand kit's scale (BRAND.md's Feature and Poster) */
+  --mh-text-4xl: clamp(2.75rem, 1.6rem + 4.9vw, 6rem);   /* 44–96px  section headlines */
+  --mh-text-5xl: clamp(3rem, 1.4rem + 7.6vw, 8rem);      /* 48–128px  the biggest hero headlines */
+
+  --mh-leading-poster: 1;                    /* Feature and Poster */
+  --mh-leading-tight: var(--mh-lh-display);  /* h1 */
+  --mh-leading-snug: var(--mh-lh-heading);   /* h2, h3, card titles */
+  --mh-leading-body: var(--mh-lh-body);      /* paragraphs */
+  --mh-tracking-poster: -0.01em;             /* Feature and Poster */
+
+  /* ---- Space (4px base) ---------------------------------------------- */
+  --mh-space-1: 0.25rem;       /*  4px */
+  --mh-space-2: 0.5rem;        /*  8px */
+  --mh-space-3: 0.75rem;       /* 12px */
+  --mh-space-4: 1rem;          /* 16px */
+  --mh-space-5: 1.5rem;        /* 24px */
+  --mh-space-6: 2rem;          /* 32px */
+  --mh-space-7: 3rem;          /* 48px */
+  --mh-space-8: 4rem;          /* 64px */
+  --mh-space-9: 6rem;          /* 96px */
+  --mh-gutter: clamp(1.5rem, 1rem + 2.5vw, 4rem);   /* page side margin: 24px on phones, 64px on desktops */
+  --mh-section: clamp(3rem, 2rem + 4vw, 6rem);      /* space above and below sections */
+  --mh-container: 70rem;       /* 1120px content width */
+
+  /* ---- Shape ---------------------------------------------------------- */
+  --mh-radius-pill: var(--mh-radius-round);
+}
+
+/* ---- Colour: roles that change with the surface ---------------------------
+   brand.css's surface classes set each section's background, text and focus
+   colours. These add the secondary colours each surface allows, using only
+   the text pairings listed in BRAND.md. Stage allows ivory and gold text
+   only, so its quieter text stays ivory. */
+:root,
+.mh-on-dark {
+  --mh-color-text-muted: var(--mh-mist);
+  --mh-color-label: var(--mh-mist);
+  --mh-rule: var(--mh-stage);            /* decorative hairlines */
+}
+.mh-on-stage {
+  --mh-color-text-muted: var(--mh-ivory);
+  --mh-color-label: var(--mh-ivory);
+  --mh-rule: var(--mh-velvet);
+}
+/* Gold is the fourth surface (base.css sets its background). Its only text
+   pairing is velvet, 5.9:1. */
+.mh-on-gold {
+  --mh-color-text-muted: var(--mh-velvet);
+  --mh-color-label: var(--mh-velvet);
+  --mh-rule: var(--mh-velvet);
+}
+/* Forms only sit on light sections, so the field colours live here. The
+   palette has no red: errors are brass, and always come with an icon and
+   words, so colour is never the only signal. */
+.mh-on-light {
+  --mh-color-text-muted: var(--mh-moss);
+  --mh-color-label: var(--mh-brass);
+  --mh-rule: var(--mh-line);
+  --mh-field-border: var(--mh-moss);     /* 6.5:1 on ivory, past the 3:1 rule */
+  --mh-error: var(--mh-brass);           /* 5.3:1 on ivory */
+}

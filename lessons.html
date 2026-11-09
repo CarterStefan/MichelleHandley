@@ -3,253 +3,253 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Singing Lessons for Beginners, Teens &amp; Adults | Michelle Handley</title>
-  <meta name="description" content="Friendly, practical singing lessons with Michelle Handley, in person or online. For complete beginners, teenagers, adults and exam or audition preparation.">
+  <title>Singing lessons for adults, children and teens | Michelle Handley</title>
+  <meta name="description" content="Singing lessons in Stafford and online for complete beginners, adults, teenagers and exam or audition students. Who they suit, prices, your first lesson and how to book.">
   <!-- PLACEHOLDER: domain. Replace every "https://michellehandley.example" in the project with the live domain. -->
   <link rel="canonical" href="https://michellehandley.example/lessons.html">
 
-  <!-- Styles, plus the body font preloaded because it paints most of the text -->
-  <link rel="preload" href="/fonts/instrument-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Fonts are self-hosted and declared in brand.css. All three paint the first screen, so all are preloaded. -->
+  <link rel="preload" href="/fonts/jost-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/jost-500.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/Marcellus-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="/css/brand.css">
+  <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/components.css">
-  <link rel="stylesheet" href="/css/pages.css">
+  <script src="/js/site.js" defer></script>
 
   <!-- Icons and theme -->
-  <link rel="icon" href="/favicon.ico" sizes="48x48">
-  <link rel="icon" href="/images/icons/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#faf6f0" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#1e1917" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#0F4A35">
 
   <!-- Social sharing (Open Graph and Twitter/X) -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Michelle Handley">
   <meta property="og:locale" content="en_GB">
-  <meta property="og:title" content="Singing Lessons for Beginners, Teens &amp; Adults | Michelle Handley">
-  <meta property="og:description" content="Friendly, practical singing lessons with Michelle Handley, in person or online. For complete beginners, teenagers, adults and exam or audition preparation.">
+  <meta property="og:title" content="Singing lessons for adults, children and teens | Michelle Handley">
+  <meta property="og:description" content="Singing lessons in Stafford and online for complete beginners, adults, teenagers and exam or audition students. Who they suit, prices, your first lesson and how to book.">
   <meta property="og:url" content="https://michellehandley.example/lessons.html">
-  <meta property="og:image" content="https://michellehandley.example/images/og-image.jpg">
+  <meta property="og:image" content="https://michellehandley.example/images/brand/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Michelle Handley, wedding singer and vocal coach">
+  <meta property="og:image:alt" content="Michelle Handley, singing teacher">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Singing Lessons for Beginners, Teens &amp; Adults | Michelle Handley">
-  <meta name="twitter:description" content="Friendly, practical singing lessons with Michelle Handley, in person or online. For complete beginners, teenagers, adults and exam or audition preparation.">
-  <meta name="twitter:image" content="https://michellehandley.example/images/og-image.jpg">
+  <meta name="twitter:title" content="Singing lessons for adults, children and teens | Michelle Handley">
+  <meta name="twitter:description" content="Singing lessons in Stafford and online for complete beginners, adults, teenagers and exam or audition students. Who they suit, prices, your first lesson and how to book.">
+  <meta name="twitter:image" content="https://michellehandley.example/images/brand/og-image.png">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to main content</a>
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ==================================================================
        Site header: identical on every page. Only aria-current moves.
        ================================================================== -->
-  <header class="site-header">
-    <div class="wrap site-header__inner">
-      <a class="brand" href="/">
-        <span class="brand__name">Michelle Handley</span>
-        <span class="brand__tag">Wedding singer &amp; vocal coach</span>
+  <header class="site-header mh-on-dark">
+    <div class="container site-header__inner">
+      <a class="site-logo" href="/">
+        <picture>
+          <source media="(min-width: 768px)" srcset="/images/brand/michelle-handley-logo-horizontal-gold.svg" width="268" height="64">
+          <img src="/images/brand/michelle-handley-mark-gold.svg" width="31" height="56" alt="Michelle Handley, singing teacher, home">
+        </picture>
       </a>
-
-      <!-- CSS-only menu: this checkbox opens the nav panel on small screens -->
-      <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-controls="site-nav">
-      <label class="nav-toggle__label" for="nav-toggle">
-        <span class="nav-toggle__icon" aria-hidden="true"></span>
-        Menu
-      </label>
-
+      <button class="mh-btn mh-btn--outline-on-dark site-header__menu" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav class="site-nav" id="site-nav" aria-label="Main">
-        <ul class="site-nav__list" role="list">
-          <li><a class="site-nav__link" href="/">Home</a></li>
-          <li><a class="site-nav__link" href="/weddings.html">Weddings</a></li>
-          <li><a class="site-nav__link" href="/lessons.html" aria-current="page">Singing lessons</a></li>
-          <li><a class="site-nav__link" href="/about.html">About</a></li>
-          <li class="site-nav__item--cta"><a class="button button--small" href="/contact.html">Get in touch</a></li>
+        <ul class="site-nav__list">
+          <li><a href="/lessons.html" aria-current="page">Lessons</a></li>
+          <li><a href="/about.html">About me</a></li>
+          <li><a href="/lessons.html#prices">Prices</a></li>
+          <li><a href="/contact.html">Contact</a></li>
         </ul>
       </nav>
+      <a class="mh-btn mh-btn--outline-on-dark site-header__cta" href="/#contact">Book a first lesson</a>
     </div>
   </header>
 
   <main id="main">
 
-    <!-- Hero ================================================================ -->
-    <section class="page-hero" aria-labelledby="page-title">
-      <div class="wrap page-hero__grid">
-        <div class="stack stack--l">
-          <p class="eyebrow">Singing lessons</p>
-          <h1 id="page-title">Singing lessons that meet you <em>where you are</em></h1>
-          <p class="lede">Whether you want to sing with confidence at karaoke, pass your next grade or finally join that choir, we’ll work at your pace, on songs you actually want to sing.</p>
-          <div class="cluster">
-            <a class="button" href="#enquire">Book a first lesson</a>
-            <a class="button button--secondary" href="#prices">See prices</a>
+    <!-- Hero ================================================================= -->
+    <section class="hero mh-on-dark" aria-labelledby="page-title">
+      <div class="container">
+        <div class="hero__inner">
+          <div class="hero__text">
+            <p class="mh-label">In Stafford and online</p>
+            <h1 class="type-feature" id="page-title">Pop and musical theatre singing lessons</h1>
+            <p class="hero__lead">Whether it’s karaoke confidence, your next grade or finally joining that choir, we’ll work at your pace on songs you actually want to sing.</p>
+            <div class="btn-row">
+              <a class="mh-btn mh-btn--gold" href="#enquire">Book a first lesson</a>
+              <a class="mh-btn mh-btn--outline-on-dark" href="#prices">See prices</a>
+            </div>
+          </div>
+          <div class="hero__photo">
+            <!-- The capsule is 5:9, so this photo shows about 1.25 times the capsule's width -->
+            <div class="mh-capsule">
+              <picture>
+                <source type="image/avif" srcset="/images/stage-twirl-400.avif 400w, /images/stage-twirl-595.avif 595w" sizes="(min-width: 48em) 23rem, 19rem">
+                <source type="image/webp" srcset="/images/stage-twirl-400.webp 400w, /images/stage-twirl-595.webp 595w" sizes="(min-width: 48em) 23rem, 19rem">
+                <img src="/images/stage-twirl-595.jpg" srcset="/images/stage-twirl-400.jpg 400w, /images/stage-twirl-595.jpg 595w" sizes="(min-width: 48em) 23rem, 19rem" width="595" height="859" alt="Michelle on stage in a white suit and hat, smiling mid-twirl" fetchpriority="high" decoding="async">
+              </picture>
+            </div>
           </div>
         </div>
+      </div>
+      <picture class="mh-stave hero__stave" aria-hidden="true">
+        <source media="(min-width: 768px)" srcset="/images/brand/stave-wide-gold.svg" width="1440" height="81">
+        <img src="/images/brand/stave-narrow-gold.svg" width="600" height="81" alt="">
+      </picture>
+    </section>
 
-        <figure class="frame">
-          <picture>
-            <!-- PLACEHOLDER: photo, a lesson in the studio (3:2) -->
-            <img
-              src="/images/placeholders/lessons-hero-1024.svg"
-              srcset="/images/placeholders/lessons-hero-640.svg 640w, /images/placeholders/lessons-hero-1024.svg 1024w, /images/placeholders/lessons-hero-1600.svg 1600w"
-              sizes="(min-width: 74rem) 34rem, (min-width: 52rem) 45vw, calc(100vw - 2rem)"
-              width="1024" height="683"
-              alt="Michelle at the piano, encouraging a student mid-song in a bright studio"
-              fetchpriority="high" decoding="async">
-          </picture>
-        </figure>
+    <!-- Who lessons suit: the page's one gold block, with staggered posters == -->
+    <section class="section mh-on-gold" id="who" aria-labelledby="who-title">
+      <div class="container">
+        <div class="section__head section__head--wide">
+          <p class="mh-label">Who lessons are for</p>
+          <h2 class="type-feature" id="who-title">There’s no such thing as “not a singer”.</h2>
+        </div>
+
+        <div class="posters">
+          <article class="poster mh-on-light" id="adults">
+            <h3 class="poster__title">Adults</h3>
+            <p>Never sung in front of anyone? We’ll start with breathing and warming up, then build your confidence one song at a time. Others come for choirs, open mic nights and weddings, or just because they enjoy singing.</p>
+          </article>
+          <article class="poster mh-on-dark" id="young-singers">
+            <h3 class="poster__title">Children and teens</h3>
+            <p>Pop and musical theatre for ages <!-- PLACEHOLDER: youngest age Michelle teaches -->[AGE] and up: confidence first, technique close behind, and help preparing for school shows, performances and auditions.</p>
+          </article>
+          <article class="poster mh-on-light" id="exams">
+            <h3 class="poster__title">Exam and audition preparation</h3>
+            <p>Focused preparation for graded singing exams with <!-- PLACEHOLDER: exam boards Michelle prepares students for -->[EXAM BOARDS], plus drama school and musical theatre auditions.</p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <!-- Who lessons suit ===================================================== -->
-    <section class="section section--flush-top" id="who" aria-labelledby="who-title">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="eyebrow">Who lessons are for</p>
-          <h2 id="who-title">Every voice is welcome</h2>
-          <p>There’s no such thing as “not a singer”. Just voices that haven’t had the right guidance yet.</p>
+    <!-- In person or online: deep green ===================================== -->
+    <section class="section mh-on-stage" id="formats" aria-labelledby="formats-title">
+      <div class="container">
+        <div class="section__head section__head--wide">
+          <h2 class="type-feature" id="formats-title">In person or online</h2>
+          <p>Lessons are <!-- PLACEHOLDER: lesson length or lengths -->[LESSON LENGTH], weekly or fortnightly. I teach <!-- PLACEHOLDER: days and times lessons are available -->[DAYS AND TIMES].</p>
         </div>
-
-        <ul class="ruled-list" role="list">
-          <li class="ruled-list__item">
-            <h3 class="ruled-list__title">Complete beginners</h3>
-            <p>Never sung in front of anyone? Perfect. We’ll start with breathing and warming up, then build your confidence one song at a time.</p>
-          </li>
-          <li class="ruled-list__item">
-            <h3 class="ruled-list__title">Teenagers</h3>
-            <p>Technique, pop and musical theatre for ages <!-- PLACEHOLDER: youngest teen age --><span class="ph">[PLACEHOLDER: age]</span> and up, with help preparing for school shows, performances and auditions.</p>
-          </li>
-          <li class="ruled-list__item">
-            <h3 class="ruled-list__title">Adults</h3>
-            <p>It’s never too late. Plenty of my students started in their forties, fifties and beyond, for choirs, open mic nights, weddings or the sheer joy of it.</p>
-          </li>
-          <li class="ruled-list__item">
-            <h3 class="ruled-list__title">Exam and audition preparation</h3>
-            <p>Focused preparation for graded singing exams with <!-- PLACEHOLDER: exam boards --><span class="ph">[PLACEHOLDER: exam boards]</span>, plus drama school and musical theatre auditions.</p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Formats ============================================================== -->
-    <section class="section section--surface" id="formats" aria-labelledby="formats-title">
-      <div class="wrap split">
-        <figure class="frame frame--offset">
-          <picture>
-            <!-- PLACEHOLDER: photo, online lesson set-up (4:5) -->
-            <img
-              src="/images/placeholders/lessons-formats-800.svg"
-              srcset="/images/placeholders/lessons-formats-480.svg 480w, /images/placeholders/lessons-formats-800.svg 800w, /images/placeholders/lessons-formats-1200.svg 1200w"
-              sizes="(min-width: 74rem) 34rem, (min-width: 48rem) 45vw, calc(100vw - 2rem)"
-              width="800" height="1000"
-              alt="Michelle smiling at a laptop, teaching an online lesson"
-              loading="lazy" decoding="async">
-          </picture>
-        </figure>
-
-        <div class="stack stack--l">
-          <div class="stack">
-            <p class="eyebrow">How lessons work</p>
-            <h2 id="formats-title">In person or online</h2>
-            <p>Lessons are 30, 45 or 60 minutes, weekly or fortnightly. Same care and attention either way. <!-- PLACEHOLDER: confirm lesson lengths --><span class="ph">[PLACEHOLDER: confirm lesson lengths]</span></p>
+        <div class="formats">
+          <div class="formats__media">
+          <div class="mh-arch">
+          <!-- PLACEHOLDER: photo, the online set-up: laptop, headphones, lyric sheet (4:5 arch, shot 8 in docs/brand/brand/MH-brand-summary.md). Use the <picture> pattern in README.md and delete the note below. -->
+          <img src="/images/placeholders/scene-4x5.svg" width="384" height="480" alt="Placeholder for a photo of the online lesson set-up" loading="lazy">
+          <p class="photo-note" aria-hidden="true">Online set-up</p>
+        </div>
           </div>
-          <div class="stack">
+          <div class="formats__item">
             <h3>In person</h3>
-            <p>Lessons take place at my <!-- PLACEHOLDER: studio description --><span class="ph">[PLACEHOLDER: studio description]</span> in <!-- PLACEHOLDER: location --><span class="ph">[PLACEHOLDER: location]</span>, with a piano, a warm room and the kettle always on.</p>
+            <p>Lessons take place at my <!-- PLACEHOLDER: description of where in-person lessons happen -->[STUDIO DESCRIPTION] in <!-- PLACEHOLDER: which part of Stafford, not the full address -->[AREA OF STAFFORD]. <!-- PLACEHOLDER: parking, step-free access and where parents can wait, or delete -->[WHERE TO PARK, WHETHER THERE’S STEP-FREE ACCESS, AND WHERE PARENTS CAN WAIT]</p>
           </div>
-          <div class="stack">
-            <h3>Online</h3>
-            <p>Live video lessons from wherever you are. All you need is a laptop or tablet, a quiet room and a pair of headphones. I’ll send backing tracks and notes after every lesson.</p>
+          <div class="formats__item">
+            <h3 id="online">Online</h3>
+            <p>Live video lessons from wherever you are. All you need is a laptop or tablet, a quiet room and a pair of headphones. <!-- PLACEHOLDER: anything Michelle sends after online lessons, or delete -->[WHAT YOU SEND AFTER EACH LESSON, E.G. BACKING TRACKS AND NOTES]</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Prices =============================================================== -->
-    <section class="section" id="prices" aria-labelledby="prices-title">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="eyebrow">Prices</p>
-          <h2 id="prices-title">Lesson prices</h2>
-          <p>Simple pricing, the same for in-person and online lessons.</p>
+    <section class="section mh-on-light" id="prices" aria-labelledby="prices-title">
+      <div class="container">
+        <div class="section__head section__head--wide">
+          <h2 class="type-feature" id="prices-title">Lesson prices</h2>
+          <p><!-- PLACEHOLDER: one line about pricing, e.g. whether it's the same in person and online -->[ONE LINE ABOUT YOUR PRICES, E.G. THE SAME IN PERSON AND ONLINE]</p>
         </div>
 
-        <ul class="price-list" role="list">
+        <ul class="price-list">
           <li class="price">
             <div class="price__body">
               <h3 class="price__name">First lesson</h3>
-              <p>A relaxed 30-minute introduction to meet, sing a little and make a plan together.</p>
+              <p>A relaxed introduction to meet, sing a little and make a plan together.</p>
             </div>
-            <p class="price__amount"><span class="price__from">From</span><!-- PLACEHOLDER: first lesson price --><span class="ph">[PLACEHOLDER: price]</span></p>
+            <p class="price__amount"><!-- PLACEHOLDER: first lesson price -->[PRICE] for <!-- PLACEHOLDER: first lesson length -->[LESSON LENGTH]</p>
           </li>
           <li class="price">
             <div class="price__body">
               <h3 class="price__name">Single lessons</h3>
-              <p>30, 45 or 60 minutes, booked as you go. Ideal if your diary changes week to week.</p>
+              <p>Booked as you go. Ideal if your diary changes week to week.</p>
             </div>
-            <p class="price__amount"><span class="price__from">From</span><!-- PLACEHOLDER: single lesson price --><span class="ph">[PLACEHOLDER: price]</span></p>
+            <p class="price__amount"><!-- PLACEHOLDER: single lesson price -->[PRICE] for <!-- PLACEHOLDER: single lesson length -->[LESSON LENGTH]</p>
           </li>
           <li class="price">
             <div class="price__body">
-              <h3 class="price__name">Block of six <span class="price__tag">Best value</span></h3>
-              <p>Six lessons paid in advance at a discount. The best way to make steady progress.</p>
+              <!-- PLACEHOLDER: block booking, if Michelle offers one. Otherwise delete this row. -->
+              <h3 class="price__name">[BLOCK BOOKING, IF YOU OFFER ONE]</h3>
+              <p>[HOW MANY LESSONS, AND ANY DISCOUNT]</p>
             </div>
-            <p class="price__amount"><span class="price__from">From</span><!-- PLACEHOLDER: block of six price --><span class="ph">[PLACEHOLDER: price]</span></p>
+            <p class="price__amount"><!-- PLACEHOLDER: block booking price -->[PRICE]</p>
           </li>
         </ul>
 
-        <p class="price-list__note">Please give at least <!-- PLACEHOLDER: cancellation notice --><span class="ph">[PLACEHOLDER: number]</span> hours’ notice to rearrange a lesson; later cancellations are charged in full.</p>
+        <p class="price-list__note">Please give at least <!-- PLACEHOLDER: cancellation notice in hours -->[NUMBER] hours’ notice to rearrange a lesson. <!-- PLACEHOLDER: what happens with later cancellations -->[WHAT HAPPENS WITH LATER CANCELLATIONS]</p>
+        <a class="mh-btn mh-btn--velvet price-list__action" href="#enquire">Book a first lesson</a>
+      </div>
+    </section>
+
+    <!-- Testimonial: velvet, a single large quote =========================== -->
+    <section class="section mh-on-dark" aria-label="What students say">
+      <div class="container">
+        <!-- PLACEHOLDER: testimonial. Replace with a real student's or parent's words (a different one from the home page), with their permission and how they'd like to be credited. -->
+        <figure class="testimonial">
+          <blockquote><p>[A few words from a student or parent about their lessons go here, in their own words.]</p></blockquote>
+          <figcaption class="mh-label">[NAME], [WHO THEY ARE, E.G. ADULT STUDENT]</figcaption>
+        </figure>
       </div>
     </section>
 
     <!-- First lesson ========================================================= -->
-    <section class="section section--surface" id="first-lesson" aria-labelledby="first-lesson-title">
-      <div class="wrap">
-        <div class="section-head">
-          <p class="eyebrow">Your first lesson</p>
-          <h2 id="first-lesson-title">What to expect</h2>
+    <section class="section mh-on-light" id="first-lesson" aria-labelledby="first-lesson-title">
+      <div class="container">
+        <div class="section__head section__head--wide">
+          <h2 class="type-feature" id="first-lesson-title">What to expect from your first lesson</h2>
           <p>No auditions and no judgement. Here’s how a first lesson usually goes.</p>
         </div>
 
-        <ol class="steps" role="list">
-          <li class="steps__item">
-            <h3 class="steps__title">A chat</h3>
+        <ol class="big-steps big-steps--detail">
+          <li>
+            <h3 class="big-steps__title">A chat</h3>
             <p>We’ll talk about what you love to sing, what you’d like to achieve and any experience you already have.</p>
           </li>
-          <li class="steps__item">
-            <h3 class="steps__title">A gentle warm-up</h3>
+          <li>
+            <h3 class="big-steps__title">A gentle warm-up</h3>
             <p>Simple breathing and vocal exercises, so I can hear your voice and you can feel how it works.</p>
           </li>
-          <li class="steps__item">
-            <h3 class="steps__title">A song you love</h3>
-            <p>We’ll sing something you’ve chosen, and I’ll show you one or two small changes that make a real difference.</p>
+          <li>
+            <h3 class="big-steps__title">A song you love</h3>
+            <p>We’ll sing something you’ve chosen, and I’ll show you one or two small changes you can try straight away.</p>
           </li>
-          <li class="steps__item">
-            <h3 class="steps__title">A plan</h3>
+          <li>
+            <h3 class="big-steps__title">A plan</h3>
             <p>You’ll leave with a few exercises to practise and a clear idea of where lessons could take you.</p>
           </li>
         </ol>
       </div>
     </section>
 
-    <!-- FAQ ================================================================== -->
-    <section class="section" id="faq" aria-labelledby="faq-title">
-      <div class="wrap wrap--narrow">
-        <div class="section-head">
-          <p class="eyebrow">Questions</p>
-          <h2 id="faq-title">Lesson FAQs</h2>
+    <!-- Questions ============================================================ -->
+    <section class="section mh-on-stage" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section__head section__head--wide">
+          <h2 class="type-feature" id="faq-title">Questions about lessons</h2>
+          <a class="text-link" href="#enquire">Something else? Ask me</a>
         </div>
 
         <div class="faq">
           <details class="faq__item">
             <summary class="faq__question">Do I need to be able to read music?</summary>
             <div class="faq__answer">
-              <p>Not at all. Most of my students don’t when they start. If you’d like to learn, we can build it in gradually, but it’s never a requirement.</p>
+              <p>Not at all. If you’d like to learn, we can build it in gradually, but it’s never a requirement.</p>
             </div>
           </details>
           <details class="faq__item">
             <summary class="faq__question">What age can students start?</summary>
             <div class="faq__answer">
-              <p>I teach students from age <!-- PLACEHOLDER: minimum student age --><span class="ph">[PLACEHOLDER: age]</span>. Young voices are still developing, so lessons for children focus on healthy habits, confidence and having fun.</p>
+              <p>I teach students from age <!-- PLACEHOLDER: minimum student age -->[AGE]. Young voices are still developing, so lessons for children focus on healthy habits, confidence and having fun.</p>
             </div>
           </details>
           <details class="faq__item">
@@ -265,111 +265,125 @@
             </div>
           </details>
           <details class="faq__item">
+            <summary class="faq__question">How do I pay?</summary>
+            <div class="faq__answer">
+              <p><!-- PLACEHOLDER: how and when students pay, e.g. bank transfer before each lesson -->[HOW AND WHEN TO PAY]</p>
+            </div>
+          </details>
+          <details class="faq__item">
             <summary class="faq__question">Can you prepare me for a singing exam?</summary>
             <div class="faq__answer">
-              <p>Yes. I prepare students for <!-- PLACEHOLDER: exam boards --><span class="ph">[PLACEHOLDER: exam boards]</span> graded exams and can help you choose the syllabus that suits your voice and goals.</p>
+              <p>Yes. I prepare students for <!-- PLACEHOLDER: exam boards Michelle prepares students for -->[EXAM BOARDS] graded exams and can help you choose the syllabus that suits your voice and goals.</p>
             </div>
           </details>
           <details class="faq__item">
             <summary class="faq__question">Are you checked to work with children?</summary>
             <div class="faq__answer">
-              <p>Yes. I hold an up-to-date enhanced background check. <!-- PLACEHOLDER: confirm safeguarding check (e.g. DBS) --><span class="ph">[PLACEHOLDER: confirm safeguarding check]</span> Parents and guardians are always welcome to sit in on lessons for under-18s.</p>
+              <p><!-- PLACEHOLDER: safeguarding answer. Only say yes once it's confirmed. -->[YOUR SAFEGUARDING CHECK, E.G. ENHANCED DBS, AND WHETHER PARENTS CAN SIT IN ON LESSONS FOR UNDER-18S]</p>
             </div>
           </details>
           <details class="faq__item">
             <summary class="faq__question">I’m really nervous. Is that normal?</summary>
             <div class="faq__answer">
-              <p>Completely. Almost everyone is nervous at their first lesson, and it passes quickly. You’re in a private room with someone whose whole job is to help you, not to judge you.</p>
+              <p>Completely. Almost everyone is nervous at their first lesson, and it passes quickly. You’re with someone whose whole job is to help you, not to judge you.</p>
+            </div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">Will I have to sing in front of other people?</summary>
+            <div class="faq__answer">
+              <p><!-- PLACEHOLDER: whether there are student concerts or showcases, and whether taking part is up to the student -->[WHETHER THERE ARE STUDENT CONCERTS OR SHOWCASES, AND WHETHER TAKING PART IS UP TO YOU]</p>
             </div>
           </details>
         </div>
       </div>
     </section>
 
-    <!-- Enquiry form ========================================================= -->
-    <section class="section section--surface" id="enquire" aria-labelledby="enquire-title">
-      <div class="wrap enquiry">
-        <div class="stack">
-          <p class="eyebrow">Enquire</p>
-          <h2 id="enquire-title">Book a first lesson</h2>
-          <p>Tell me a little about yourself and what you’d like from lessons. I’ll reply within <!-- PLACEHOLDER: response time --><span class="ph">[PLACEHOLDER: response time]</span> with available times.</p>
-          <p class="muted">Booking for someone under 18? Please fill this in as their parent or guardian.</p>
+    <!-- Enquiry ============================================================== -->
+    <section class="section mh-on-light" id="enquire" aria-labelledby="enquire-title">
+      <div class="container">
+        <div class="section__head section__head--wide">
+          <p class="mh-label">Book a first lesson</p>
+          <h2 class="type-feature" id="enquire-title">Ready when you are.</h2>
         </div>
-
-        <!-- PLACEHOLDER: form endpoint. Web3Forms posts to this URL; add your access key below. -->
-        <form class="form" action="https://api.web3forms.com/submit" method="POST">
-          <!-- PLACEHOLDER: Web3Forms access key (free at web3forms.com) -->
-          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
-          <input type="hidden" name="subject" value="New singing lesson enquiry">
-          <input type="hidden" name="from_name" value="Michelle Handley website">
-          <!-- PLACEHOLDER: domain. Must be the absolute URL of the thank-you page. -->
-          <input type="hidden" name="redirect" value="https://michellehandley.example/thank-you.html">
-          <!-- Honeypot: hidden from people; bots that tick it are discarded by Web3Forms -->
-          <input class="form__honeypot" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
-
-          <div class="form__row">
-            <div class="field">
-              <label class="field__label" for="l-name">Your name</label>
-              <input class="field__input" id="l-name" name="name" type="text" autocomplete="name" required>
-            </div>
-            <div class="field">
-              <label class="field__label" for="l-email">Email</label>
-              <input class="field__input" id="l-email" name="email" type="email" autocomplete="email" required>
-            </div>
+        <div class="enquiry__inner">
+          <div class="enquiry__intro">
+            <p>Tell me a little about yourself, or your child, and what you’d love to sing. No experience needed.</p>
+            <p>I’ll reply within <!-- PLACEHOLDER: usual response time, e.g. two working days -->[RESPONSE TIME] to find a time for your first lesson.</p>
+            <p>Booking for someone under 18? Please fill this in as their parent or guardian.</p>
+            <ul class="enquiry__contact">
+              <li><!-- PLACEHOLDER: phone number. Make it a tel: link when it's known. -->[PHONE]</li>
+              <li><!-- PLACEHOLDER: email address. Make it a mailto: link when it's known. -->[EMAIL]</li>
+            </ul>
           </div>
 
-          <div class="form__row">
-            <div class="field">
-              <label class="field__label" for="l-phone">Phone <span class="field__optional">(optional)</span></label>
-              <input class="field__input" id="l-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" pattern="[0-9 +\(\)\-]{7,20}" title="Numbers, spaces, brackets and + only">
+          <form class="form" action="https://api.web3forms.com/submit" method="post">
+            <!-- PLACEHOLDER: Web3Forms access key (free at web3forms.com, set up with Michelle's email address) -->
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+            <input type="hidden" name="subject" value="New singing lesson enquiry">
+            <input type="hidden" name="from_name" value="Michelle Handley website">
+            <!-- PLACEHOLDER: domain. Must be the absolute URL of the thank-you page. -->
+            <input type="hidden" name="redirect" value="https://michellehandley.example/thank-you.html">
+            <!-- Honeypot: hidden from people; Web3Forms discards submissions that tick it -->
+            <input class="form__honeypot" type="checkbox" name="botcheck">
+
+            <div class="form__row">
+              <div class="field">
+                <label class="field__label" for="enq-name">Your name</label>
+                <input class="field__input" id="enq-name" name="name" type="text" autocomplete="name" required>
+                <p class="field__error" id="enq-name-error" data-missing="Please add your name." hidden><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="currentColor"/><path d="M9 4.5V10M9 13V13.2" stroke-width="2.2" stroke-linecap="round"/></svg><span class="field__error-text"></span></p>
+              </div>
+              <div class="field">
+                <label class="field__label" for="enq-email">Email</label>
+                <input class="field__input" id="enq-email" name="email" type="email" autocomplete="email" required>
+                <p class="field__error" id="enq-email-error" data-missing="Please add your email so I can reply." data-invalid="Please check your email address. It should look like name@example.com." hidden><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="currentColor"/><path d="M9 4.5V10M9 13V13.2" stroke-width="2.2" stroke-linecap="round"/></svg><span class="field__error-text"></span></p>
+              </div>
             </div>
+
             <div class="field">
-              <label class="field__label" for="l-age">Age group of the singer</label>
-              <select class="field__input" id="l-age" name="age_group" required>
-                <option value="">Choose one</option>
-                <option>Child (under 13)</option>
-                <option>Teenager (13 to 17)</option>
-                <option>Adult (18 and over)</option>
+              <label class="field__label" for="enq-phone">Phone</label>
+              <p class="field__hint" id="enq-phone-hint">Optional, if you’d rather talk.</p>
+              <input class="field__input" id="enq-phone" name="phone" type="tel" autocomplete="tel" aria-describedby="enq-phone-hint">
+            </div>
+
+            <fieldset class="field">
+              <legend class="field__label">Who are the lessons for?</legend>
+              <div class="choice-list">
+                <label class="choice"><input type="radio" name="who" value="Me"> Me</label>
+                <label class="choice"><input type="radio" name="who" value="My child"> My child</label>
+              </div>
+            </fieldset>
+
+            <div class="field">
+              <label class="field__label" for="enq-where">Where would you like lessons?</label>
+              <select class="field__input" id="enq-where" name="where">
+                <option>In person in Stafford</option>
+                <option>Online</option>
+                <option>Not sure yet</option>
               </select>
             </div>
-          </div>
 
-          <fieldset class="choices">
-            <legend class="choices__legend">Singing experience</legend>
-            <div class="choices__grid">
-              <label class="choice"><input type="radio" name="experience" value="Complete beginner" required> Complete beginner</label>
-              <label class="choice"><input type="radio" name="experience" value="Some experience" required> Some experience</label>
-              <label class="choice"><input type="radio" name="experience" value="Experienced singer" required> Experienced singer</label>
-              <label class="choice"><input type="radio" name="experience" value="Preparing for an exam or audition" required> Preparing for an exam or audition</label>
+            <div class="field">
+              <label class="field__label" for="enq-when">When suits you best?</label>
+              <p class="field__hint" id="enq-when-hint">Optional. The days and times you could usually make.</p>
+              <input class="field__input" id="enq-when" name="when" type="text" aria-describedby="enq-when-hint">
             </div>
-          </fieldset>
 
-          <fieldset class="choices">
-            <legend class="choices__legend">In person or online?</legend>
-            <div class="choices__grid">
-              <label class="choice"><input type="radio" name="format" value="In person" required> In person</label>
-              <label class="choice"><input type="radio" name="format" value="Online" required> Online</label>
-              <label class="choice"><input type="radio" name="format" value="Not sure yet" required> Not sure yet</label>
+            <div class="field">
+              <label class="field__label" for="enq-message">What would you love to sing?</label>
+              <p class="field__hint" id="enq-message-hint">Mention any exam or audition coming up, and your child’s age if the lessons are for them.</p>
+              <textarea class="field__input" id="enq-message" name="message" rows="5" aria-describedby="enq-message-hint"></textarea>
             </div>
-          </fieldset>
 
-          <div class="field">
-            <label class="field__label" for="l-goals">What would you like to achieve?</label>
-            <textarea class="field__input" id="l-goals" name="goals" rows="4" aria-describedby="l-goals-hint" required></textarea>
-            <p class="field__hint" id="l-goals-hint">For example: more confidence, a particular song, an exam, an audition, or just for fun.</p>
-          </div>
+            <div class="field">
+              <label class="check"><input id="enq-consent" type="checkbox" name="consent" value="Yes" required> I’m happy for Michelle to reply by email or phone about lessons.</label>
+              <p class="field__error" id="enq-consent-error" data-missing="Please tick the box so I can reply to you." hidden><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="currentColor"/><path d="M9 4.5V10M9 13V13.2" stroke-width="2.2" stroke-linecap="round"/></svg><span class="field__error-text"></span></p>
+            </div>
 
-          <div class="field">
-            <label class="field__label" for="l-message">Anything else? <span class="field__optional">(optional)</span></label>
-            <textarea class="field__input" id="l-message" name="message" rows="4" aria-describedby="l-message-hint"></textarea>
-            <p class="field__hint" id="l-message-hint">Days and times that suit you, or questions you’d like to ask.</p>
-          </div>
-
-          <div class="cluster">
-            <button class="button" type="submit">Send my enquiry</button>
-          </div>
-          <p class="form__note">I’ll only use your details to reply to your enquiry. See the <a href="/privacy.html">privacy policy</a>.</p>
-        </form>
+            <p class="form__status" tabindex="-1" hidden>Sorry, your enquiry didn’t send. Please try again in a minute, or email me at <!-- PLACEHOLDER: email address -->[EMAIL].</p>
+            <div><button class="mh-btn mh-btn--velvet" type="submit" data-sending="Sending…">Send my enquiry</button></div>
+            <p class="form__small">I’ll only use your details to reply. <a href="/privacy.html">Privacy notice</a></p>
+          </form>
+        </div>
       </div>
     </section>
 
@@ -378,38 +392,49 @@
   <!-- ==================================================================
        Site footer: identical on every page
        ================================================================== -->
-  <footer class="site-footer">
-    <div class="wrap">
-      <div class="site-footer__grid">
-        <div class="site-footer__intro stack">
-          <p class="brand__name">Michelle Handley</p>
-          <p>Wedding singer and vocal coach based in <!-- PLACEHOLDER: location --><span class="ph">[PLACEHOLDER: location]</span>. Singing at weddings across <!-- PLACEHOLDER: service area --><span class="ph">[PLACEHOLDER: service area]</span> and teaching in person and online.</p>
-        </div>
-
-        <div>
-          <h2 class="site-footer__heading">Explore</h2>
-          <ul class="site-footer__list" role="list">
-            <li><a href="/weddings.html">Weddings</a></li>
-            <li><a href="/lessons.html">Singing lessons</a></li>
-            <li><a href="/about.html">About Michelle</a></li>
-            <li><a href="/contact.html">Contact</a></li>
+  <footer class="site-footer mh-on-dark">
+    <div class="container">
+      <p class="site-footer__line">Every voice starts somewhere.</p>
+      <div class="site-footer__inner">
+        <div class="footer-col">
+          <h2 class="mh-label">Lessons</h2>
+          <ul>
+            <li><a href="/lessons.html#adults">Adults</a></li>
+            <li><a href="/lessons.html#young-singers">Children and teens</a></li>
+            <li><a href="/lessons.html#exams">Exams and auditions</a></li>
+            <li><a href="/lessons.html#online">Online lessons</a></li>
+            <li><a href="/lessons.html#prices">Prices</a></li>
+            <li><a href="/lessons.html#faq">Questions</a></li>
           </ul>
         </div>
-
-        <div>
-          <h2 class="site-footer__heading">Say hello</h2>
-          <ul class="site-footer__list" role="list">
-            <!-- PLACEHOLDER: email. Update the mailto address and the visible text. -->
-            <li><a href="mailto:hello@michellehandley.example"><!-- PLACEHOLDER: email --><span class="ph">[PLACEHOLDER: email]</span></a></li>
-            <!-- PLACEHOLDER: Instagram handle. Update the URL and the visible text. -->
-            <li><a href="https://www.instagram.com/" rel="me">Instagram <!-- PLACEHOLDER: @handle --><span class="ph">[PLACEHOLDER: @handle]</span></a></li>
+        <div class="footer-col">
+          <h2 class="mh-label">Get in touch</h2>
+          <ul>
+            <li><!-- PLACEHOLDER: phone number. Make it a tel: link when it's known. -->[PHONE]</li>
+            <li><!-- PLACEHOLDER: email address. Make it a mailto: link when it's known. -->[EMAIL]</li>
+            <li>Stafford, Staffordshire</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2 class="mh-label">Follow</h2>
+          <ul>
+            <!-- PLACEHOLDER: Instagram URL. Replace with Michelle's profile, e.g. https://www.instagram.com/handle/ -->
+            <li><a href="https://www.instagram.com/" rel="me">Instagram</a></li>
+            <!-- PLACEHOLDER: Facebook URL. Replace with Michelle's page, or delete this line if she doesn't use Facebook. -->
+            <li><a href="https://www.facebook.com/" rel="me">Facebook</a></li>
           </ul>
         </div>
       </div>
-
-      <div class="site-footer__base">
+      <!-- The logo runs the width of the page: stacked on phones, horizontal from 768px -->
+      <a class="site-footer__logo" href="/">
+        <picture>
+          <source media="(min-width: 768px)" srcset="/images/brand/michelle-handley-logo-horizontal-gold.svg" width="1255" height="300">
+          <img src="/images/brand/michelle-handley-logo-stacked-gold.svg" width="255" height="240" alt="Michelle Handley, singing teacher, home" loading="lazy">
+        </picture>
+      </a>
+      <div class="site-footer__legal">
         <p>&copy; 2026 Michelle Handley</p>
-        <p><a href="/privacy.html">Privacy policy</a></p>
+        <p><a href="/privacy.html">Privacy</a> · Photos of students are only shared with consent</p>
       </div>
     </div>
   </footer>

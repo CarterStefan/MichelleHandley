@@ -2,5 +2,6 @@
 User-agent: *
 Allow: /
 Disallow: /thank-you.html
+Disallow: /docs/
 
 Sitemap: https://michellehandley.example/sitemap.xml

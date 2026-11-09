@@ -1,0 +1,179 @@
+/* ==========================================================================
+   Michelle Handley brand: fonts, tokens and shape patterns
+   Link this file before the site's own stylesheets. The rules for using it
+   are in BRAND.md. Change brand values here only.
+   ========================================================================== */
+
+/* ---- Fonts ---------------------------------------------------------------
+   Marcellus has a Reserved Font Name under the SIL Open Font License, so it
+   ships as the original, unmodified file. Jost has none, so it is subset to
+   Latin and compressed to WOFF2. Licences are in /fonts. */
+@font-face {
+  font-family: "Marcellus";
+  src: url("../fonts/Marcellus-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Jost";
+  src: url("../fonts/jost-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Jost";
+  src: url("../fonts/jost-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---- Tokens ------------------------------------------------------------- */
+:root {
+  /* Colour */
+  --mh-velvet: #0F4A35;        /* royal green: main background; text on ivory */
+  --mh-stage: #0B3727;         /* a deeper shade of velvet: panels on dark */
+  --mh-gold: #E2C08A;          /* the spotlight: logo, one button, one line device */
+  --mh-ivory: #F7F1E6;         /* reading sections; text on velvet */
+  --mh-brass: #7E5F27;         /* gold for small text and lines on ivory */
+  --mh-mist: #CBC3B1;          /* secondary text and outlines on dark */
+  --mh-moss: #4A5A50;          /* secondary text on ivory */
+  --mh-line: #E3D9C8;          /* hairlines on ivory */
+  --mh-photo-dark: #255846;    /* image placeholders on dark */
+  --mh-photo-light: #E7DDCB;   /* image placeholders and tags on light */
+  --mh-gold-hover: #EBD1A6;
+  --mh-velvet-hover: #0B3727;
+
+  /* Type */
+  --mh-font-display: "Marcellus", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --mh-font-text: "Jost", "Futura", "Century Gothic", "Avenir Next", system-ui, sans-serif;
+  --mh-size-display: clamp(2.5rem, 1.9rem + 2.6vw, 4rem);          /* 40 to 64px */
+  --mh-size-h1: clamp(2rem, 1.65rem + 1.5vw, 2.75rem);             /* 32 to 44px */
+  --mh-size-h2: clamp(1.5rem, 1.35rem + 0.7vw, 1.875rem);          /* 24 to 30px */
+  --mh-size-h3: clamp(1.25rem, 1.09rem + 0.6vw, 1.5rem);           /* 20 to 24px */
+  --mh-size-body: clamp(1.0625rem, 1.03rem + 0.15vw, 1.125rem);    /* 17 to 18px */
+  --mh-size-small: 0.9375rem;                                      /* 15px */
+  --mh-size-label: 0.875rem;                                       /* 14px, caps */
+  --mh-lh-display: 1.06;
+  --mh-lh-heading: 1.18;
+  --mh-lh-body: 1.55;
+  --mh-tracking-label: 0.12em;
+  --mh-measure: 66ch;
+
+  /* Shape: corners are square or fully round, nothing in between */
+  --mh-radius-none: 0;
+  --mh-radius-round: 9999px;
+  --mh-outline: 1.5px;
+
+  /* Rings around a capsule: 2px lines, 12px apart */
+  --mh-ring-line: 2px;
+  --mh-ring-gap: 10px;
+  --mh-ring-bg: var(--mh-velvet);   /* must match the background behind the rings */
+}
+
+/* ---- Surfaces ------------------------------------------------------------
+   Put one of these on each section so focus rings and rings pick the right
+   colours. */
+.mh-on-dark  { background-color: var(--mh-velvet); color: var(--mh-ivory); --mh-focus: var(--mh-gold); --mh-ring-bg: var(--mh-velvet); }
+.mh-on-stage { background-color: var(--mh-stage);  color: var(--mh-ivory); --mh-focus: var(--mh-gold); --mh-ring-bg: var(--mh-stage); }
+.mh-on-light { background-color: var(--mh-ivory);  color: var(--mh-velvet); --mh-focus: var(--mh-velvet); --mh-ring-bg: var(--mh-ivory); }
+
+:where(.mh-on-dark, .mh-on-stage, .mh-on-light) :focus-visible {
+  outline: 2px solid var(--mh-focus);
+  outline-offset: 3px;
+}
+
+/* ---- Buttons: pills. One solid button per screen. ------------------------ */
+.mh-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  min-height: 3rem;                       /* 48px tap target */
+  padding: 0 1.5em;
+  border: var(--mh-outline) solid transparent;
+  border-radius: var(--mh-radius-round);
+  font: 500 1.0625rem/1 var(--mh-font-text);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.15s ease-out, border-color 0.15s ease-out;
+}
+.mh-btn--gold { background-color: var(--mh-gold); color: var(--mh-velvet); }
+.mh-btn--gold:hover { background-color: var(--mh-gold-hover); }
+.mh-btn--velvet { background-color: var(--mh-velvet); color: var(--mh-ivory); }
+.mh-btn--velvet:hover { background-color: var(--mh-velvet-hover); }
+.mh-btn--outline-on-dark { background-color: transparent; border-color: var(--mh-mist); color: var(--mh-ivory); }
+.mh-btn--outline-on-dark:hover { background-color: rgb(247 241 230 / 0.08); }
+.mh-btn--outline-on-light { background-color: transparent; border-color: var(--mh-velvet); color: var(--mh-velvet); }
+.mh-btn--outline-on-light:hover { background-color: rgb(15 74 53 / 0.06); }
+
+/* ---- Tags and labels ------------------------------------------------------ */
+.mh-tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0 0.9em;
+  border-radius: var(--mh-radius-round);
+  font: 500 0.8125rem/1 var(--mh-font-text);
+  background-color: var(--mh-stage);
+  color: var(--mh-gold);
+}
+.mh-on-light .mh-tag { background-color: var(--mh-photo-light); color: var(--mh-velvet); }
+.mh-label {
+  font: 500 var(--mh-size-label)/1.2 var(--mh-font-text);
+  letter-spacing: var(--mh-tracking-label);
+  text-transform: uppercase;
+}
+
+/* ---- Photo frames ----------------------------------------------------------
+   Capsule: portraits, in the mark's own proportion (about 1 : 1.8).
+   Arch: wider photos keep the capsule's round top and a square base. */
+.mh-capsule,
+.mh-arch {
+  overflow: hidden;
+  background-color: var(--mh-photo-dark);
+}
+.mh-capsule { aspect-ratio: 5 / 9; border-radius: var(--mh-radius-round); }
+.mh-arch { border-radius: var(--mh-radius-round) var(--mh-radius-round) 0 0; }
+.mh-on-light .mh-capsule,
+.mh-on-light .mh-arch { background-color: var(--mh-photo-light); }
+.mh-capsule > img,
+.mh-arch > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Rings: three gold lines around a capsule. One feature moment per page.
+   Drawn with box-shadow, so they follow the capsule's shape at any size. */
+.mh-rings {
+  --g: var(--mh-ring-gap);
+  --w: var(--mh-ring-line);
+  margin: calc(3 * var(--g) + 3 * var(--w));   /* room for the rings */
+  box-shadow:
+    0 0 0 var(--g) var(--mh-ring-bg),
+    0 0 0 calc(var(--g) + var(--w)) var(--mh-gold),
+    0 0 0 calc(2 * var(--g) + var(--w)) var(--mh-ring-bg),
+    0 0 0 calc(2 * var(--g) + 2 * var(--w)) var(--mh-gold),
+    0 0 0 calc(3 * var(--g) + 2 * var(--w)) var(--mh-ring-bg),
+    0 0 0 calc(3 * var(--g) + 3 * var(--w)) var(--mh-gold);
+}
+
+/* ---- The stave band ---------------------------------------------------------
+   Four lines rising left to right, full bleed, cut flush at the section's
+   edges. Decorative, once per page at most. Use with <picture>:
+   wide file from 768px, narrow file below. */
+.mh-stave,
+.mh-stave img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mh-btn { transition: none; }
+}

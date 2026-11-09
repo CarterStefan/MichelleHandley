@@ -3,86 +3,89 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Thank You | Michelle Handley</title>
-  <meta name="description" content="Thank you for your enquiry. Michelle will be in touch soon.">
+  <title>Thank you | Michelle Handley</title>
+  <meta name="description" content="Thanks for getting in touch. Michelle will reply soon.">
   <meta name="robots" content="noindex">
-  <!-- PLACEHOLDER: domain. Replace every "https://michellehandley.example" in the project with the live domain. -->
 
-  <!-- Styles, plus the body font preloaded because it paints most of the text -->
-  <link rel="preload" href="/fonts/instrument-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Fonts are self-hosted and declared in brand.css. All three paint the first screen, so all are preloaded. -->
+  <link rel="preload" href="/fonts/jost-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/jost-500.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/Marcellus-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="/css/brand.css">
+  <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/components.css">
-  <link rel="stylesheet" href="/css/pages.css">
+  <script src="/js/site.js" defer></script>
 
   <!-- Icons and theme -->
-  <link rel="icon" href="/favicon.ico" sizes="48x48">
-  <link rel="icon" href="/images/icons/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#faf6f0" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#1e1917" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#0F4A35">
 
   <!-- Social sharing (Open Graph and Twitter/X) -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Michelle Handley">
   <meta property="og:locale" content="en_GB">
-  <meta property="og:title" content="Thank You | Michelle Handley">
-  <meta property="og:description" content="Thank you for your enquiry. Michelle will be in touch soon.">
-  <meta property="og:url" content="https://michellehandley.example/thank-you.html">
-  <meta property="og:image" content="https://michellehandley.example/images/og-image.jpg">
+  <meta property="og:title" content="Thank you | Michelle Handley">
+  <meta property="og:description" content="Thanks for getting in touch. Michelle will reply soon.">
+  <meta property="og:image" content="https://michellehandley.example/images/brand/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Michelle Handley, wedding singer and vocal coach">
+  <meta property="og:image:alt" content="Michelle Handley, singing teacher">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Thank You | Michelle Handley">
-  <meta name="twitter:description" content="Thank you for your enquiry. Michelle will be in touch soon.">
-  <meta name="twitter:image" content="https://michellehandley.example/images/og-image.jpg">
+  <meta name="twitter:title" content="Thank you | Michelle Handley">
+  <meta name="twitter:description" content="Thanks for getting in touch. Michelle will reply soon.">
+  <meta name="twitter:image" content="https://michellehandley.example/images/brand/og-image.png">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to main content</a>
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ==================================================================
        Site header: identical on every page. Only aria-current moves.
        ================================================================== -->
-  <header class="site-header">
-    <div class="wrap site-header__inner">
-      <a class="brand" href="/">
-        <span class="brand__name">Michelle Handley</span>
-        <span class="brand__tag">Wedding singer &amp; vocal coach</span>
+  <header class="site-header mh-on-dark">
+    <div class="container site-header__inner">
+      <a class="site-logo" href="/">
+        <picture>
+          <source media="(min-width: 768px)" srcset="/images/brand/michelle-handley-logo-horizontal-gold.svg" width="268" height="64">
+          <img src="/images/brand/michelle-handley-mark-gold.svg" width="31" height="56" alt="Michelle Handley, singing teacher, home">
+        </picture>
       </a>
-
-      <!-- CSS-only menu: this checkbox opens the nav panel on small screens -->
-      <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-controls="site-nav">
-      <label class="nav-toggle__label" for="nav-toggle">
-        <span class="nav-toggle__icon" aria-hidden="true"></span>
-        Menu
-      </label>
-
+      <button class="mh-btn mh-btn--outline-on-dark site-header__menu" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav class="site-nav" id="site-nav" aria-label="Main">
-        <ul class="site-nav__list" role="list">
-          <li><a class="site-nav__link" href="/">Home</a></li>
-          <li><a class="site-nav__link" href="/weddings.html">Weddings</a></li>
-          <li><a class="site-nav__link" href="/lessons.html">Singing lessons</a></li>
-          <li><a class="site-nav__link" href="/about.html">About</a></li>
-          <li class="site-nav__item--cta"><a class="button button--small" href="/contact.html">Get in touch</a></li>
+        <ul class="site-nav__list">
+          <li><a href="/lessons.html">Lessons</a></li>
+          <li><a href="/about.html">About me</a></li>
+          <li><a href="/lessons.html#prices">Prices</a></li>
+          <li><a href="/contact.html">Contact</a></li>
         </ul>
       </nav>
+      <a class="mh-btn mh-btn--outline-on-dark site-header__cta" href="/#contact">Book a first lesson</a>
     </div>
   </header>
 
   <main id="main">
 
-    <section class="message" aria-labelledby="page-title">
-      <div class="wrap wrap--narrow stack stack--l">
-        <p class="eyebrow">Message sent</p>
-        <h1 class="message__title" id="page-title">Thank you. <em>I’ll be in touch soon.</em></h1>
-        <p class="lede">Your message is safely with me. I read every enquiry personally and usually reply within <!-- PLACEHOLDER: response time --><span class="ph">[PLACEHOLDER: response time]</span>.</p>
-        <p>If you don’t hear back, please check your spam folder, or email me directly at <!-- PLACEHOLDER: email --><a href="mailto:hello@michellehandley.example"><!-- PLACEHOLDER: email --><span class="ph">[PLACEHOLDER: email]</span></a>. In the meantime, you’ll find recent weddings and lesson highlights on <!-- PLACEHOLDER: Instagram handle --><a href="https://www.instagram.com/" rel="me">Instagram</a>.</p>
-        <div class="cluster">
-          <a class="button" href="/">Back to the home page</a>
-          <a class="button button--secondary" href="/about.html">Read about Michelle</a>
+    <section class="hero mh-on-dark" aria-labelledby="page-title">
+      <div class="container">
+        <div class="hero__inner">
+          <div class="hero__text">
+            <h1 class="type-feature" id="page-title">Thank you. I’ll be in touch soon.</h1>
+            <p class="hero__lead">I usually reply within <!-- PLACEHOLDER: usual response time, e.g. two working days -->[RESPONSE TIME].</p>
+            <p>If you don’t hear back, please check your spam folder, or email me directly at <!-- PLACEHOLDER: email address. Make it a mailto: link when it's known. -->[EMAIL]. In the meantime, you’ll find me on <!-- PLACEHOLDER: Instagram URL --><a href="https://www.instagram.com/" rel="me">Instagram</a>.</p>
+            <div class="btn-row">
+              <a class="mh-btn mh-btn--gold" href="/lessons.html#first-lesson">Your first lesson</a>
+              <a class="mh-btn mh-btn--outline-on-dark" href="/about.html">More about me</a>
+            </div>
+          </div>
         </div>
       </div>
+      <picture class="mh-stave hero__stave" aria-hidden="true">
+        <source media="(min-width: 768px)" srcset="/images/brand/stave-wide-gold.svg" width="1440" height="81">
+        <img src="/images/brand/stave-narrow-gold.svg" width="600" height="81" alt="">
+      </picture>
     </section>
 
   </main>
@@ -90,38 +93,49 @@
   <!-- ==================================================================
        Site footer: identical on every page
        ================================================================== -->
-  <footer class="site-footer">
-    <div class="wrap">
-      <div class="site-footer__grid">
-        <div class="site-footer__intro stack">
-          <p class="brand__name">Michelle Handley</p>
-          <p>Wedding singer and vocal coach based in <!-- PLACEHOLDER: location --><span class="ph">[PLACEHOLDER: location]</span>. Singing at weddings across <!-- PLACEHOLDER: service area --><span class="ph">[PLACEHOLDER: service area]</span> and teaching in person and online.</p>
-        </div>
-
-        <div>
-          <h2 class="site-footer__heading">Explore</h2>
-          <ul class="site-footer__list" role="list">
-            <li><a href="/weddings.html">Weddings</a></li>
-            <li><a href="/lessons.html">Singing lessons</a></li>
-            <li><a href="/about.html">About Michelle</a></li>
-            <li><a href="/contact.html">Contact</a></li>
+  <footer class="site-footer mh-on-dark">
+    <div class="container">
+      <p class="site-footer__line">Every voice starts somewhere.</p>
+      <div class="site-footer__inner">
+        <div class="footer-col">
+          <h2 class="mh-label">Lessons</h2>
+          <ul>
+            <li><a href="/lessons.html#adults">Adults</a></li>
+            <li><a href="/lessons.html#young-singers">Children and teens</a></li>
+            <li><a href="/lessons.html#exams">Exams and auditions</a></li>
+            <li><a href="/lessons.html#online">Online lessons</a></li>
+            <li><a href="/lessons.html#prices">Prices</a></li>
+            <li><a href="/lessons.html#faq">Questions</a></li>
           </ul>
         </div>
-
-        <div>
-          <h2 class="site-footer__heading">Say hello</h2>
-          <ul class="site-footer__list" role="list">
-            <!-- PLACEHOLDER: email. Update the mailto address and the visible text. -->
-            <li><a href="mailto:hello@michellehandley.example"><!-- PLACEHOLDER: email --><span class="ph">[PLACEHOLDER: email]</span></a></li>
-            <!-- PLACEHOLDER: Instagram handle. Update the URL and the visible text. -->
-            <li><a href="https://www.instagram.com/" rel="me">Instagram <!-- PLACEHOLDER: @handle --><span class="ph">[PLACEHOLDER: @handle]</span></a></li>
+        <div class="footer-col">
+          <h2 class="mh-label">Get in touch</h2>
+          <ul>
+            <li><!-- PLACEHOLDER: phone number. Make it a tel: link when it's known. -->[PHONE]</li>
+            <li><!-- PLACEHOLDER: email address. Make it a mailto: link when it's known. -->[EMAIL]</li>
+            <li>Stafford, Staffordshire</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2 class="mh-label">Follow</h2>
+          <ul>
+            <!-- PLACEHOLDER: Instagram URL. Replace with Michelle's profile, e.g. https://www.instagram.com/handle/ -->
+            <li><a href="https://www.instagram.com/" rel="me">Instagram</a></li>
+            <!-- PLACEHOLDER: Facebook URL. Replace with Michelle's page, or delete this line if she doesn't use Facebook. -->
+            <li><a href="https://www.facebook.com/" rel="me">Facebook</a></li>
           </ul>
         </div>
       </div>
-
-      <div class="site-footer__base">
+      <!-- The logo runs the width of the page: stacked on phones, horizontal from 768px -->
+      <a class="site-footer__logo" href="/">
+        <picture>
+          <source media="(min-width: 768px)" srcset="/images/brand/michelle-handley-logo-horizontal-gold.svg" width="1255" height="300">
+          <img src="/images/brand/michelle-handley-logo-stacked-gold.svg" width="255" height="240" alt="Michelle Handley, singing teacher, home" loading="lazy">
+        </picture>
+      </a>
+      <div class="site-footer__legal">
         <p>&copy; 2026 Michelle Handley</p>
-        <p><a href="/privacy.html">Privacy policy</a></p>
+        <p><a href="/privacy.html">Privacy</a> · Photos of students are only shared with consent</p>
       </div>
     </div>
   </footer>

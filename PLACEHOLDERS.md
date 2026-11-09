@@ -1,245 +1,139 @@
 # Placeholders
 
-Every piece of temporary content on the site is marked two ways:
+Every unknown fact on the site is marked two ways:
 
-- a visible highlighted token in the page, e.g. `[PLACEHOLDER: price]`
-- an HTML comment next to it, e.g. `<!-- PLACEHOLDER: ceremony package price -->`
+- a visible token in `[CAPITALS]` in the page, e.g. `[PRICE]`
+- an HTML comment just before it, e.g. `<!-- PLACEHOLDER: lesson price -->`
 
-Search the project for `PLACEHOLDER` to find them all. This list is generated from those
-comments, so line numbers are exact as of the last build. **171 entries in total.**
+Hidden ones (the domain, the form key, photos, structured data, `robots.txt`, `sitemap.xml`) have the comment or a `PLACEHOLDER` string only.
 
-Before launch, the search above should only find this file.
+To find them all, search the project for `PLACEHOLDER` (comments) and for `[` followed by a capital letter (visible tokens). Before launch, both searches should find only this file. Line numbers are correct as of 9 November 2026; keep them up to date by hand when you edit a page.
 
-## Quick reference: what Michelle needs to supply
+When you replace a placeholder, delete both the comment and the bracketed token. For a photo, also delete the caption `<p class="photo-note">` that names the shot.
+
+## What Michelle needs to supply
 
 | Item | Where it appears |
 |---|---|
-| Town or city and wider service area | Footer (all pages), home, lessons, weddings, contact, privacy, structured data |
-| Email address | Footer, contact, weddings form intro, thank-you, privacy, structured data |
-| Instagram handle and URL | Footer, contact, thank-you, structured data |
-| Live domain | `<head>` of every page, form redirects, sitemap.xml, robots.txt, structured data |
-| Web3Forms access key | The three enquiry forms (weddings, lessons, contact) |
-| Wedding and lesson prices, deposit, travel and cancellation terms | weddings.html, lessons.html |
-| 12 photos (see images/placeholders for sizes) and a final favicon | All pages |
-| YouTube video IDs and three MP3 samples | index.html, weddings.html, /audio |
-| Real testimonials, with permission | index.html |
-| Story, credentials, exam boards, safeguarding check, personal details | about.html, lessons.html |
-| Privacy details: providers, retention periods, regulator, date | privacy.html |
+| Phone number | Footer (every page), home and lessons enquiry intros, contact details, structured data |
+| Email address | Footer (every page), enquiry intros, form "didn't send" messages, contact details, thank-you, privacy |
+| Instagram and Facebook links, Instagram handle | Footer (every page), contact details, thank-you, structured data |
+| Live domain | `<head>` of every indexed page, form redirects, `sitemap.xml`, `robots.txt`, structured data |
+| Web3Forms access key | The enquiry forms on home, lessons and contact |
+| Prices, lesson lengths, days and times | Home "How lessons work", lessons prices and "In person or online" |
+| Cancellation notice and terms, and whether there's a block booking | Lessons prices |
+| How and when students pay | Lessons questions |
+| Where in-person lessons happen: the studio, which part of Stafford, and parking, step-free access and where parents can wait | Lessons "In person or online" |
+| Ages taught and exam boards | Lessons cards and questions |
+| Safeguarding check (e.g. enhanced DBS) and whether parents can sit in | Lessons questions, about credentials |
+| Whether there are student concerts or showcases, and whether taking part is optional | Lessons questions |
+| One or two lines about her performing and teaching | Home "Meet Michelle" |
+| Her story, training, experience, why she teaches, insurance and a few personal details | About |
+| Real testimonials, with permission and how to credit them (about 15 to 25 words, as they're set large) | Home, lessons |
+| Usual response time | Home and lessons enquiry intros, contact, thank-you |
+| Photos (see PHOTOGRAPHY.md) | Lessons "In person or online", about "A few things about me" |
+| Privacy notice details: email and hosting providers, retention periods, date | Privacy |
 
-Also review every image `alt` attribute once real photos are in, so each one describes the actual photo.
+## By page
 
-## Domain (13)
+### index.html (home)
 
-| File | Line | Placeholder |
+| Line | Visible token | What's needed |
 |---|---|---|
-| 404.html | 9 | domain. Replace every "https://michellehandley.example" in the project with the live domain |
-| about.html | 8 | domain. Replace every "https://michellehandley.example" in the project with the live domain |
-| contact.html | 8 | domain. Replace every "https://michellehandley.example" in the project with the live domain |
-| contact.html | 122 | domain. Must be the absolute URL of the thank-you page |
-| index.html | 8 | domain. Replace every "https://michellehandley.example" in the project with the live domain |
-| lessons.html | 8 | domain. Replace every "https://michellehandley.example" in the project with the live domain |
-| lessons.html | 305 | domain. Must be the absolute URL of the thank-you page |
-| privacy.html | 8 | domain. Replace every "https://michellehandley.example" in the project with the live domain |
-| robots.txt | 1 | domain. Update the sitemap URL when the site goes live |
-| sitemap.xml | 2 | domain. Replace https://michellehandley.example with the live domain |
-| thank-you.html | 9 | domain. Replace every "https://michellehandley.example" in the project with the live domain |
-| weddings.html | 8 | domain. Replace every "https://michellehandley.example" in the project with the live domain |
-| weddings.html | 423 | domain. Must be the absolute URL of the thank-you page |
+| 8 | | Domain: replace every `https://michellehandley.example` in the project |
+| 56 | `[PHONE]` in the structured data | Phone number |
+| 66–67 | `PLACEHOLDER-HANDLE`, `PLACEHOLDER-PAGE` in the structured data | Instagram and Facebook URLs |
+| 185 | `[DAYS AND TIMES]` | Days and times lessons are available |
+| 189 | `[PRICE]` for `[LESSON LENGTH]` | Lesson price and length |
+| 240 | `[ONE OR TWO LINES ABOUT YOUR PERFORMING AND TEACHING.]` | Michelle's own words |
+| 249–252 | The bracketed quote and `[NAME]` | A real testimonial, with permission |
+| 267 | `[RESPONSE TIME]` | Usual response time, in the enquiry intro |
+| 270–271 | `[PHONE]`, `[EMAIL]` | Enquiry intro; make them `tel:` and `mailto:` links |
+| 276 | | Web3Forms access key (replace `YOUR_WEB3FORMS_ACCESS_KEY`) |
+| 280 | | Domain, in the form's redirect to the thank-you page |
+| 338 | `[EMAIL]` | In the "didn't send" message |
+| 369–370 | `[PHONE]`, `[EMAIL]` | Footer |
+| 377, 379 | | Footer Instagram and Facebook URLs |
 
-## Form endpoint (6)
+### lessons.html
 
-| File | Line | Placeholder |
+| Line | Visible token | What's needed |
 |---|---|---|
-| contact.html | 116 | form endpoint. Web3Forms posts to this URL; add your access key below |
-| contact.html | 118 | Web3Forms access key (free at web3forms.com) |
-| lessons.html | 299 | form endpoint. Web3Forms posts to this URL; add your access key below |
-| lessons.html | 301 | Web3Forms access key (free at web3forms.com) |
-| weddings.html | 417 | form endpoint. Web3Forms posts to this URL; add your access key below |
-| weddings.html | 419 | Web3Forms access key (free at web3forms.com) |
+| 8 | | Domain |
+| 119 | `[AGE]` | Youngest age taught, in the "Children and teens" poster |
+| 123 | `[EXAM BOARDS]` | Exam boards |
+| 134 | `[LESSON LENGTH]`, `[DAYS AND TIMES]` | Lesson length or lengths; days and times lessons are available |
+| 139–141 | Placeholder image and the note "Online set-up" | Photo of the online set-up (4:5 arch, shot 8) |
+| 146 | `[STUDIO DESCRIPTION]`, `[AREA OF STAFFORD]`, `[WHERE TO PARK, …]` | Where in-person lessons happen and which part of Stafford (not the full address); parking, step-free access and where parents can wait, or delete that last token |
+| 150 | `[WHAT YOU SEND AFTER EACH LESSON, …]` | Anything sent after online lessons, or delete |
+| 161 | `[ONE LINE ABOUT YOUR PRICES, …]` | A line about pricing |
+| 170 | `[PRICE]` for `[LESSON LENGTH]` | First lesson |
+| 177 | `[PRICE]` for `[LESSON LENGTH]` | Single lessons |
+| 181–185 | `[BLOCK BOOKING, IF YOU OFFER ONE]`, `[HOW MANY LESSONS, AND ANY DISCOUNT]`, `[PRICE]` | A block booking, or delete the row |
+| 189 | `[NUMBER]`, `[WHAT HAPPENS WITH LATER CANCELLATIONS]` | Cancellation notice and terms |
+| 197–200 | The bracketed quote, `[NAME]`, `[WHO THEY ARE, …]` | A real testimonial (a different one from the home page) |
+| 252 | `[AGE]` | Youngest age taught |
+| 270 | `[HOW AND WHEN TO PAY]` | How and when students pay |
+| 276 | `[EXAM BOARDS]` | Exam boards |
+| 282 | `[YOUR SAFEGUARDING CHECK, …]` | Safeguarding answer. Only say yes once it's confirmed |
+| 294 | `[WHETHER THERE ARE STUDENT CONCERTS OR SHOWCASES, …]` | Whether there are concerts or showcases, and whether taking part is up to the student |
+| 311 | `[RESPONSE TIME]` | Usual response time, in the enquiry intro |
+| 314–315 | `[PHONE]`, `[EMAIL]` | Enquiry intro |
+| 320, 324 | | Web3Forms access key; domain in the redirect |
+| 382 | `[EMAIL]` | In the "didn't send" message |
+| 413–414, 421, 423 | `[PHONE]`, `[EMAIL]` | Footer, Instagram and Facebook URLs |
 
-## Business details (78)
+### about.html
 
-| File | Line | Placeholder |
+| Line | Visible token | What's needed |
 |---|---|---|
-| 404.html | 99 | location |
-| 404.html | 99 | service area |
-| 404.html | 115 | email. Update the mailto address and the visible text |
-| 404.html | 116 | email |
-| 404.html | 117 | Instagram handle. Update the URL and the visible text |
-| 404.html | 118 | @handle |
-| about.html | 211 | location |
-| about.html | 211 | service area |
-| about.html | 227 | email. Update the mailto address and the visible text |
-| about.html | 228 | email |
-| about.html | 229 | Instagram handle. Update the URL and the visible text |
-| about.html | 230 | @handle |
-| contact.html | 80 | response time |
-| contact.html | 92 | email. Update the mailto address and the visible text |
-| contact.html | 93 | email |
-| contact.html | 97 | Instagram handle. Update the URL and the visible text |
-| contact.html | 98 | @handle |
-| contact.html | 102 | location |
-| contact.html | 179 | location |
-| contact.html | 179 | service area |
-| contact.html | 195 | email. Update the mailto address and the visible text |
-| contact.html | 196 | email |
-| contact.html | 197 | Instagram handle. Update the URL and the visible text |
-| contact.html | 198 | @handle |
-| index.html | 55 | Instagram URL in structured data |
-| index.html | 69 | town or city |
-| index.html | 70 | country code, e.g. GB |
-| index.html | 72 | service area |
-| index.html | 73 | price range |
-| index.html | 74 | Instagram URL in structured data |
-| index.html | 122 | location |
-| index.html | 189 | location |
-| index.html | 293 | response time |
-| index.html | 312 | location |
-| index.html | 312 | service area |
-| index.html | 328 | email. Update the mailto address and the visible text |
-| index.html | 329 | email |
-| index.html | 330 | Instagram handle. Update the URL and the visible text |
-| index.html | 331 | @handle |
-| lessons.html | 157 | location |
-| lessons.html | 295 | response time |
-| lessons.html | 386 | location |
-| lessons.html | 386 | service area |
-| lessons.html | 402 | email. Update the mailto address and the visible text |
-| lessons.html | 403 | email |
-| lessons.html | 404 | Instagram handle. Update the URL and the visible text |
-| lessons.html | 405 | @handle |
-| privacy.html | 89 | location |
-| privacy.html | 89 | email |
-| privacy.html | 89 | email |
-| privacy.html | 108 | email provider |
-| privacy.html | 138 | location |
-| privacy.html | 138 | service area |
-| privacy.html | 154 | email. Update the mailto address and the visible text |
-| privacy.html | 155 | email |
-| privacy.html | 156 | Instagram handle. Update the URL and the visible text |
-| privacy.html | 157 | @handle |
-| thank-you.html | 79 | response time |
-| thank-you.html | 80 | email |
-| thank-you.html | 80 | email |
-| thank-you.html | 80 | Instagram handle |
-| thank-you.html | 98 | location |
-| thank-you.html | 98 | service area |
-| thank-you.html | 114 | email. Update the mailto address and the visible text |
-| thank-you.html | 115 | email |
-| thank-you.html | 116 | Instagram handle. Update the URL and the visible text |
-| thank-you.html | 117 | @handle |
-| weddings.html | 300 | location |
-| weddings.html | 376 | location |
-| weddings.html | 413 | response time |
-| weddings.html | 414 | email |
-| weddings.html | 414 | email |
-| weddings.html | 509 | location |
-| weddings.html | 509 | service area |
-| weddings.html | 525 | email. Update the mailto address and the visible text |
-| weddings.html | 526 | email |
-| weddings.html | 527 | Instagram handle. Update the URL and the visible text |
-| weddings.html | 528 | @handle |
+| 8 | | Domain |
+| 133–134 | `[YOUR STORY, IN YOUR OWN WORDS: HOW YOU STARTED SINGING]` | Michelle's story |
+| 135 | `[TRAINING]`, `[NUMBER]`, `[VENUES, SHOWS OR BANDS]` | Training, years performing, where |
+| 136–137 | `[A PERFORMING MOMENT THAT STAYED WITH YOU]` | A moment from performing |
+| 138–139 | `[WHY YOU TEACH, IN YOUR OWN WORDS]` | Why she teaches, in her own words |
+| 151–175 | Six credentials, from `[QUALIFICATION AND WHERE YOU TRAINED]` to `[PUBLIC LIABILITY INSURANCE]` | Real qualifications and experience; delete any that don't apply |
+| 190–192 | Placeholder image and the note "Details: music stand, a mug of tea" | Detail photo (3:2 arch, shot 9) |
+| 196–201 | Three personal details and `[HOBBY]` | In Michelle's own words |
+| 245–246, 253, 255 | `[PHONE]`, `[EMAIL]` | Footer, Instagram and Facebook URLs |
 
-## Prices and terms (14)
+### contact.html
 
-| File | Line | Placeholder |
+| Line | Visible token | What's needed |
 |---|---|---|
-| lessons.html | 182 | first lesson price |
-| lessons.html | 189 | single lesson price |
-| lessons.html | 196 | block of six price |
-| lessons.html | 200 | cancellation notice |
-| weddings.html | 300 | included travel distance |
-| weddings.html | 314 | ceremony package price |
-| weddings.html | 326 | ceremony and drinks package price |
-| weddings.html | 338 | whole day package price |
-| weddings.html | 370 | extra song price |
-| weddings.html | 370 | notice needed for new songs |
-| weddings.html | 376 | included travel distance |
-| weddings.html | 376 | travel rate |
-| weddings.html | 394 | deposit amount |
-| weddings.html | 394 | balance due |
+| 8 | | Domain |
+| 79 | `[RESPONSE TIME]` | Usual response time |
+| 95, 99, 103 | `[EMAIL]`, `[PHONE]`, `[@HANDLE]` | Contact details on the gold block; make them links |
+| 124, 128 | | Web3Forms access key; domain in the redirect |
+| 173 | `[EMAIL]` | In the "didn't send" message |
+| 203–204, 211, 213 | `[PHONE]`, `[EMAIL]` | Footer, Instagram and Facebook URLs |
 
-## Photos and graphics (14)
+### privacy.html
 
-| File | Line | Placeholder |
+| Line | Visible token | What's needed |
 |---|---|---|
-| about.html | 90 | photo, portrait of Michelle (4:5) |
-| about.html | 160 | photo, Michelle behind the scenes (3:2) |
-| about.html | 169 | caption |
-| images/icons/favicon.svg | 2 | favicon. Temporary monogram; replace with the final logo mark |
-| index.html | 133 | photo, hero portrait of Michelle (4:5). See README, "Swapping in real photos" |
-| index.html | 158 | photo, Michelle singing at a wedding (4:5) |
-| index.html | 177 | photo, Michelle teaching a student at the piano (4:5) |
-| index.html | 267 | photo, relaxed portrait of Michelle (1:1) |
-| lessons.html | 90 | photo, a lesson in the studio (3:2) |
-| lessons.html | 138 | photo, online lesson set-up (4:5) |
-| weddings.html | 90 | photo, Michelle performing at a ceremony (3:2) |
-| weddings.html | 126 | photo, ceremony performance (4:5) |
-| weddings.html | 151 | photo, drinks reception set (4:5) |
-| weddings.html | 176 | photo, first dance with Michelle singing (4:5) |
+| 8 | | Domain |
+| 81 | `[DATE]` | Date the notice was last updated |
+| 91–95 | `[PRIVACY NOTICE TO COME: …]` | Check the whole template against ICO guidance, then delete this line |
+| 98 | `[EMAIL]` | Contact for privacy questions |
+| 117 | `[EMAIL PROVIDER]` | Email provider |
+| 118 | `[HOSTING PROVIDER]` | Hosting provider (probably GitHub Pages) |
+| 122 | `[UPDATE THIS IF ANALYTICS ARE ADDED]` | Only if analytics are added |
+| 125 | `[PERIOD]` twice | How long enquiries and booking records are kept |
+| 159–160, 167, 169 | `[PHONE]`, `[EMAIL]` | Footer, Instagram and Facebook URLs |
 
-## Video and audio (4)
+### thank-you.html and 404.html
 
-| File | Line | Placeholder |
+| File | Line | Visible token | What's needed |
+|---|---|---|---|
+| thank-you.html | 76 | `[RESPONSE TIME]` | Usual response time |
+| thank-you.html | 77 | `[EMAIL]`, Instagram link | Email address and Instagram URL |
+| thank-you.html | 114–115, 122, 124 | `[PHONE]`, `[EMAIL]` | Footer, Instagram and Facebook URLs |
+| 404.html | 116–117, 124, 126 | `[PHONE]`, `[EMAIL]` | Footer, Instagram and Facebook URLs |
+
+### Other files
+
+| File | Line | What's needed |
 |---|---|---|
-| index.html | 200 | YouTube video ID. Replace VIDEO_ID with the ID of the showreel |
-| index.html | 212 | video description |
-| weddings.html | 202 | YouTube video ID. Replace VIDEO_ID with a ceremony video |
-| weddings.html | 212 | audio samples. Add MP3 files to /audio and update the src and titles |
-
-## Testimonials (10)
-
-| File | Line | Placeholder |
-|---|---|---|
-| about.html | 137 | notable venues, shows or bands |
-| about.html | 141 | number of weddings, notable venues |
-| index.html | 229 | testimonial. Replace with a real review and permission to use it |
-| index.html | 233 | couple names |
-| index.html | 234 | venue |
-| index.html | 239 | testimonial. Replace with a real review and permission to use it |
-| index.html | 243 | couple names |
-| index.html | 244 | venue |
-| index.html | 249 | testimonial. Replace with a real review and permission to use it |
-| index.html | 253 | student name |
-
-## Michelle's story and credentials (25)
-
-| File | Line | Placeholder |
-|---|---|---|
-| about.html | 108 | Michelle's story. Replace the paragraphs below with her own words |
-| about.html | 109 | Michelle’s story, in her own words |
-| about.html | 111 | where Michelle trained |
-| about.html | 111 | years |
-| about.html | 111 | performance background |
-| about.html | 112 | number of weddings |
-| about.html | 125 | credentials. Replace each item with Michelle's real qualifications and experience |
-| about.html | 129 | qualification and institution |
-| about.html | 133 | teaching qualification or years teaching |
-| about.html | 145 | background check, e.g. enhanced DBS |
-| about.html | 149 | public liability insurance and PAT-tested equipment |
-| about.html | 175 | personal details. Swap in Michelle's own |
-| about.html | 180 | hobby |
-| index.html | 280 | years performing |
-| lessons.html | 119 | youngest teen age |
-| lessons.html | 127 | exam boards |
-| lessons.html | 153 | confirm lesson lengths |
-| lessons.html | 157 | studio description |
-| lessons.html | 252 | minimum student age |
-| lessons.html | 270 | exam boards |
-| lessons.html | 276 | confirm safeguarding check (e.g. DBS) |
-| weddings.html | 109 | confirm set lengths and inclusions |
-| weddings.html | 246 | confirm repertoire list |
-| weddings.html | 388 | confirm musician partners |
-| weddings.html | 400 | confirm cover arrangement |
-
-## Privacy policy (7)
-
-| File | Line | Placeholder |
-|---|---|---|
-| privacy.html | 80 | policy date |
-| privacy.html | 84 | privacy policy. This is a starting template, not legal advice |
-| privacy.html | 110 | hosting provider |
-| privacy.html | 114 | analytics. If you add analytics, name the tool here and explain what it collects |
-| privacy.html | 117 | retention period for enquiries |
-| privacy.html | 117 | retention period for bookings |
-| privacy.html | 121 | regulator, e.g. the ICO in the UK (ico.org.uk) |
+| sitemap.xml | 2 | Domain in every `<loc>` |
+| robots.txt | 1 | Domain in the sitemap URL |
