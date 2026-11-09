@@ -6,7 +6,7 @@ The business name is **Michelle Handley**. Her line is **Singing teacher**.
 
 ## Logo
 
-All logo files are in `/images/brand/`. They are filled outlines with no fonts, cropped tight to the artwork, so always give them `width` and `height` attributes.
+All logo files are in `images/brand/`. They are filled outlines with no fonts, cropped tight to the artwork, so always give them `width` and `height` attributes.
 
 | File | Size at 300 tall | Use |
 |---|---|---|
@@ -30,10 +30,10 @@ All logo files are in `/images/brand/`. They are filled outlines with no fonts, 
 Header logo, switching from the mark on phones to the horizontal logo from 768px:
 
 ```html
-<a class="site-logo" href="/">
+<a class="site-logo" href="./">
   <picture>
-    <source media="(min-width: 768px)" srcset="/images/brand/michelle-handley-logo-horizontal-gold.svg" width="268" height="64">
-    <img src="/images/brand/michelle-handley-mark-gold.svg" width="31" height="56" alt="Michelle Handley, singing teacher">
+    <source media="(min-width: 768px)" srcset="images/brand/michelle-handley-logo-horizontal-gold.svg" width="268" height="64">
+    <img src="images/brand/michelle-handley-mark-gold.svg" width="31" height="56" alt="Michelle Handley, singing teacher">
   </picture>
 </a>
 ```
@@ -109,8 +109,8 @@ Gold on ivory is 1.5 : 1. Use it for shapes only, never text. Don't use any pair
 
 ```html
 <picture class="mh-stave" aria-hidden="true">
-  <source media="(min-width: 768px)" srcset="/images/brand/stave-wide-gold.svg" width="1440" height="81">
-  <img src="/images/brand/stave-narrow-gold.svg" width="600" height="81" alt="">
+  <source media="(min-width: 768px)" srcset="images/brand/stave-wide-gold.svg" width="1440" height="81">
+  <img src="images/brand/stave-narrow-gold.svg" width="600" height="81" alt="">
 </picture>
 ```
 
@@ -125,14 +125,14 @@ Gold on ivory is 1.5 : 1. Use it for shapes only, never text. Don't use any pair
 ## Head tags
 
 ```html
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#0F4A35">
-<link rel="preload" href="/fonts/jost-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/Marcellus-Regular.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="/css/brand.css">
+<link rel="preload" href="fonts/jost-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Marcellus-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="css/brand.css">
 <meta property="og:image" content="https://YOUR-DOMAIN/images/brand/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">

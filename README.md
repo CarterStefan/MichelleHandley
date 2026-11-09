@@ -39,7 +39,7 @@ PHOTOGRAPHY.md    The photos the site needs, for Michelle and her photographer
 
 ## Previewing locally
 
-Links and assets use root paths (`/css/base.css`), so open the site through a local server rather than double-clicking the HTML files:
+Links and assets use relative paths (`css/base.css`), so the site works from a subfolder or a domain's root. Preview it through a local server rather than double-clicking the HTML files, so links to the home page behave as they will when live:
 
 ```sh
 cd path/to/Michelle_Handley
@@ -53,9 +53,9 @@ Then visit http://localhost:8000.
 ### GitHub Pages
 1. Push the folder's contents to the `main` branch of a repository.
 2. Open **Settings → Pages**, choose **Deploy from a branch**, then `main` and `/ (root)`.
-3. Add the custom domain on the same screen. This is required: the root paths only work when the site is served from the domain root, not from `username.github.io/repo-name/`.
+3. The site then works at `username.github.io/repo-name/`. Add a custom domain on the same screen when there is one.
 
-GitHub Pages serves `404.html` for missing pages. It ignores `_headers`, so the security and cache headers there don't apply. The `docs/` folder and the `.md` files are published too; `robots.txt` asks search engines to skip `docs/`.
+GitHub Pages serves `404.html` for missing pages. It keeps its styling one level down, but not at a nested wrong URL such as `/repo-name/a/b`, because its paths are relative. It ignores `_headers`, so the security and cache headers there don't apply. The `docs/` folder and the `.md` files are published too; `robots.txt` asks search engines to skip `docs/`.
 
 ### Netlify or Cloudflare Pages
 Drag the folder onto https://app.netlify.com/drop, or upload it in **Workers & Pages → Create → Pages → Upload assets**. Both read `_headers`.
@@ -80,10 +80,10 @@ Each photo slot points at a stand-in from `images/placeholders/`, with a small n
 
 ```html
 <picture>
-  <source type="image/avif" srcset="/images/home-meet-480.avif 480w, /images/home-meet-800.avif 800w" sizes="(min-width: 48em) 20rem, 16rem">
-  <source type="image/webp" srcset="/images/home-meet-480.webp 480w, /images/home-meet-800.webp 800w" sizes="(min-width: 48em) 20rem, 16rem">
-  <img src="/images/home-meet-800.jpg"
-       srcset="/images/home-meet-480.jpg 480w, /images/home-meet-800.jpg 800w"
+  <source type="image/avif" srcset="images/home-meet-480.avif 480w, images/home-meet-800.avif 800w" sizes="(min-width: 48em) 20rem, 16rem">
+  <source type="image/webp" srcset="images/home-meet-480.webp 480w, images/home-meet-800.webp 800w" sizes="(min-width: 48em) 20rem, 16rem">
+  <img src="images/home-meet-800.jpg"
+       srcset="images/home-meet-480.jpg 480w, images/home-meet-800.jpg 800w"
        sizes="(min-width: 48em) 20rem, 16rem"
        width="800" height="1440"
        alt="Describe what is actually in the photo"

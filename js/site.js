@@ -5,7 +5,7 @@
    1. The Menu button on phones. Without JS, components.css leaves the nav
       links in view instead.
    2. Enquiry forms. Without JS, the browser checks the required fields and
-      the form posts to Web3Forms, which redirects to /thank-you.html. With
+      the form posts to Web3Forms, which redirects to thank-you.html. With
       JS, errors appear in words beside each field, and if sending fails a
       message says so instead of leaving the page.
    ========================================================================== */
@@ -98,8 +98,9 @@ document.querySelectorAll('form.form').forEach((form) => {
       });
       const result = await response.json();
       if (!result.success) throw new Error(result.message);
-      // Same page the no-JS redirect lands on, on whichever domain this is
-      window.location.assign(new URL(form.elements.redirect.value).pathname);
+      // The page the no-JS redirect lands on, wherever this copy is served from.
+      // Relative, and every page sits in one folder, so this works in a subfolder.
+      window.location.assign('thank-you.html');
     } catch {
       submit.disabled = false;
       submit.textContent = label;
