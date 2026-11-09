@@ -148,6 +148,7 @@
   color: var(--mh-mist);
 }
 .mh-on-light .photo-note { color: var(--mh-moss); }
+.photo-row .photo-note { padding-inline: var(--mh-space-2); font-size: var(--mh-text-xs); }
 
 /* ---- Posters: square panels on gold, level with each other. Each carries its
    own surface class, ivory or velvet. --------------------------------------- */
@@ -642,8 +643,8 @@ main:has(> .hero:last-child) + .site-footer { border-top-color: transparent; }
   .site-nav__list li + li { border-top: 0; }
   .site-header__cta { display: none; }
   .columns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .columns__photos,
   .columns--statement > .columns__head { grid-column: 1 / -1; }
+  .photo-row { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--mh-space-5); }
   .columns--statement > .columns__body { grid-column: 2; }
   .hero { padding-top: var(--mh-space-8); }
   .hero__photo { flex-basis: 18rem; }

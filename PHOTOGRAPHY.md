@@ -12,7 +12,7 @@ This is for Michelle and anyone taking photos for her. The full photo guidance i
 | Lessons, "In person or online" | 8. The online set-up: laptop, headphones, lyric sheet | Upright, 4:5 (arch) | 480, 800, 1200 |
 | About, "A few things about me" | 9. Details: the music stand, pencilled breath marks, a mug of tea | Landscape, 3:2 (arch) | 640, 1024, 1600 |
 | About, top of the page | Already filled with a stage photo, cropped to the capsule. Swap in shot 1 or 10 if you prefer. | Tall, 5:9 (capsule) | 480, 800 |
-| About, "My story" | Already filled with two stage photos. | Square (arch) and 5:9 (capsule) | As supplied |
+| About, the row of six under "My story" | Two are filled with stage photos. The other four need shots 3 (singing, mid-phrase), 4 (showing a warm-up), 5 (teaching an adult, from behind) and 10 (performing, from the audience). | Tall, 5:9 (capsule) | 400, 600 |
 
 Portraits of Michelle sit in the capsule, the tall pill shape of her logo's mark (5:9, so a 480 px wide export is 864 px tall). It rounds off the top and the bottom, so leave space above her head and below her shoulders, and keep her in the middle third of the frame: the sides are what a capsule crops first. Wider photos sit in the arch, which rounds off only the top, like a doorway.
 

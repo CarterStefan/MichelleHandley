@@ -31,7 +31,7 @@ When you replace a placeholder, delete both the comment and the bracketed token.
 | Her story, training, experience, why she teaches, insurance and a few personal details | About |
 | Real testimonials, with permission and how to credit them (about 15 to 25 words, as they're set large) | Home, lessons |
 | Usual response time | Home and lessons enquiry intros, contact, thank-you |
-| Photos (see PHOTOGRAPHY.md) | Lessons "In person or online", about "A few things about me" |
+| Photos (see PHOTOGRAPHY.md) | Lessons "In person or online", about (the row of capsules and "A few things about me") |
 | Privacy notice details: email and hosting providers, retention periods, date | Privacy |
 
 ## By page
@@ -91,10 +91,11 @@ When you replace a placeholder, delete both the comment and the bracketed token.
 | 117 | `[TRAINING]`, `[NUMBER]`, `[VENUES, SHOWS OR BANDS]` | Training, years performing, where |
 | 118–119 | `[A PERFORMING MOMENT THAT STAYED WITH YOU]` | A moment from performing |
 | 120–121 | `[WHY YOU TEACH, IN YOUR OWN WORDS]` | Why she teaches, in her own words |
-| 153–177 | Six credentials, from `[QUALIFICATION AND WHERE YOU TRAINED]` to `[PUBLIC LIABILITY INSURANCE]` | Real qualifications and experience; delete any that don't apply |
-| 190–192 | Placeholder image and the note "Details: music stand, a mug of tea" | Detail photo (3:2 arch, shot 9) |
-| 196–201 | Three personal details and `[HOBBY]` | In Michelle's own words |
-| 250–251, 258, 260 | `[PHONE]`, `[EMAIL]` | Footer, Instagram and Facebook URLs |
+| 125–127, 137–139, 149–151, 154–156 | Four placeholder capsules and their notes, in the row under "My story" | Photos: shots 4, 5, 10 and 3 (5:9 capsule) |
+| 169–193 | Six credentials, from `[QUALIFICATION AND WHERE YOU TRAINED]` to `[PUBLIC LIABILITY INSURANCE]` | Real qualifications and experience; delete any that don't apply |
+| 206–208 | Placeholder image and the note "Details: music stand, a mug of tea" | Detail photo (3:2 arch, shot 9) |
+| 212–217 | Three personal details and `[HOBBY]` | In Michelle's own words |
+| 266–267, 274, 276 | `[PHONE]`, `[EMAIL]` | Footer, Instagram and Facebook URLs |
 
 ### contact.html
 

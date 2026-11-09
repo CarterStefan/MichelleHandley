@@ -151,18 +151,17 @@ button, input, select, textarea { font: inherit; }
 }
 .columns__body > .mh-btn,
 .columns__body > .text-link { align-self: flex-start; }
-/* Photos sit on the same two lines (from 48em), level at the foot */
-.columns__photos {
+/* A row of capsules across the full width, ending a section like a divider.
+   Six, so they fall into rows of three on phones and one row from 48em. */
+.photo-row {
+  grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: end;
-  gap: var(--mh-space-5);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--mh-space-4);
   margin-top: var(--mh-space-7);
 }
-.columns__photo--arch { max-width: 28rem; }
-.columns__photo--arch .mh-arch { aspect-ratio: 1; }
-.columns__photo--capsule { max-width: 16rem; }
-.columns__photo--capsule img { object-position: 45% 50%; }
+.photo-row__item--twirl img { object-position: 45% 50%; }
+.photo-row__item--reach img { object-position: 28% 50%; }
 
 /* Labels: brand.css sets the type (Jost 500, caps, tracked). They introduce;
    they never carry the message. Mist on dark, ivory on stage, brass on light. */
