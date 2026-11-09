@@ -94,7 +94,7 @@ Gold on ivory is 1.5 : 1. Use it for shapes only, never text. Don't use any pair
 | Buttons | Jost 500 | 17px | 1 |
 | Labels | Jost 500, caps, +12% tracking | 14px | 1.2 |
 
-- Poster and Feature were added in November 2026, so a headline can fill a block. Poster is for the shortest hero headlines (`.type-poster`) and Feature for section headlines (`.type-feature`). Both live in `css/tokens.css`, above the kit's scale.
+- Poster and Feature were added in November 2026, so a headline can fill a block. They live in `css/tokens.css`, above the kit's scale. Use them in the hero and for one other moment per page. Other section headlines use Display, so the big moments stand out. Footer links are Small.
 - Headlines are sentence case. Marcellus has one weight: never bold it (`font-synthesis: none`) and never set it in capitals.
 - Labels are short (three words at most) and used sparingly.
 - Keep body text to about 66 characters a line (`--mh-measure`).
@@ -119,6 +119,7 @@ Gold on ivory is 1.5 : 1. Use it for shapes only, never text. Don't use any pair
 - **Surfaces**: give every section one of `.mh-on-dark` (velvet), `.mh-on-stage`, `.mh-on-light` (ivory) or `.mh-on-gold`. These set text colour, focus colour and ring background. Two neighbouring sections never share a surface: the block of colour is the divider, not a hairline. `.mh-on-gold` is defined in `css/base.css` and `css/tokens.css`, because `css/brand.css` stays as the kit supplied it.
 - **Buttons** (`.mh-btn`): pills, at least 48px tall, Jost 500. One solid button per screen: `.mh-btn--gold` on dark, `.mh-btn--velvet` on light and gold. Everything else is an outline pill: `.mh-btn--outline-on-dark` or `.mh-btn--outline-on-light`. The header's "Book a lesson" button is an outline pill, so the page's main button stays the only solid one.
 - **Tags** (`.mh-tag`): small pills. Stage with gold text on dark, `#E7DDCB` with velvet text on light.
+- **Icons**: plain line icons, beside contact details and social links only. Gold on velvet (5.9 : 1) in the footer, where they count as one set alongside the logo. Never on tiles.
 - **Focus**: 2px outline, 3px offset, gold on dark and velvet on light (set by the surface classes).
 - **Image placeholders**: `#255846` (`--mh-photo-dark`) with a mist label on dark (4.7 : 1), `#E7DDCB` with a moss label on light, at the final aspect ratio.
 

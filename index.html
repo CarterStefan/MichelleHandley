@@ -135,12 +135,12 @@
       </picture>
     </section>
 
-    <!-- Who lessons are for: the page's one gold block, with staggered posters -->
+    <!-- Who lessons are for: the page's one gold block -->
     <section class="section mh-on-gold" aria-labelledby="who-title">
       <div class="container">
         <div class="section__head section__head--wide">
           <p class="mh-label">Who lessons are for</p>
-          <h2 class="type-feature" id="who-title">Whoever you are, we start where you are.</h2>
+          <h2 class="type-display" id="who-title">Whoever you are, we start where you are.</h2>
         </div>
 
         <div class="posters">
@@ -166,29 +166,31 @@
       </div>
     </section>
 
-    <!-- How lessons work: ivory, with the first lesson as giant type -->
+    <!-- How lessons work: ivory, with the first lesson as the page's big-type moment -->
     <section class="section mh-on-light" id="how-lessons-work" aria-labelledby="how-title">
       <div class="container">
-        <div class="how__top">
-          <div class="how__head">
+        <div class="columns columns--list how__top">
+          <div class="columns__head">
             <p class="mh-label">How lessons work</p>
             <h2 class="type-display" id="how-title">Where, when and how much.</h2>
-            <a class="mh-btn mh-btn--outline-on-light" href="lessons.html#prices">See prices</a>
+            <a class="mh-btn mh-btn--outline-on-light columns__action" href="lessons.html#prices">See prices</a>
           </div>
-          <dl class="facts facts--stacked">
-            <div class="fact">
-              <dt class="mh-label">Where</dt>
-              <dd>In person in Stafford, or online</dd>
-            </div>
-            <div class="fact">
-              <dt class="mh-label">When</dt>
-              <dd><!-- PLACEHOLDER: days and times lessons are available -->[DAYS AND TIMES]</dd>
-            </div>
-            <div class="fact">
-              <dt class="mh-label">Cost</dt>
-              <dd><!-- PLACEHOLDER: lesson price -->[PRICE] for <!-- PLACEHOLDER: lesson length -->[LESSON LENGTH]</dd>
-            </div>
-          </dl>
+          <div class="columns__body">
+            <dl class="facts facts--stacked">
+              <div class="fact">
+                <dt class="mh-label">Where</dt>
+                <dd>In person in Stafford, or online</dd>
+              </div>
+              <div class="fact">
+                <dt class="mh-label">When</dt>
+                <dd><!-- PLACEHOLDER: days and times lessons are available -->[DAYS AND TIMES]</dd>
+              </div>
+              <div class="fact">
+                <dt class="mh-label">Cost</dt>
+                <dd><!-- PLACEHOLDER: lesson price -->[PRICE] for <!-- PLACEHOLDER: lesson length -->[LESSON LENGTH]</dd>
+              </div>
+            </dl>
+          </div>
         </div>
 
         <div class="first-steps">
@@ -202,12 +204,12 @@
       </div>
     </section>
 
-    <!-- Meet Michelle: deep green, staggered stage photos with the headline over them -->
+    <!-- Meet Michelle: deep green, and the page's one staggered moment -->
     <section class="section mh-on-stage" aria-labelledby="meet-title">
       <div class="container meet">
         <div class="meet__head">
           <p class="mh-label">Meet Michelle</p>
-          <h2 class="type-feature" id="meet-title">Hi, I’m Michelle.</h2>
+          <h2 class="type-display" id="meet-title">Hi, I’m Michelle.</h2>
         </div>
         <div class="meet__capsule">
           <div class="mh-capsule mh-rings">
@@ -243,7 +245,7 @@
       </div>
     </section>
 
-    <!-- Testimonial: velvet, a single large quote -->
+    <!-- Testimonial: velvet, with the quote on the right-hand line -->
     <section class="section mh-on-dark" aria-label="What students say">
       <div class="container">
         <!-- PLACEHOLDER: testimonial. Replace the quote and name with a real student's or parent's words, with their permission and how they'd like to be credited. -->
@@ -254,14 +256,12 @@
       </div>
     </section>
 
-    <!-- Enquiry: ivory, with a large headline -->
+    <!-- Enquiry: ivory -->
     <section class="section mh-on-light" id="contact" aria-labelledby="contact-title">
-      <div class="container">
-        <div class="section__head section__head--wide">
+      <div class="container columns columns--list">
+        <div class="columns__head">
           <p class="mh-label">Book a first lesson</p>
-          <h2 class="type-feature" id="contact-title">Ready when you are.</h2>
-        </div>
-        <div class="enquiry__inner">
+          <h2 class="type-display" id="contact-title">Ready when you are.</h2>
           <div class="enquiry__intro">
             <p>Tell me a little about yourself, or your child, and what you’d love to sing. No experience needed.</p>
             <p>I’ll reply within <!-- PLACEHOLDER: usual response time, e.g. two working days -->[RESPONSE TIME] to find a time for your first lesson.</p>
@@ -271,7 +271,8 @@
               <li><!-- PLACEHOLDER: email address. Make it a mailto: link when it's known. -->[EMAIL]</li>
             </ul>
           </div>
-
+        </div>
+        <div class="columns__body">
           <form class="form" action="https://api.web3forms.com/submit" method="post">
             <!-- PLACEHOLDER: Web3Forms access key (free at web3forms.com, set up with Michelle's email address) -->
             <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
@@ -350,35 +351,40 @@
        ================================================================== -->
   <footer class="site-footer mh-on-dark">
     <div class="container">
-      <p class="site-footer__line">Every voice starts somewhere.</p>
-      <div class="site-footer__inner">
-        <div class="footer-col">
-          <h2 class="mh-label">Lessons</h2>
-          <ul>
-            <li><a href="lessons.html#adults">Adults</a></li>
-            <li><a href="lessons.html#young-singers">Children and teens</a></li>
-            <li><a href="lessons.html#exams">Exams and auditions</a></li>
-            <li><a href="lessons.html#online">Online lessons</a></li>
-            <li><a href="lessons.html#prices">Prices</a></li>
-            <li><a href="lessons.html#faq">Questions</a></li>
-          </ul>
+      <div class="site-footer__top">
+        <div class="site-footer__intro">
+          <p class="site-footer__line">Every voice starts somewhere.</p>
+          <a class="mh-btn mh-btn--outline-on-dark" href="./#contact">Book a first lesson</a>
         </div>
-        <div class="footer-col">
-          <h2 class="mh-label">Get in touch</h2>
-          <ul>
-            <li><!-- PLACEHOLDER: phone number. Make it a tel: link when it's known. -->[PHONE]</li>
-            <li><!-- PLACEHOLDER: email address. Make it a mailto: link when it's known. -->[EMAIL]</li>
-            <li>Stafford, Staffordshire</li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h2 class="mh-label">Follow</h2>
-          <ul>
-            <!-- PLACEHOLDER: Instagram URL. Replace with Michelle's profile, e.g. https://www.instagram.com/handle/ -->
-            <li><a href="https://www.instagram.com/" rel="me">Instagram</a></li>
-            <!-- PLACEHOLDER: Facebook URL. Replace with Michelle's page, or delete this line if she doesn't use Facebook. -->
-            <li><a href="https://www.facebook.com/" rel="me">Facebook</a></li>
-          </ul>
+        <div class="site-footer__inner">
+          <div class="footer-col">
+            <h2 class="mh-label">Lessons</h2>
+            <ul>
+              <li><a href="lessons.html#adults">Adults</a></li>
+              <li><a href="lessons.html#young-singers">Children and teens</a></li>
+              <li><a href="lessons.html#exams">Exams and auditions</a></li>
+              <li><a href="lessons.html#online">Online lessons</a></li>
+              <li><a href="lessons.html#prices">Prices</a></li>
+              <li><a href="lessons.html#faq">Questions</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h2 class="mh-label">Get in touch</h2>
+            <ul>
+              <li><svg class="footer-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><!-- PLACEHOLDER: phone number. Make it a tel: link when it's known. -->[PHONE]</li>
+              <li><svg class="footer-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><!-- PLACEHOLDER: email address. Make it a mailto: link when it's known. -->[EMAIL]</li>
+              <li><svg class="footer-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Stafford, Staffordshire</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h2 class="mh-label">Follow</h2>
+            <ul>
+              <!-- PLACEHOLDER: Instagram URL. Replace with Michelle's profile, e.g. https://www.instagram.com/handle/ -->
+              <li><a href="https://www.instagram.com/" rel="me"><svg class="footer-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17 7v.01"/></svg>Instagram</a></li>
+              <!-- PLACEHOLDER: Facebook URL. Replace with Michelle's page, or delete this line if she doesn't use Facebook. -->
+              <li><a href="https://www.facebook.com/" rel="me"><svg class="footer-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3h-3a4 4 0 0 0-4 4v3H7v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>Facebook</a></li>
+            </ul>
+          </div>
         </div>
       </div>
       <!-- The logo runs the width of the page: stacked on phones, horizontal from 768px -->

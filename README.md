@@ -100,7 +100,7 @@ The brand rules are in `BRAND.md`, and every design decision follows them. In sh
 - Every brand value comes from `css/brand.css`, the brand kit's file, unchanged. `css/tokens.css` gives the site's own names to those values. Change a brand value in brand.css and it changes everywhere.
 - Fonts: Marcellus for headlines, Jost for everything else. Nothing else.
 - Colour: velvet green does most of the work, ivory is for reading, and gold is the spotlight: the logo, one solid button and one line (the stave or the rings) per screen, plus one full-width block per page. Neighbouring sections always change colour. Only the text pairings in BRAND.md's table.
-- Type: headlines are big enough to work as graphics, up to 128 px in the hero and 96 px in sections.
+- Layout and type: most sections put the headline on the left and the content on one shared line on the right. The hero and one other moment per page are big enough to work as graphics, up to 128 px; other section headlines are up to 64 px.
 - Corners are square or fully round. Portraits sit in capsules, wider photos in arches, and the stave runs along the bottom of each page's hero.
 
 The fonts are self-hosted, so pages don't contact Google. To change a font, replace its file in `/fonts`, update the `@font-face` rules at the top of `css/brand.css`, and update the preload links in each page's `<head>`.
@@ -125,7 +125,7 @@ To change a nav link or footer detail, find and replace across all `.html` files
 - Questions use native `<details>`/`<summary>`.
 - Every text colour sits on a background BRAND.md lists as a passing pair.
 - `prefers-reduced-motion` turns off the button transitions and smooth scrolling.
-- On 9 November 2026, after the move to colour blocks and larger type: Lighthouse (mobile, local server) scored 98 to 99 for performance and 100 for accessibility, best practices and SEO on home, lessons, about, contact and privacy, with no layout shift. A script checked every page at 320, 390, 768, 928, 1024 and 1440 px for sideways overflow and broken images, and at 1280 px for text contrast. All passed.
+- On 9 November 2026, after moving to colour blocks, the shared two-column layout and the new footer: Lighthouse (mobile, local server) scored 98 to 99 for performance and 100 for accessibility, best practices and SEO on home, lessons, about, contact and privacy, with no layout shift. A script checked every page at 320, 390, 768, 928, 1024 and 1440 px for sideways overflow and broken images, and at 1440 px for text contrast. All passed.
 - On 28 October 2026, after the move to the new identity: Lighthouse (mobile, local server) scored 99 to 100 for performance and 100 for accessibility, best practices and SEO, with no layout shift. Thank-you and 404 score lower on SEO only because they're deliberately `noindex`. html-validate (standard rules) found no errors. A script checked every page at 375, 768 and 1280 px: each text colour against BRAND.md's pairings, and each keyboard focus stop for its 2 px ring. All passed. (The W3C validator and axe-core runs of 16 October were before the new identity.)
 
 ## Pre-launch checklist

@@ -123,24 +123,46 @@ button, input, select, textarea { font: inherit; }
   max-width: var(--mh-measure);
   margin-bottom: var(--mh-space-7);
 }
-/* For a Feature headline, which runs the width of the page */
+/* For a headline that runs the width of the page */
 .section__head--wide { max-width: none; }
 
-/* A picture beside its text. The two wrap onto one column on phones. */
-.split {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--mh-space-7) var(--mh-space-8);
+/* The shared two-column layout: the headline on the left, the content on one
+   line on the right, so the eye learns where to look. Two gaps only under a
+   headline: --mh-space-5 above text, --mh-space-7 above a list. */
+.columns {
+  display: grid;
+  gap: var(--mh-space-5) var(--mh-space-5);
 }
-.split__media { flex: 0 1 24rem; margin-inline: auto; }
-.split__body {
-  flex: 1 1 22rem;
+.columns--list { row-gap: var(--mh-space-7); }
+.columns__head {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: var(--mh-space-4);
+  gap: var(--mh-space-3);
+  min-width: 0;
 }
+/* Under the headline: a button or link, or a picture */
+.columns__action { align-self: flex-start; margin-top: var(--mh-space-4); }
+.columns__media { max-width: 24rem; margin-top: var(--mh-space-6); }
+.columns__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mh-space-5);
+  min-width: 0;
+}
+.columns__body > .mh-btn,
+.columns__body > .text-link { align-self: flex-start; }
+/* Photos sit on the same two lines (from 48em), level at the foot */
+.columns__photos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: end;
+  gap: var(--mh-space-5);
+  margin-top: var(--mh-space-7);
+}
+.columns__photo--arch { max-width: 28rem; }
+.columns__photo--arch .mh-arch { aspect-ratio: 1; }
+.columns__photo--capsule { max-width: 16rem; }
+.columns__photo--capsule img { object-position: 45% 50%; }
 
 /* Labels: brand.css sets the type (Jost 500, caps, tracked). They introduce;
    they never carry the message. Mist on dark, ivory on stage, brass on light. */

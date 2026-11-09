@@ -88,7 +88,7 @@
 
     <!-- Contact details: the page's one gold block ========================== -->
     <section class="section mh-on-gold" aria-label="Contact details">
-      <div class="container">
+      <div class="container columns columns--list contact-band">
         <dl class="contact-list contact-list--large">
           <div>
             <dt class="mh-label">Email</dt>
@@ -116,64 +116,66 @@
 
     <!-- Form ================================================================= -->
     <section class="section mh-on-light" aria-labelledby="form-title">
-      <div class="container">
-        <div class="section__head section__head--wide">
-          <h2 class="type-feature" id="form-title">Send a message</h2>
+      <div class="container columns columns--list">
+        <div class="columns__head">
+          <h2 class="type-display" id="form-title">Send a message</h2>
         </div>
-        <form class="form form--offset" action="https://api.web3forms.com/submit" method="post">
-          <!-- PLACEHOLDER: Web3Forms access key (free at web3forms.com, set up with Michelle's email address) -->
-          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
-          <input type="hidden" name="subject" value="New message from the website">
-          <input type="hidden" name="from_name" value="Michelle Handley website">
-          <!-- PLACEHOLDER: domain. Must be the absolute URL of the thank-you page. -->
-          <input type="hidden" name="redirect" value="https://michellehandley.example/thank-you.html">
-          <!-- Honeypot: hidden from people; Web3Forms discards submissions that tick it -->
-          <input class="form__honeypot" type="checkbox" name="botcheck">
+        <div class="columns__body">
+          <form class="form" action="https://api.web3forms.com/submit" method="post">
+            <!-- PLACEHOLDER: Web3Forms access key (free at web3forms.com, set up with Michelle's email address) -->
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+            <input type="hidden" name="subject" value="New message from the website">
+            <input type="hidden" name="from_name" value="Michelle Handley website">
+            <!-- PLACEHOLDER: domain. Must be the absolute URL of the thank-you page. -->
+            <input type="hidden" name="redirect" value="https://michellehandley.example/thank-you.html">
+            <!-- Honeypot: hidden from people; Web3Forms discards submissions that tick it -->
+            <input class="form__honeypot" type="checkbox" name="botcheck">
 
-          <div class="form__row">
-            <div class="field">
-              <label class="field__label" for="c-name">Your name</label>
-              <input class="field__input" id="c-name" name="name" type="text" autocomplete="name" required>
-              <p class="field__error" id="c-name-error" data-missing="Please add your name." hidden><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="currentColor"/><path d="M9 4.5V10M9 13V13.2" stroke-width="2.2" stroke-linecap="round"/></svg><span class="field__error-text"></span></p>
+            <div class="form__row">
+              <div class="field">
+                <label class="field__label" for="c-name">Your name</label>
+                <input class="field__input" id="c-name" name="name" type="text" autocomplete="name" required>
+                <p class="field__error" id="c-name-error" data-missing="Please add your name." hidden><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="currentColor"/><path d="M9 4.5V10M9 13V13.2" stroke-width="2.2" stroke-linecap="round"/></svg><span class="field__error-text"></span></p>
+              </div>
+              <div class="field">
+                <label class="field__label" for="c-email">Email</label>
+                <input class="field__input" id="c-email" name="email" type="email" autocomplete="email" required>
+                <p class="field__error" id="c-email-error" data-missing="Please add your email so I can reply." data-invalid="Please check your email address. It should look like name@example.com." hidden><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="currentColor"/><path d="M9 4.5V10M9 13V13.2" stroke-width="2.2" stroke-linecap="round"/></svg><span class="field__error-text"></span></p>
+              </div>
             </div>
+
             <div class="field">
-              <label class="field__label" for="c-email">Email</label>
-              <input class="field__input" id="c-email" name="email" type="email" autocomplete="email" required>
-              <p class="field__error" id="c-email-error" data-missing="Please add your email so I can reply." data-invalid="Please check your email address. It should look like name@example.com." hidden><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="currentColor"/><path d="M9 4.5V10M9 13V13.2" stroke-width="2.2" stroke-linecap="round"/></svg><span class="field__error-text"></span></p>
+              <label class="field__label" for="c-phone">Phone</label>
+              <p class="field__hint" id="c-phone-hint">Optional, if you’d rather talk.</p>
+              <input class="field__input" id="c-phone" name="phone" type="tel" autocomplete="tel" aria-describedby="c-phone-hint">
             </div>
-          </div>
 
-          <div class="field">
-            <label class="field__label" for="c-phone">Phone</label>
-            <p class="field__hint" id="c-phone-hint">Optional, if you’d rather talk.</p>
-            <input class="field__input" id="c-phone" name="phone" type="tel" autocomplete="tel" aria-describedby="c-phone-hint">
-          </div>
+            <div class="field">
+              <label class="field__label" for="c-topic">What’s it about?</label>
+              <select class="field__input" id="c-topic" name="topic">
+                <option>Singing lessons</option>
+                <option>A wedding</option>
+                <option>Another event</option>
+                <option>Something else</option>
+              </select>
+            </div>
 
-          <div class="field">
-            <label class="field__label" for="c-topic">What’s it about?</label>
-            <select class="field__input" id="c-topic" name="topic">
-              <option>Singing lessons</option>
-              <option>A wedding</option>
-              <option>Another event</option>
-              <option>Something else</option>
-            </select>
-          </div>
+            <div class="field">
+              <label class="field__label" for="c-message">Your message</label>
+              <textarea class="field__input" id="c-message" name="message" rows="7" required></textarea>
+              <p class="field__error" id="c-message-error" data-missing="Please add a message." hidden><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="currentColor"/><path d="M9 4.5V10M9 13V13.2" stroke-width="2.2" stroke-linecap="round"/></svg><span class="field__error-text"></span></p>
+            </div>
 
-          <div class="field">
-            <label class="field__label" for="c-message">Your message</label>
-            <textarea class="field__input" id="c-message" name="message" rows="7" required></textarea>
-            <p class="field__error" id="c-message-error" data-missing="Please add a message." hidden><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="currentColor"/><path d="M9 4.5V10M9 13V13.2" stroke-width="2.2" stroke-linecap="round"/></svg><span class="field__error-text"></span></p>
-          </div>
+            <div class="field">
+              <label class="check"><input id="c-consent" type="checkbox" name="consent" value="Yes" required> I’m happy for Michelle to reply by email or phone about my message.</label>
+              <p class="field__error" id="c-consent-error" data-missing="Please tick the box so I can reply to you." hidden><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="currentColor"/><path d="M9 4.5V10M9 13V13.2" stroke-width="2.2" stroke-linecap="round"/></svg><span class="field__error-text"></span></p>
+            </div>
 
-          <div class="field">
-            <label class="check"><input id="c-consent" type="checkbox" name="consent" value="Yes" required> I’m happy for Michelle to reply by email or phone about my message.</label>
-            <p class="field__error" id="c-consent-error" data-missing="Please tick the box so I can reply to you." hidden><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="currentColor"/><path d="M9 4.5V10M9 13V13.2" stroke-width="2.2" stroke-linecap="round"/></svg><span class="field__error-text"></span></p>
-          </div>
-
-          <p class="form__status" tabindex="-1" hidden>Sorry, your message didn’t send. Please try again in a minute, or email me at <!-- PLACEHOLDER: email address -->[EMAIL].</p>
-          <div><button class="mh-btn mh-btn--velvet" type="submit" data-sending="Sending…">Send message</button></div>
-          <p class="form__small">I’ll only use your details to reply. <a href="privacy.html">Privacy notice</a></p>
-        </form>
+            <p class="form__status" tabindex="-1" hidden>Sorry, your message didn’t send. Please try again in a minute, or email me at <!-- PLACEHOLDER: email address -->[EMAIL].</p>
+            <div><button class="mh-btn mh-btn--velvet" type="submit" data-sending="Sending…">Send message</button></div>
+            <p class="form__small">I’ll only use your details to reply. <a href="privacy.html">Privacy notice</a></p>
+          </form>
+        </div>
       </div>
     </section>
 
@@ -184,35 +186,40 @@
        ================================================================== -->
   <footer class="site-footer mh-on-dark">
     <div class="container">
-      <p class="site-footer__line">Every voice starts somewhere.</p>
-      <div class="site-footer__inner">
-        <div class="footer-col">
-          <h2 class="mh-label">Lessons</h2>
-          <ul>
-            <li><a href="lessons.html#adults">Adults</a></li>
-            <li><a href="lessons.html#young-singers">Children and teens</a></li>
-            <li><a href="lessons.html#exams">Exams and auditions</a></li>
-            <li><a href="lessons.html#online">Online lessons</a></li>
-            <li><a href="lessons.html#prices">Prices</a></li>
-            <li><a href="lessons.html#faq">Questions</a></li>
-          </ul>
+      <div class="site-footer__top">
+        <div class="site-footer__intro">
+          <p class="site-footer__line">Every voice starts somewhere.</p>
+          <a class="mh-btn mh-btn--outline-on-dark" href="./#contact">Book a first lesson</a>
         </div>
-        <div class="footer-col">
-          <h2 class="mh-label">Get in touch</h2>
-          <ul>
-            <li><!-- PLACEHOLDER: phone number. Make it a tel: link when it's known. -->[PHONE]</li>
-            <li><!-- PLACEHOLDER: email address. Make it a mailto: link when it's known. -->[EMAIL]</li>
-            <li>Stafford, Staffordshire</li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h2 class="mh-label">Follow</h2>
-          <ul>
-            <!-- PLACEHOLDER: Instagram URL. Replace with Michelle's profile, e.g. https://www.instagram.com/handle/ -->
-            <li><a href="https://www.instagram.com/" rel="me">Instagram</a></li>
-            <!-- PLACEHOLDER: Facebook URL. Replace with Michelle's page, or delete this line if she doesn't use Facebook. -->
-            <li><a href="https://www.facebook.com/" rel="me">Facebook</a></li>
-          </ul>
+        <div class="site-footer__inner">
+          <div class="footer-col">
+            <h2 class="mh-label">Lessons</h2>
+            <ul>
+              <li><a href="lessons.html#adults">Adults</a></li>
+              <li><a href="lessons.html#young-singers">Children and teens</a></li>
+              <li><a href="lessons.html#exams">Exams and auditions</a></li>
+              <li><a href="lessons.html#online">Online lessons</a></li>
+              <li><a href="lessons.html#prices">Prices</a></li>
+              <li><a href="lessons.html#faq">Questions</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h2 class="mh-label">Get in touch</h2>
+            <ul>
+              <li><svg class="footer-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><!-- PLACEHOLDER: phone number. Make it a tel: link when it's known. -->[PHONE]</li>
+              <li><svg class="footer-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><!-- PLACEHOLDER: email address. Make it a mailto: link when it's known. -->[EMAIL]</li>
+              <li><svg class="footer-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Stafford, Staffordshire</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h2 class="mh-label">Follow</h2>
+            <ul>
+              <!-- PLACEHOLDER: Instagram URL. Replace with Michelle's profile, e.g. https://www.instagram.com/handle/ -->
+              <li><a href="https://www.instagram.com/" rel="me"><svg class="footer-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17 7v.01"/></svg>Instagram</a></li>
+              <!-- PLACEHOLDER: Facebook URL. Replace with Michelle's page, or delete this line if she doesn't use Facebook. -->
+              <li><a href="https://www.facebook.com/" rel="me"><svg class="footer-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3h-3a4 4 0 0 0-4 4v3H7v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>Facebook</a></li>
+            </ul>
+          </div>
         </div>
       </div>
       <!-- The logo runs the width of the page: stacked on phones, horizontal from 768px -->
