@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <script src="js/site.js" defer></script>
+  <script src="js/motion.js" defer></script>
 
   <!-- Icons and theme -->
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -70,48 +71,38 @@
 
   <main id="main">
 
-    <!-- Hero ================================================================= -->
+    <!-- Hero: the words on the left, the portrait beside them -->
     <section class="hero mh-on-dark" aria-labelledby="page-title">
-      <div class="container">
-        <div class="hero__inner">
-          <div class="hero__text">
-            <h1 class="type-poster" id="page-title">Hello, I’m Michelle</h1>
-            <p class="hero__lead">I’m a singer and singing teacher in Stafford, teaching pop and musical theatre in person and online.</p>
-            <div class="btn-row">
-              <a class="mh-btn mh-btn--gold" href="./#contact">Book a first lesson</a>
-            </div>
-          </div>
-          <div class="hero__photo">
-            <!-- The capsule is 5:9, so this 4:5 photo shows about 1.44 times the capsule's width -->
-            <div class="mh-capsule">
-              <picture>
-                <source type="image/avif" srcset="images/about-portrait-480.avif 480w, images/about-portrait-688.avif 688w" sizes="(min-width: 48em) 26rem, 22rem">
-                <source type="image/webp" srcset="images/about-portrait-480.webp 480w, images/about-portrait-688.webp 688w" sizes="(min-width: 48em) 26rem, 22rem">
-                <img
-                  src="images/about-portrait-688.jpg"
-                  srcset="images/about-portrait-480.jpg 480w, images/about-portrait-688.jpg 688w"
-                  sizes="(min-width: 48em) 26rem, 22rem"
-                  width="688" height="860"
-                  alt="Michelle Handley singing on stage in a period costume, holding a tin bucket in front of a wooden stable door"
-                  fetchpriority="high" decoding="async">
-              </picture>
-            </div>
+      <div class="container grid hero__grid">
+        <div class="hero__text">
+          <h1 class="type-display hero__title" id="page-title">Hello, I’m Michelle</h1>
+          <p class="hero__lead">I’m a singer and singing teacher in Stafford, teaching pop and musical theatre in person and online.</p>
+          <div class="btn-row">
+            <a class="mh-btn mh-btn--gold" href="./#contact">Book a first lesson</a>
           </div>
         </div>
+        <div class="hero__portrait mh-capsule">
+          <!-- The capsule is 5:9, so this 4:5 photo shows about 1.44 times the capsule's width -->
+          <picture>
+            <source type="image/avif" srcset="images/about-portrait-480.avif 480w, images/about-portrait-688.avif 688w" sizes="(min-width: 58em) 22.5rem, (min-width: 48em) 17rem, 16.5rem">
+            <source type="image/webp" srcset="images/about-portrait-480.webp 480w, images/about-portrait-688.webp 688w" sizes="(min-width: 58em) 22.5rem, (min-width: 48em) 17rem, 16.5rem">
+            <img src="images/about-portrait-688.jpg" srcset="images/about-portrait-480.jpg 480w, images/about-portrait-688.jpg 688w" sizes="(min-width: 58em) 22.5rem, (min-width: 48em) 17rem, 16.5rem" width="688" height="860" alt="Michelle Handley as Tzeitel in Fiddler on the Roof, holding a tin bucket in front of a wooden stable door" fetchpriority="high" decoding="async">
+          </picture>
+        </div>
       </div>
-      <picture class="mh-stave hero__stave" aria-hidden="true">
+      <picture class="mh-stave hero__stave" data-reveal="draw" aria-hidden="true">
         <source media="(min-width: 768px)" srcset="images/brand/stave-wide-gold.svg" width="1440" height="81">
         <img src="images/brand/stave-narrow-gold.svg" width="600" height="81" alt="">
       </picture>
     </section>
 
-    <!-- Story: the headline and text, then a row of capsules as a divider ==== -->
-    <section class="section mh-on-light" aria-labelledby="story-title">
-      <div class="container columns">
-        <div class="columns__head">
-          <h2 class="type-display" id="story-title">My story</h2>
+    <!-- My story: one centred column of text, then a row of six capsules -->
+    <section class="sec mh-on-light" aria-labelledby="story-title">
+      <div class="container">
+        <div class="sec__head" data-reveal>
+          <h2 class="sec__title" id="story-title">My story</h2>
         </div>
-        <div class="columns__body prose">
+        <div class="prose story" data-reveal>
           <!-- PLACEHOLDER: Michelle's story, in her own words -->
           <p>[YOUR STORY, IN YOUR OWN WORDS: HOW YOU STARTED SINGING]</p>
           <p>After training at <!-- PLACEHOLDER: where Michelle trained -->[TRAINING], I spent <!-- PLACEHOLDER: years performing -->[NUMBER] years performing in <!-- PLACEHOLDER: performance background -->[VENUES, SHOWS OR BANDS].</p>
@@ -121,53 +112,53 @@
           <p>[WHY YOU TEACH, IN YOUR OWN WORDS]</p>
         </div>
         <div class="photo-row">
-          <div class="mh-capsule photo-row__item">
-            <!-- PLACEHOLDER: photo, showing a warm-up (5:9 capsule, shot 4 in docs/brand/brand/MH-brand-summary.md). Use the <picture> pattern in README.md and delete the note below. -->
+          <div class="mh-capsule photo-row__item" data-reveal>
+            <!-- PLACEHOLDER: photo, showing a warm-up (5:9 capsule, shot 4 in PHOTOGRAPHY.md). Use the <picture> pattern in README.md and delete the note below. -->
             <img src="images/placeholders/portrait-5x9.svg" width="320" height="576" alt="Placeholder for a photo of Michelle showing a warm-up" loading="lazy">
-            <p class="photo-note" aria-hidden="true">Showing a warm-up</p>
+            <p class="photo-note" aria-hidden="true"><b>Shot 4</b> Showing a warm-up</p>
           </div>
-          <div class="mh-capsule photo-row__item photo-row__item--twirl">
+          <div class="mh-capsule photo-row__item photo-row__item--twirl" data-reveal>
             <picture>
               <source type="image/avif" srcset="images/stage-twirl-400.avif 400w, images/stage-twirl-595.avif 595w" sizes="(min-width: 48em) 11rem, 30vw">
               <source type="image/webp" srcset="images/stage-twirl-400.webp 400w, images/stage-twirl-595.webp 595w" sizes="(min-width: 48em) 11rem, 30vw">
-              <img src="images/stage-twirl-595.jpg" srcset="images/stage-twirl-400.jpg 400w, images/stage-twirl-595.jpg 595w" sizes="(min-width: 48em) 11rem, 30vw" width="595" height="859" alt="Michelle on stage in a white suit and hat, smiling mid-twirl" loading="lazy" decoding="async">
+              <img src="images/stage-twirl-595.jpg" srcset="images/stage-twirl-400.jpg 400w, images/stage-twirl-595.jpg 595w" sizes="(min-width: 48em) 11rem, 30vw" width="595" height="859" alt="Michelle as Eva Perón in Evita, in a white suit and hat, smiling mid-twirl" loading="lazy" decoding="async">
             </picture>
           </div>
-          <div class="mh-capsule photo-row__item">
-            <!-- PLACEHOLDER: photo, teaching an adult, seen from behind them (5:9 capsule, shot 5 in docs/brand/brand/MH-brand-summary.md). Use the <picture> pattern in README.md and delete the note below. -->
+          <div class="mh-capsule photo-row__item" data-reveal>
+            <!-- PLACEHOLDER: photo, teaching an adult, seen from behind them (5:9 capsule, shot 5 in PHOTOGRAPHY.md). Use the <picture> pattern in README.md and delete the note below. -->
             <img src="images/placeholders/portrait-5x9.svg" width="320" height="576" alt="Placeholder for a photo of Michelle teaching an adult student" loading="lazy">
-            <p class="photo-note" aria-hidden="true">Teaching an adult</p>
+            <p class="photo-note" aria-hidden="true"><b>Shot 5</b> Teaching an adult, from behind them</p>
           </div>
-          <div class="mh-capsule photo-row__item photo-row__item--reach">
+          <div class="mh-capsule photo-row__item photo-row__item--reach" data-reveal>
             <picture>
               <source type="image/avif" srcset="images/stage-reach-480.avif 480w, images/stage-reach-884.avif 884w" sizes="(min-width: 48em) 11rem, 30vw">
               <source type="image/webp" srcset="images/stage-reach-480.webp 480w, images/stage-reach-884.webp 884w" sizes="(min-width: 48em) 11rem, 30vw">
-              <img src="images/stage-reach-884.jpg" srcset="images/stage-reach-480.jpg 480w, images/stage-reach-884.jpg 884w" sizes="(min-width: 48em) 11rem, 30vw" width="884" height="885" alt="Michelle singing on stage in a nun’s habit, one arm reaching out" loading="lazy" decoding="async">
+              <img src="images/stage-reach-884.jpg" srcset="images/stage-reach-480.jpg 480w, images/stage-reach-884.jpg 884w" sizes="(min-width: 48em) 11rem, 30vw" width="884" height="885" alt="Michelle as Sister Mary Robert in Sister Act, singing with one arm reaching out" loading="lazy" decoding="async">
             </picture>
           </div>
-          <div class="mh-capsule photo-row__item">
-            <!-- PLACEHOLDER: photo, performing, warmly lit, from the audience (5:9 capsule, shot 10 in docs/brand/brand/MH-brand-summary.md). Use the <picture> pattern in README.md and delete the note below. -->
+          <div class="mh-capsule photo-row__item" data-reveal>
+            <!-- PLACEHOLDER: photo, performing, warmly lit, from the audience (5:9 capsule, shot 10 in PHOTOGRAPHY.md). Use the <picture> pattern in README.md and delete the note below. -->
             <img src="images/placeholders/portrait-5x9.svg" width="320" height="576" alt="Placeholder for a photo of Michelle performing, seen from the audience" loading="lazy">
-            <p class="photo-note" aria-hidden="true">Performing, from the audience</p>
+            <p class="photo-note" aria-hidden="true"><b>Shot 10</b> Performing, from the audience</p>
           </div>
-          <div class="mh-capsule photo-row__item">
-            <!-- PLACEHOLDER: photo, singing, mid-phrase (5:9 capsule, shot 3 in docs/brand/brand/MH-brand-summary.md). Use the <picture> pattern in README.md and delete the note below. -->
+          <div class="mh-capsule photo-row__item" data-reveal>
+            <!-- PLACEHOLDER: photo, singing, mid-phrase (5:9 capsule, shot 3 in PHOTOGRAPHY.md). Use the <picture> pattern in README.md and delete the note below. -->
             <img src="images/placeholders/portrait-5x9.svg" width="320" height="576" alt="Placeholder for a photo of Michelle singing mid-phrase" loading="lazy">
-            <p class="photo-note" aria-hidden="true">Singing, mid-phrase</p>
+            <p class="photo-note" aria-hidden="true"><b>Shot 3</b> Singing, mid-phrase</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Training and experience ============================================== -->
-    <section class="section mh-on-stage" aria-labelledby="credentials-title">
-      <div class="container columns columns--list">
-        <div class="columns__head">
-          <h2 class="type-display" id="credentials-title">Training and experience</h2>
+    <!-- Training and experience: a velvet panel, a label and a value on each row -->
+    <section class="sec mh-on-stage" aria-labelledby="credentials-title">
+      <div class="container">
+        <div class="sec__head" data-reveal>
+          <h2 class="sec__title" id="credentials-title">Training and experience</h2>
         </div>
-        <div class="columns__body">
+        <div class="panel panel--narrow mh-on-dark" data-reveal>
           <!-- PLACEHOLDER: credentials. Replace each item with Michelle's real qualifications and experience, or delete any that don't apply. -->
-          <dl class="facts facts--stacked facts--large">
+          <dl class="facts">
             <div class="fact">
               <dt class="mh-label">Vocal training</dt>
               <dd>[QUALIFICATION AND WHERE YOU TRAINED]</dd>
@@ -178,7 +169,7 @@
             </div>
             <div class="fact">
               <dt class="mh-label">Performing</dt>
-              <dd>[NOTABLE VENUES, SHOWS OR BANDS]</dd>
+              <dd>Beverley Bass in Come From Away, Eva Perón in Evita, Sister Mary Robert in Sister Act and Tzeitel in Fiddler on the Roof</dd>
             </div>
             <div class="fact">
               <dt class="mh-label">Weddings</dt>
@@ -197,18 +188,13 @@
       </div>
     </section>
 
-    <!-- A few things about me ================================================ -->
-    <section class="section mh-on-light" aria-labelledby="offstage-title">
-      <div class="container columns columns--list">
-        <div class="columns__head">
-          <h2 class="type-display" id="offstage-title">A few things about me</h2>
-          <div class="mh-arch columns__media">
-            <!-- PLACEHOLDER: photo, details: the music stand, pencilled breath marks, a mug of tea (3:2 arch, shot 9 in docs/brand/brand/MH-brand-summary.md). Use the <picture> pattern in README.md and delete the note below. -->
-            <img src="images/placeholders/scene-3x2.svg" width="720" height="480" alt="Placeholder for a photo of Michelle’s music stand and a mug of tea" loading="lazy">
-            <p class="photo-note" aria-hidden="true">Details: music stand, a mug of tea</p>
-          </div>
+    <!-- A few things about me: an outlined panel, the list beside the detail photo -->
+    <section class="sec mh-on-light" aria-labelledby="offstage-title">
+      <div class="container">
+        <div class="sec__head" data-reveal>
+          <h2 class="sec__title" id="offstage-title">A few things about me</h2>
         </div>
-        <div class="columns__body">
+        <div class="panel panel--outline panel--split" data-reveal>
           <!-- PLACEHOLDER: personal details, in Michelle's own words -->
           <ul class="list-lines">
             <li>[YOUR WARM-UP SONG OR PLAYLIST]</li>
@@ -216,17 +202,22 @@
             <li>[A FAVOURITE PERFORMANCE MEMORY]</li>
             <li>When I’m not singing, you’ll find me <!-- PLACEHOLDER: hobby -->[HOBBY].</li>
           </ul>
+          <div class="things__photo">
+            <div class="mh-arch">
+              <!-- PLACEHOLDER: photo, details: the music stand, pencilled breath marks, a mug of tea (3:2 arch, shot 9 in PHOTOGRAPHY.md). Use the <picture> pattern in README.md and delete the note below. -->
+              <img src="images/placeholders/scene-3x2.svg" width="720" height="480" alt="Placeholder for a photo of Michelle’s music stand and a mug of tea" loading="lazy">
+              <p class="photo-note" aria-hidden="true"><b>Shot 9</b> Details: the music stand, pencilled breath marks, a mug of tea</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Closing call to action: the page's one gold block and big-type moment -->
-    <section class="section mh-on-gold" aria-labelledby="cta-title">
-      <div class="container columns columns--statement">
-        <div class="columns__head">
-          <h2 class="type-feature" id="cta-title">I’d love to hear from you</h2>
-        </div>
-        <div class="columns__body">
+    <!-- Closing call to action: the page's one gold block -->
+    <section class="sec mh-on-gold" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="sec__head" data-reveal>
+          <h2 class="sec__title" id="cta-title">I’d love to hear from you</h2>
           <p>Thinking about lessons? Send me a message and we’ll take it from there.</p>
           <div class="btn-row">
             <a class="mh-btn mh-btn--velvet" href="./#contact">Book a first lesson</a>

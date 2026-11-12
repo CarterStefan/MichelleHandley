@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <script src="js/site.js" defer></script>
+  <script src="js/motion.js" defer></script>
 
   <!-- Icons and theme -->
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -70,19 +71,17 @@
 
   <main id="main">
 
-    <!-- Hero ================================================================= -->
+    <!-- Hero: the words only -->
     <section class="hero mh-on-dark" aria-labelledby="page-title">
-      <div class="container">
-        <div class="hero__inner">
-          <div class="hero__text">
-            <p class="mh-label">Privacy</p>
-            <h1 class="type-feature" id="page-title">Privacy notice</h1>
-            <p class="hero__lead">A plain-English explanation of what happens to the information you share through this website.</p>
-            <p>Last updated <!-- PLACEHOLDER: date the notice was last updated -->[DATE]</p>
-          </div>
+      <div class="container grid hero__grid">
+        <div class="hero__text">
+          <p class="mh-label hero__label">Privacy</p>
+          <h1 class="type-display hero__title" id="page-title">Privacy notice</h1>
+          <p class="hero__lead">A plain-English explanation of what happens to the information you share through this website.</p>
+          <p>Last updated <!-- PLACEHOLDER: date the notice was last updated -->[DATE]</p>
         </div>
       </div>
-      <picture class="mh-stave hero__stave" aria-hidden="true">
+      <picture class="mh-stave hero__stave" data-reveal="draw" aria-hidden="true">
         <source media="(min-width: 768px)" srcset="images/brand/stave-wide-gold.svg" width="1440" height="81">
         <img src="images/brand/stave-narrow-gold.svg" width="600" height="81" alt="">
       </picture>
@@ -90,47 +89,76 @@
 
     <!-- PLACEHOLDER: privacy notice. This is a starting template, not legal advice.
          Check it against UK GDPR guidance from the ICO before launch, then delete the line below. -->
-    <section class="section mh-on-light" aria-label="Privacy notice details">
-      <div class="container columns">
-        <div class="columns__body columns__body--right prose">
-          <p><strong>[PRIVACY NOTICE TO COME: THIS TEMPLATE NEEDS CHECKING BEFORE LAUNCH]</strong></p>
+    <!-- The notice as one centred column of headed notes -->
+    <section class="sec mh-on-light" aria-label="Privacy notice details">
+      <div class="container notes">
+        <p class="notes__lead"><strong>[PRIVACY NOTICE TO COME: THIS TEMPLATE NEEDS CHECKING BEFORE LAUNCH]</strong></p>
 
+        <div class="note" data-reveal>
           <h2>Who I am</h2>
-          <p>This website is run by Michelle Handley, a singer and singing teacher based in Stafford. I am responsible for any personal information you share here. You can contact me about privacy at <!-- PLACEHOLDER: email address. Make it a mailto: link when it's known. -->[EMAIL].</p>
+          <div class="prose">
+            <p>This website is run by Michelle Handley, a singer and singing teacher based in Stafford. I am responsible for any personal information you share here. You can contact me about privacy at <!-- PLACEHOLDER: email address. Make it a mailto: link when it's known. -->[EMAIL].</p>
+          </div>
+        </div>
 
+        <div class="note" data-reveal>
           <h2>What I collect</h2>
-          <p>I only collect what you choose to send me through the forms on this website or by email. Depending on the form, that can include:</p>
-          <ul class="bullets">
-            <li>your name, email address and, if you give it, your phone number</li>
-            <li>who the lessons are for, whether you’d like them in person or online, when suits you, and what you’d love to sing</li>
-            <li>anything else you write in your message</li>
-            <li>that you’re happy for me to reply to you</li>
-          </ul>
-          <p>If you’re booking lessons for someone under 18, please fill in the form as their parent or guardian.</p>
+          <div class="prose">
+            <p>I only collect what you choose to send me through the forms on this website or by email. Depending on the form, that can include:</p>
+            <ul class="bullets">
+              <li>your name, email address and, if you give it, your phone number</li>
+              <li>what you’d love to sing, and anything else you write in your message</li>
+            </ul>
+            <p>If you’re booking lessons for someone under 18, please fill in the form as their parent or guardian.</p>
+          </div>
+        </div>
 
+        <div class="note" data-reveal>
           <h2>How I use it</h2>
-          <p>I use your details to reply to your enquiry, to arrange lessons and, if you book, to plan and deliver what we’ve agreed. I don’t add you to a mailing list, and I never sell or share your information for marketing.</p>
-          <p>My lawful basis is that you’ve asked me to respond to you and that the information is needed to take steps towards, or carry out, a booking.</p>
+          <div class="prose">
+            <p>I use your details to reply to your enquiry, to arrange lessons and, if you book, to plan and deliver what we’ve agreed. I don’t add you to a mailing list, and I never sell or share your information for marketing.</p>
+            <p>My lawful basis is that you’ve asked me to respond to you and that the information is needed to take steps towards, or carry out, a booking.</p>
+          </div>
+        </div>
 
+        <div class="note" data-reveal>
           <h2>Services I use</h2>
-          <ul class="bullets">
-            <li><strong>Web3Forms</strong> delivers form messages to my inbox. Your message passes through their servers to reach me.</li>
-            <li><strong>Email:</strong> enquiries are stored in my email account with <!-- PLACEHOLDER: email provider -->[EMAIL PROVIDER].</li>
-            <li><strong>Hosting:</strong> this site is hosted by <!-- PLACEHOLDER: hosting provider, e.g. GitHub Pages -->[HOSTING PROVIDER], which may keep standard server logs, such as IP addresses, for security.</li>
-          </ul>
+          <div class="prose">
+            <ul class="bullets">
+              <li><strong>Web3Forms</strong> delivers form messages to my inbox. Your message passes through their servers to reach me.</li>
+              <li><strong>Email:</strong> enquiries are stored in my email account with <!-- PLACEHOLDER: email provider -->[EMAIL PROVIDER].</li>
+              <li><strong>Hosting:</strong> this site is hosted by <!-- PLACEHOLDER: hosting provider, e.g. GitHub Pages -->[HOSTING PROVIDER], which may keep standard server logs, such as IP addresses, for security.</li>
+            </ul>
+          </div>
+        </div>
 
+        <div class="note" data-reveal>
           <h2>Cookies and analytics</h2>
-          <p>This website does not set any cookies and does not use tracking or advertising tools. Its fonts are stored on this website too, so reading a page doesn’t contact any other company. <!-- PLACEHOLDER: analytics. If analytics are added, name the tool here and explain what it collects. -->[UPDATE THIS IF ANALYTICS ARE ADDED]</p>
+          <div class="prose">
+            <p>This website does not set any cookies and does not use tracking or advertising tools. Its fonts are stored on this website too, so reading a page doesn’t contact any other company. <!-- PLACEHOLDER: analytics. If analytics are added, name the tool here and explain what it collects. -->[UPDATE THIS IF ANALYTICS ARE ADDED]</p>
+          </div>
+        </div>
 
+        <div class="note" data-reveal>
           <h2>How long I keep it</h2>
-          <p>If you don’t go on to book, I delete your enquiry after <!-- PLACEHOLDER: retention period for enquiries -->[PERIOD]. If you do book, I keep the details I need for my business records for <!-- PLACEHOLDER: retention period for bookings -->[PERIOD], as required for tax and accounting.</p>
+          <div class="prose">
+            <p>If you don’t go on to book, I delete your enquiry after <!-- PLACEHOLDER: retention period for enquiries -->[PERIOD]. If you do book, I keep the details I need for my business records for <!-- PLACEHOLDER: retention period for bookings -->[PERIOD], as required for tax and accounting.</p>
+          </div>
+        </div>
 
+        <div class="note" data-reveal>
           <h2>Your rights</h2>
-          <p>You can ask to see the information I hold about you, ask me to correct or delete it, or object to how I use it. Just email me and I’ll respond within one month.</p>
-          <p>If you’re unhappy with how I’ve handled your information, you can complain to the Information Commissioner’s Office at <a href="https://ico.org.uk/make-a-complaint/">ico.org.uk</a>.</p>
+          <div class="prose">
+            <p>You can ask to see the information I hold about you, ask me to correct or delete it, or object to how I use it. Just email me and I’ll respond within one month.</p>
+            <p>If you’re unhappy with how I’ve handled your information, you can complain to the Information Commissioner’s Office at <a href="https://ico.org.uk/make-a-complaint/">ico.org.uk</a>.</p>
+          </div>
+        </div>
 
+        <div class="note" data-reveal>
           <h2>Changes to this notice</h2>
-          <p>If anything changes, I’ll update this page and the date at the top.</p>
+          <div class="prose">
+            <p>If anything changes, I’ll update this page and the date at the top.</p>
+          </div>
         </div>
       </div>
     </section>

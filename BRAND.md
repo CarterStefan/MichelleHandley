@@ -83,8 +83,6 @@ Gold on ivory is 1.5 : 1. Use it for shapes only, never text. Don't use any pair
 
 | Style | Font | Size (phone to desktop) | Line height |
 |---|---|---|---|
-| Poster | Marcellus 400 | 48 to 128px (`--mh-text-5xl`) | 1 |
-| Feature | Marcellus 400 | 44 to 96px (`--mh-text-4xl`) | 1 |
 | Display | Marcellus 400 | 40 to 64px (`--mh-size-display`) | 1.06 |
 | Heading 1 | Marcellus 400 | 32 to 44px | 1.18 |
 | Heading 2 | Marcellus 400 | 24 to 30px | 1.18 |
@@ -94,7 +92,7 @@ Gold on ivory is 1.5 : 1. Use it for shapes only, never text. Don't use any pair
 | Buttons | Jost 500 | 17px | 1 |
 | Labels | Jost 500, caps, +12% tracking | 14px | 1.2 |
 
-- Poster and Feature were added in November 2026, so a headline can fill a block. They live in `css/tokens.css`, above the kit's scale. Use them in the hero and for one other moment per page. Other section headlines use Display, so the big moments stand out. Footer links are Small.
+- On the website, each page's hero headline is Display and every section headline is Heading 1 (32 to 44px), so the hero is the one big moment and the rest of the page stays calm. Card titles, details and questions are Heading 2. Footer links are Small. (Two bigger sizes, Poster and Feature, were tried in November 2026 and retired the same month: the type read as too loud.)
 - Headlines are sentence case. Marcellus has one weight: never bold it (`font-synthesis: none`) and never set it in capitals.
 - Labels are short (three words at most) and used sparingly.
 - Keep body text to about 66 characters a line (`--mh-measure`).
@@ -104,7 +102,7 @@ Gold on ivory is 1.5 : 1. Use it for shapes only, never text. Don't use any pair
 - **Corners are square or fully round, nothing in between.** Cards and panels are square. Buttons, tags and photo frames are fully round. No other radii, and no shadows.
 - **Capsule** (`.mh-capsule`): portraits, 5 : 9, the mark's own proportion.
 - **Arch** (`.mh-arch`): wider photos. Round top, square base.
-- **Rings** (`.mh-rings`): three gold lines around a capsule, for one feature moment per page, such as the home page portrait. Set the section's surface class so the gaps match its background.
+- **Rings** (`.mh-rings`): three gold lines around a capsule, for one feature moment per page at most. Set the section's surface class so the gaps match its background. The website doesn't use them at present: they need more room than a row of capsules gives them.
 - **Stave**: four lines rising left to right, gold on velvet or brass on ivory. Full width, cut flush at the section's edges, once per page at most, decorative only:
 
 ```html

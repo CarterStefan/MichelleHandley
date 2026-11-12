@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <script src="js/site.js" defer></script>
+  <script src="js/motion.js" defer></script>
 
   <!-- Icons and theme -->
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -70,239 +71,242 @@
 
   <main id="main">
 
-    <!-- Hero ================================================================= -->
+    <!-- Hero: the words on the left, the portrait beside them -->
     <section class="hero mh-on-dark" aria-labelledby="page-title">
-      <div class="container">
-        <div class="hero__inner">
-          <div class="hero__text">
-            <p class="mh-label">In Stafford and online</p>
-            <h1 class="type-feature" id="page-title">Pop and musical theatre singing lessons</h1>
-            <p class="hero__lead">Whether it’s karaoke confidence, your next grade or finally joining that choir, we’ll work at your pace on songs you actually want to sing.</p>
-            <div class="btn-row">
-              <a class="mh-btn mh-btn--gold" href="#enquire">Book a first lesson</a>
-              <a class="mh-btn mh-btn--outline-on-dark" href="#prices">See prices</a>
-            </div>
-          </div>
-          <div class="hero__photo">
-            <!-- The capsule is 5:9, so this photo shows about 1.25 times the capsule's width -->
-            <div class="mh-capsule">
-              <picture>
-                <source type="image/avif" srcset="images/stage-twirl-400.avif 400w, images/stage-twirl-595.avif 595w" sizes="(min-width: 48em) 23rem, 19rem">
-                <source type="image/webp" srcset="images/stage-twirl-400.webp 400w, images/stage-twirl-595.webp 595w" sizes="(min-width: 48em) 23rem, 19rem">
-                <img src="images/stage-twirl-595.jpg" srcset="images/stage-twirl-400.jpg 400w, images/stage-twirl-595.jpg 595w" sizes="(min-width: 48em) 23rem, 19rem" width="595" height="859" alt="Michelle on stage in a white suit and hat, smiling mid-twirl" fetchpriority="high" decoding="async">
-              </picture>
-            </div>
+      <div class="container grid hero__grid">
+        <div class="hero__text">
+          <p class="mh-label hero__label">In Stafford and online</p>
+          <h1 class="type-display hero__title" id="page-title">Pop and musical theatre singing lessons</h1>
+          <p class="hero__lead">Whether it’s karaoke confidence, your next grade or finally joining that choir, we’ll work at your pace on songs you actually want to sing.</p>
+          <div class="btn-row">
+            <a class="mh-btn mh-btn--gold" href="#enquire">Book a first lesson</a>
+            <a class="mh-btn mh-btn--outline-on-dark" href="#prices">See prices</a>
           </div>
         </div>
+        <div class="hero__portrait mh-capsule">
+          <!-- The capsule is 5:9, so this photo shows about 1.25 times the capsule's width -->
+          <picture>
+            <source type="image/avif" srcset="images/stage-twirl-400.avif 400w, images/stage-twirl-595.avif 595w" sizes="(min-width: 58em) 22.5rem, (min-width: 48em) 17rem, 16.5rem">
+            <source type="image/webp" srcset="images/stage-twirl-400.webp 400w, images/stage-twirl-595.webp 595w" sizes="(min-width: 58em) 22.5rem, (min-width: 48em) 17rem, 16.5rem">
+            <img src="images/stage-twirl-595.jpg" srcset="images/stage-twirl-400.jpg 400w, images/stage-twirl-595.jpg 595w" sizes="(min-width: 58em) 22.5rem, (min-width: 48em) 17rem, 16.5rem" width="595" height="859" alt="Michelle as Eva Perón in Evita, in a white suit and hat, smiling mid-twirl" fetchpriority="high" decoding="async">
+          </picture>
+        </div>
       </div>
-      <picture class="mh-stave hero__stave" aria-hidden="true">
+      <picture class="mh-stave hero__stave" data-reveal="draw" aria-hidden="true">
         <source media="(min-width: 768px)" srcset="images/brand/stave-wide-gold.svg" width="1440" height="81">
         <img src="images/brand/stave-narrow-gold.svg" width="600" height="81" alt="">
       </picture>
     </section>
 
-    <!-- Who lessons suit: the page's one gold block ========================= -->
-    <section class="section mh-on-gold" id="who" aria-labelledby="who-title">
-      <div class="container">
-        <div class="section__head section__head--wide">
+    <!-- Who lessons are for: the page's one gold block. The headline holds still while three cards stack beside it -->
+    <section class="sec mh-on-gold" id="who" aria-labelledby="who-title">
+      <div class="container grid split">
+        <div class="split__head" data-reveal>
           <p class="mh-label">Who lessons are for</p>
-          <h2 class="type-display" id="who-title">There’s no such thing as “not a singer”.</h2>
+          <h2 class="sec__title" id="who-title">There’s no such thing as “not a singer”.</h2>
         </div>
-
-        <div class="posters">
-          <article class="poster mh-on-light" id="adults">
-            <h3 class="poster__title">Adults</h3>
-            <p>Never sung in front of anyone? We’ll start with breathing and warming up, then build your confidence one song at a time. Others come for choirs, open mic nights and weddings, or just because they enjoy singing.</p>
+        <div class="stack">
+          <article class="stack__card mh-on-light" id="adults">
+            <div class="stack__top"></div>
+            <h3 class="stack__title">Adults</h3>
+            <div class="stack__body">
+              <p>Never sung in front of anyone? We’ll start with breathing and warming up, then build your confidence one song at a time. Others come for choirs, open mic nights and weddings, or just because they enjoy singing.</p>
+            </div>
           </article>
-          <article class="poster mh-on-dark" id="young-singers">
-            <h3 class="poster__title">Children and teens</h3>
-            <p>Pop and musical theatre for ages <!-- PLACEHOLDER: youngest age Michelle teaches -->[AGE] and up: confidence first, technique close behind, and help preparing for school shows, performances and auditions.</p>
+          <article class="stack__card mh-on-dark" id="young-singers">
+            <div class="stack__top"></div>
+            <h3 class="stack__title">Children and teens</h3>
+            <div class="stack__body">
+              <p>Pop and musical theatre for ages <!-- PLACEHOLDER: youngest age Michelle teaches -->[AGE] and up: confidence first, technique close behind, and help preparing for school shows, performances and auditions.</p>
+            </div>
           </article>
-          <article class="poster mh-on-light" id="exams">
-            <h3 class="poster__title">Exam and audition preparation</h3>
-            <p>Focused preparation for graded singing exams with <!-- PLACEHOLDER: exam boards Michelle prepares students for -->[EXAM BOARDS], plus drama school and musical theatre auditions.</p>
+          <article class="stack__card mh-on-stage" id="exams">
+            <div class="stack__top"></div>
+            <h3 class="stack__title">Exam and audition preparation</h3>
+            <div class="stack__body">
+              <p>Focused preparation for graded singing exams with <!-- PLACEHOLDER: exam boards Michelle prepares students for -->[EXAM BOARDS], plus drama school and musical theatre auditions.</p>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- In person or online: deep green ===================================== -->
-    <section class="section mh-on-stage" id="formats" aria-labelledby="formats-title">
-      <div class="container columns columns--list">
-        <div class="columns__head">
-          <h2 class="type-display" id="formats-title">In person or online</h2>
+    <!-- In person or online: deep green, with a velvet panel holding the two options and the photo -->
+    <section class="sec mh-on-stage" id="formats" aria-labelledby="formats-title">
+      <div class="container">
+        <div class="sec__head" data-reveal>
+          <h2 class="sec__title" id="formats-title">In person or online</h2>
           <p>Lessons are <!-- PLACEHOLDER: lesson length or lengths -->[LESSON LENGTH], weekly or fortnightly. I teach <!-- PLACEHOLDER: days and times lessons are available -->[DAYS AND TIMES].</p>
-          <div class="mh-arch columns__media">
-            <!-- PLACEHOLDER: photo, the online set-up: laptop, headphones, lyric sheet (4:5 arch, shot 8 in docs/brand/brand/MH-brand-summary.md). Use the <picture> pattern in README.md and delete the note below. -->
-            <img src="images/placeholders/scene-4x5.svg" width="384" height="480" alt="Placeholder for a photo of the online lesson set-up" loading="lazy">
-            <p class="photo-note" aria-hidden="true">Online set-up</p>
-          </div>
         </div>
-        <div class="columns__body">
-          <div class="formats__item">
-            <h3>In person</h3>
-            <p>Lessons take place at my <!-- PLACEHOLDER: description of where in-person lessons happen -->[STUDIO DESCRIPTION] in <!-- PLACEHOLDER: which part of Stafford, not the full address -->[AREA OF STAFFORD]. <!-- PLACEHOLDER: parking, step-free access and where parents can wait, or delete -->[WHERE TO PARK, WHETHER THERE’S STEP-FREE ACCESS, AND WHERE PARENTS CAN WAIT]</p>
+        <div class="panel panel--split mh-on-dark" data-reveal>
+          <div class="formats">
+            <div class="formats__item">
+              <h3>In person</h3>
+              <p>Lessons take place at my <!-- PLACEHOLDER: description of where in-person lessons happen -->[STUDIO DESCRIPTION] in <!-- PLACEHOLDER: which part of Stafford, not the full address -->[AREA OF STAFFORD]. <!-- PLACEHOLDER: parking, step-free access and where parents can wait, or delete -->[WHERE TO PARK, WHETHER THERE’S STEP-FREE ACCESS, AND WHERE PARENTS CAN WAIT]</p>
+            </div>
+            <div class="formats__item">
+              <h3 id="online">Online</h3>
+              <p>Live video lessons from wherever you are. All you need is a laptop or tablet, a quiet room and a pair of headphones. <!-- PLACEHOLDER: anything Michelle sends after online lessons, or delete -->[WHAT YOU SEND AFTER EACH LESSON, E.G. BACKING TRACKS AND NOTES]</p>
+            </div>
           </div>
-          <div class="formats__item">
-            <h3 id="online">Online</h3>
-            <p>Live video lessons from wherever you are. All you need is a laptop or tablet, a quiet room and a pair of headphones. <!-- PLACEHOLDER: anything Michelle sends after online lessons, or delete -->[WHAT YOU SEND AFTER EACH LESSON, E.G. BACKING TRACKS AND NOTES]</p>
+          <div class="formats__photo">
+            <div class="mh-arch">
+              <!-- PLACEHOLDER: photo, the online set-up: laptop, headphones, lyric sheet (4:5 arch, shot 8 in PHOTOGRAPHY.md). Use the <picture> pattern in README.md and delete the note below. -->
+              <img src="images/placeholders/scene-4x5.svg" width="384" height="480" alt="Placeholder for a photo of the online lesson set-up" loading="lazy">
+              <p class="photo-note" aria-hidden="true"><b>Shot 8</b> The online set-up: laptop, headphones, lyric sheet</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Prices =============================================================== -->
-    <section class="section mh-on-light" id="prices" aria-labelledby="prices-title">
-      <div class="container columns columns--list">
-        <div class="columns__head">
-          <h2 class="type-display" id="prices-title">Lesson prices</h2>
+    <!-- Prices: ivory, the list in an outlined panel -->
+    <section class="sec mh-on-light" id="prices" aria-labelledby="prices-title">
+      <div class="container">
+        <div class="sec__head" data-reveal>
+          <h2 class="sec__title" id="prices-title">Lesson prices</h2>
           <p><!-- PLACEHOLDER: one line about pricing, e.g. whether it's the same in person and online -->[ONE LINE ABOUT YOUR PRICES, E.G. THE SAME IN PERSON AND ONLINE]</p>
         </div>
-        <div class="columns__body">
+        <div class="panel panel--outline panel--narrow" data-reveal>
           <ul class="price-list">
             <li class="price">
-              <div class="price__body">
-                <h3 class="price__name">First lesson</h3>
-                <p>A relaxed introduction to meet, sing a little and make a plan together.</p>
-              </div>
+              <h3 class="price__name">First lesson</h3>
+              <p>A relaxed introduction to meet, sing a little and make a plan together.</p>
               <p class="price__amount"><!-- PLACEHOLDER: first lesson price -->[PRICE] for <!-- PLACEHOLDER: first lesson length -->[LESSON LENGTH]</p>
             </li>
             <li class="price">
-              <div class="price__body">
-                <h3 class="price__name">Single lessons</h3>
-                <p>Booked as you go. Ideal if your diary changes week to week.</p>
-              </div>
+              <h3 class="price__name">Single lessons</h3>
+              <p>Booked as you go. Ideal if your diary changes week to week.</p>
               <p class="price__amount"><!-- PLACEHOLDER: single lesson price -->[PRICE] for <!-- PLACEHOLDER: single lesson length -->[LESSON LENGTH]</p>
             </li>
             <li class="price">
-              <div class="price__body">
-                <!-- PLACEHOLDER: block booking, if Michelle offers one. Otherwise delete this row. -->
-                <h3 class="price__name">[BLOCK BOOKING, IF YOU OFFER ONE]</h3>
-                <p>[HOW MANY LESSONS, AND ANY DISCOUNT]</p>
-              </div>
+              <!-- PLACEHOLDER: block booking, if Michelle offers one. Otherwise delete this row. -->
+              <h3 class="price__name">[BLOCK BOOKING, IF YOU OFFER ONE]</h3>
+              <p>[HOW MANY LESSONS, AND ANY DISCOUNT]</p>
               <p class="price__amount"><!-- PLACEHOLDER: block booking price -->[PRICE]</p>
             </li>
           </ul>
-          <p class="price-list__note">Please give at least <!-- PLACEHOLDER: cancellation notice in hours -->[NUMBER] hours’ notice to rearrange a lesson. <!-- PLACEHOLDER: what happens with later cancellations -->[WHAT HAPPENS WITH LATER CANCELLATIONS]</p>
-          <a class="mh-btn mh-btn--velvet" href="#enquire">Book a first lesson</a>
+          <div class="panel__foot">
+            <p class="price-list__note">Please give at least <!-- PLACEHOLDER: cancellation notice in hours -->[NUMBER] hours’ notice to rearrange a lesson. <!-- PLACEHOLDER: what happens with later cancellations -->[WHAT HAPPENS WITH LATER CANCELLATIONS]</p>
+            <a class="mh-btn mh-btn--velvet" href="#enquire">Book a first lesson</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Testimonial: velvet, with the quote on the right-hand line ========== -->
-    <section class="section mh-on-dark" aria-label="What students say">
+    <!-- Testimonial: velvet, centred -->
+    <section class="sec mh-on-dark" aria-label="What students say">
       <div class="container">
         <!-- PLACEHOLDER: testimonial. Replace with a real student's or parent's words (a different one from the home page), with their permission and how they'd like to be credited. -->
-        <figure class="testimonial">
+        <figure class="quote" data-reveal>
           <blockquote><p>[A few words from a student or parent about their lessons go here, in their own words.]</p></blockquote>
           <figcaption class="mh-label">[NAME], [WHO THEY ARE, E.G. ADULT STUDENT]</figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- First lesson: the page's big-type moment ============================ -->
-    <section class="section mh-on-light" id="first-lesson" aria-labelledby="first-lesson-title">
+    <!-- First lesson: four numbered steps, with one line through the numbers -->
+    <section class="sec mh-on-light" id="first-lesson" aria-labelledby="first-lesson-title">
       <div class="container">
-        <div class="section__head section__head--wide">
-          <h2 class="type-feature" id="first-lesson-title">What to expect from your first lesson</h2>
+        <div class="sec__head" data-reveal>
+          <h2 class="sec__title" id="first-lesson-title">What to expect from your first lesson</h2>
           <p>No auditions and no judgement. Here’s how a first lesson usually goes.</p>
         </div>
-
-        <ol class="big-steps big-steps--detail">
+        <ol class="timeline timeline--four" data-reveal>
           <li>
-            <h3 class="big-steps__title">A chat</h3>
+            <h3>A chat</h3>
             <p>We’ll talk about what you love to sing, what you’d like to achieve and any experience you already have.</p>
           </li>
           <li>
-            <h3 class="big-steps__title">A gentle warm-up</h3>
+            <h3>A gentle warm-up</h3>
             <p>Simple breathing and vocal exercises, so I can hear your voice and you can feel how it works.</p>
           </li>
           <li>
-            <h3 class="big-steps__title">A song you love</h3>
+            <h3>A song you love</h3>
             <p>We’ll sing something you’ve chosen, and I’ll show you one or two small changes you can try straight away.</p>
           </li>
           <li>
-            <h3 class="big-steps__title">A plan</h3>
+            <h3>A plan</h3>
             <p>You’ll leave with a few exercises to practise and a clear idea of where lessons could take you.</p>
           </li>
         </ol>
       </div>
     </section>
 
-    <!-- Questions ============================================================ -->
-    <section class="section mh-on-stage" id="faq" aria-labelledby="faq-title">
-      <div class="container columns columns--list">
-        <div class="columns__head">
-          <h2 class="type-display" id="faq-title">Questions about lessons</h2>
-          <a class="text-link columns__action" href="#enquire">Something else? Ask me</a>
+    <!-- Questions: one centred column -->
+    <section class="sec mh-on-stage" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="sec__head" data-reveal>
+          <h2 class="sec__title" id="faq-title">Questions about lessons</h2>
+          <a class="text-link" href="#enquire">Something else? Ask me</a>
         </div>
-        <div class="columns__body">
-          <div class="faq">
-            <details class="faq__item">
-              <summary class="faq__question">Do I need to be able to read music?</summary>
-              <div class="faq__answer">
-                <p>Not at all. If you’d like to learn, we can build it in gradually, but it’s never a requirement.</p>
-              </div>
-            </details>
-            <details class="faq__item">
-              <summary class="faq__question">What age can students start?</summary>
-              <div class="faq__answer">
-                <p>I teach students from age <!-- PLACEHOLDER: minimum student age -->[AGE]. Young voices are still developing, so lessons for children focus on healthy habits, confidence and having fun.</p>
-              </div>
-            </details>
-            <details class="faq__item">
-              <summary class="faq__question">What should I bring?</summary>
-              <div class="faq__answer">
-                <p>A bottle of water, any songs you’d like to work on, and something to jot notes on. For online lessons, headphones help too.</p>
-              </div>
-            </details>
-            <details class="faq__item">
-              <summary class="faq__question">How often should I have lessons?</summary>
-              <div class="faq__answer">
-                <p>Weekly lessons give the steadiest progress, but fortnightly works well for busy adults. We’ll find a rhythm that suits you.</p>
-              </div>
-            </details>
-            <details class="faq__item">
-              <summary class="faq__question">How do I pay?</summary>
-              <div class="faq__answer">
-                <p><!-- PLACEHOLDER: how and when students pay, e.g. bank transfer before each lesson -->[HOW AND WHEN TO PAY]</p>
-              </div>
-            </details>
-            <details class="faq__item">
-              <summary class="faq__question">Can you prepare me for a singing exam?</summary>
-              <div class="faq__answer">
-                <p>Yes. I prepare students for <!-- PLACEHOLDER: exam boards Michelle prepares students for -->[EXAM BOARDS] graded exams and can help you choose the syllabus that suits your voice and goals.</p>
-              </div>
-            </details>
-            <details class="faq__item">
-              <summary class="faq__question">Are you checked to work with children?</summary>
-              <div class="faq__answer">
-                <p><!-- PLACEHOLDER: safeguarding answer. Only say yes once it's confirmed. -->[YOUR SAFEGUARDING CHECK, E.G. ENHANCED DBS, AND WHETHER PARENTS CAN SIT IN ON LESSONS FOR UNDER-18S]</p>
-              </div>
-            </details>
-            <details class="faq__item">
-              <summary class="faq__question">I’m really nervous. Is that normal?</summary>
-              <div class="faq__answer">
-                <p>Completely. Almost everyone is nervous at their first lesson, and it passes quickly. You’re with someone whose whole job is to help you, not to judge you.</p>
-              </div>
-            </details>
-            <details class="faq__item">
-              <summary class="faq__question">Will I have to sing in front of other people?</summary>
-              <div class="faq__answer">
-                <p><!-- PLACEHOLDER: whether there are student concerts or showcases, and whether taking part is up to the student -->[WHETHER THERE ARE STUDENT CONCERTS OR SHOWCASES, AND WHETHER TAKING PART IS UP TO YOU]</p>
-              </div>
-            </details>
-          </div>
+        <div class="faq" data-reveal>
+          <details class="faq__item">
+            <summary class="faq__question">Do I need to be able to read music?</summary>
+            <div class="faq__answer">
+              <p>Not at all. If you’d like to learn, we can build it in gradually, but it’s never a requirement.</p>
+            </div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">What age can students start?</summary>
+            <div class="faq__answer">
+              <p>I teach students from age <!-- PLACEHOLDER: minimum student age -->[AGE]. Young voices are still developing, so lessons for children focus on healthy habits, confidence and having fun.</p>
+            </div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">What should I bring?</summary>
+            <div class="faq__answer">
+              <p>A bottle of water, any songs you’d like to work on, and something to jot notes on. For online lessons, headphones help too.</p>
+            </div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">How often should I have lessons?</summary>
+            <div class="faq__answer">
+              <p>Weekly lessons give the steadiest progress, but fortnightly works well for busy adults. We’ll find a rhythm that suits you.</p>
+            </div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">How do I pay?</summary>
+            <div class="faq__answer">
+              <p><!-- PLACEHOLDER: how and when students pay, e.g. bank transfer before each lesson -->[HOW AND WHEN TO PAY]</p>
+            </div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">Can you prepare me for a singing exam?</summary>
+            <div class="faq__answer">
+              <p>Yes. I prepare students for <!-- PLACEHOLDER: exam boards Michelle prepares students for -->[EXAM BOARDS] graded exams and can help you choose the syllabus that suits your voice and goals.</p>
+            </div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">Are you checked to work with children?</summary>
+            <div class="faq__answer">
+              <p><!-- PLACEHOLDER: safeguarding answer. Only say yes once it's confirmed. -->[YOUR SAFEGUARDING CHECK, E.G. ENHANCED DBS, AND WHETHER PARENTS CAN SIT IN ON LESSONS FOR UNDER-18S]</p>
+            </div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">I’m really nervous. Is that normal?</summary>
+            <div class="faq__answer">
+              <p>Completely. Almost everyone is nervous at their first lesson, and it passes quickly. You’re with someone whose whole job is to help you, not to judge you.</p>
+            </div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__question">Will I have to sing in front of other people?</summary>
+            <div class="faq__answer">
+              <p><!-- PLACEHOLDER: whether there are student concerts or showcases, and whether taking part is up to the student -->[WHETHER THERE ARE STUDENT CONCERTS OR SHOWCASES, AND WHETHER TAKING PART IS UP TO YOU]</p>
+            </div>
+          </details>
         </div>
       </div>
     </section>
 
-    <!-- Enquiry ============================================================== -->
-    <section class="section mh-on-light" id="enquire" aria-labelledby="enquire-title">
-      <div class="container columns columns--list">
-        <div class="columns__head">
+    <!-- Enquiry: ivory, the intro and the form in an outlined panel -->
+    <section class="sec mh-on-light" id="enquire" aria-labelledby="enquire-title">
+      <div class="container">
+        <div class="sec__head" data-reveal>
           <p class="mh-label">Book a first lesson</p>
-          <h2 class="type-display" id="enquire-title">Ready when you are.</h2>
+          <h2 class="sec__title" id="enquire-title">Ready when you are.</h2>
+        </div>
+        <div class="panel panel--outline panel--form" data-reveal>
           <div class="enquiry__intro">
             <p>Tell me a little about yourself, or your child, and what you’d love to sing. No experience needed.</p>
             <p>I’ll reply within <!-- PLACEHOLDER: usual response time, e.g. two working days -->[RESPONSE TIME] to find a time for your first lesson.</p>
@@ -312,8 +316,6 @@
               <li><!-- PLACEHOLDER: email address. Make it a mailto: link when it's known. -->[EMAIL]</li>
             </ul>
           </div>
-        </div>
-        <div class="columns__body">
           <form class="form" action="https://api.web3forms.com/submit" method="post">
             <!-- PLACEHOLDER: Web3Forms access key (free at web3forms.com, set up with Michelle's email address) -->
             <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
@@ -343,38 +345,10 @@
               <input class="field__input" id="enq-phone" name="phone" type="tel" autocomplete="tel" aria-describedby="enq-phone-hint">
             </div>
 
-            <fieldset class="field">
-              <legend class="field__label">Who are the lessons for?</legend>
-              <div class="choice-list">
-                <label class="choice"><input type="radio" name="who" value="Me"> Me</label>
-                <label class="choice"><input type="radio" name="who" value="My child"> My child</label>
-              </div>
-            </fieldset>
-
-            <div class="field">
-              <label class="field__label" for="enq-where">Where would you like lessons?</label>
-              <select class="field__input" id="enq-where" name="where">
-                <option>In person in Stafford</option>
-                <option>Online</option>
-                <option>Not sure yet</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label class="field__label" for="enq-when">When suits you best?</label>
-              <p class="field__hint" id="enq-when-hint">Optional. The days and times you could usually make.</p>
-              <input class="field__input" id="enq-when" name="when" type="text" aria-describedby="enq-when-hint">
-            </div>
-
             <div class="field">
               <label class="field__label" for="enq-message">What would you love to sing?</label>
               <p class="field__hint" id="enq-message-hint">Mention any exam or audition coming up, and your child’s age if the lessons are for them.</p>
               <textarea class="field__input" id="enq-message" name="message" rows="5" aria-describedby="enq-message-hint"></textarea>
-            </div>
-
-            <div class="field">
-              <label class="check"><input id="enq-consent" type="checkbox" name="consent" value="Yes" required> I’m happy for Michelle to reply by email or phone about lessons.</label>
-              <p class="field__error" id="enq-consent-error" data-missing="Please tick the box so I can reply to you." hidden><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="currentColor"/><path d="M9 4.5V10M9 13V13.2" stroke-width="2.2" stroke-linecap="round"/></svg><span class="field__error-text"></span></p>
             </div>
 
             <p class="form__status" tabindex="-1" hidden>Sorry, your enquiry didn’t send. Please try again in a minute, or email me at <!-- PLACEHOLDER: email address -->[EMAIL].</p>

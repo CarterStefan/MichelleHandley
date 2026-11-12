@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <script src="js/site.js" defer></script>
+  <script src="js/motion.js" defer></script>
 
   <!-- Icons and theme -->
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -68,21 +69,27 @@
 
   <main id="main">
 
+    <!-- The whole page is a title page: the words beside the portrait -->
     <section class="hero mh-on-dark" aria-labelledby="page-title">
-      <div class="container">
-        <div class="hero__inner">
-          <div class="hero__text">
-            <h1 class="type-feature" id="page-title">Thank you. I’ll be in touch soon.</h1>
-            <p class="hero__lead">I usually reply within <!-- PLACEHOLDER: usual response time, e.g. two working days -->[RESPONSE TIME].</p>
-            <p>If you don’t hear back, please check your spam folder, or email me directly at <!-- PLACEHOLDER: email address. Make it a mailto: link when it's known. -->[EMAIL]. In the meantime, you’ll find me on <!-- PLACEHOLDER: Instagram URL --><a href="https://www.instagram.com/" rel="me">Instagram</a>.</p>
-            <div class="btn-row">
-              <a class="mh-btn mh-btn--gold" href="lessons.html#first-lesson">Your first lesson</a>
-              <a class="mh-btn mh-btn--outline-on-dark" href="about.html">More about me</a>
-            </div>
+      <div class="container grid hero__grid">
+        <div class="hero__text">
+          <h1 class="type-display hero__title" id="page-title">Thank you. I’ll be in touch soon.</h1>
+          <p class="hero__lead">I usually reply within <!-- PLACEHOLDER: usual response time, e.g. two working days -->[RESPONSE TIME].</p>
+          <p>If you don’t hear back, please check your spam folder, or email me directly at <!-- PLACEHOLDER: email address. Make it a mailto: link when it's known. -->[EMAIL]. In the meantime, you’ll find me on <!-- PLACEHOLDER: Instagram URL --><a href="https://www.instagram.com/" rel="me">Instagram</a>.</p>
+          <div class="btn-row">
+            <a class="mh-btn mh-btn--gold" href="lessons.html#first-lesson">Your first lesson</a>
+            <a class="mh-btn mh-btn--outline-on-dark" href="about.html">More about me</a>
           </div>
         </div>
+        <div class="hero__portrait mh-capsule">
+          <picture>
+            <source type="image/avif" srcset="images/stage-twirl-400.avif 400w, images/stage-twirl-595.avif 595w" sizes="(min-width: 58em) 22.5rem, (min-width: 48em) 17rem, 16.5rem">
+            <source type="image/webp" srcset="images/stage-twirl-400.webp 400w, images/stage-twirl-595.webp 595w" sizes="(min-width: 58em) 22.5rem, (min-width: 48em) 17rem, 16.5rem">
+            <img src="images/stage-twirl-595.jpg" srcset="images/stage-twirl-400.jpg 400w, images/stage-twirl-595.jpg 595w" sizes="(min-width: 58em) 22.5rem, (min-width: 48em) 17rem, 16.5rem" width="595" height="859" alt="Michelle as Eva Perón in Evita, in a white suit and hat, smiling mid-twirl" fetchpriority="high" decoding="async">
+          </picture>
+        </div>
       </div>
-      <picture class="mh-stave hero__stave" aria-hidden="true">
+      <picture class="mh-stave hero__stave" data-reveal="draw" aria-hidden="true">
         <source media="(min-width: 768px)" srcset="images/brand/stave-wide-gold.svg" width="1440" height="81">
         <img src="images/brand/stave-narrow-gold.svg" width="600" height="81" alt="">
       </picture>

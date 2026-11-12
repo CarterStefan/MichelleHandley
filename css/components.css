@@ -8,8 +8,18 @@
    wider layouts.
    ========================================================================== */
 
-/* ---- Buttons: brand.css's .mh-btn pills. One solid button per screen ----- */
+/* ---- Buttons: brand.css's .mh-btn pills. One solid button per screen -----
+   A pair shares one width, and a press is felt. */
 .mh-btn:disabled { cursor: progress; }
+.mh-btn:active { transform: scale(0.98); }
+@media (prefers-reduced-motion: no-preference) {
+  .mh-btn {
+    transition:
+      background-color var(--mh-time-1) var(--mh-ease),
+      border-color var(--mh-time-1) var(--mh-ease),
+      transform var(--mh-time-1) var(--mh-ease);
+  }
+}
 
 .btn-row {
   display: flex;
@@ -17,13 +27,37 @@
   align-items: center;
   gap: var(--mh-space-4);
 }
+.btn-row .mh-btn { min-width: 12.5rem; }
 
-/* A standalone text link: tall enough to tap */
+/* A standalone text link: tall enough to tap. It draws its own line: a quiet
+   one in the hairline colour, then a line in the text colour wipes over it
+   from the left on hover and focus. */
 .text-link {
+  position: relative;
   display: inline-flex;
   align-items: center;
   min-height: calc(var(--mh-space-6) + var(--mh-space-3));
   font-weight: var(--mh-weight-medium);
+  text-decoration: none;
+}
+.text-link::before,
+.text-link::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: var(--mh-space-2);
+  height: var(--mh-outline);
+}
+.text-link::before { background: var(--mh-hairline); }
+.text-link::after {
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.text-link:hover::after,
+.text-link:focus-visible::after { transform: scaleX(1); }
+@media (prefers-reduced-motion: no-preference) {
+  .text-link::after { transition: transform var(--mh-time-2) var(--mh-ease); }
 }
 
 /* ---- Header: velvet, the mark on phones, the horizontal logo from 48em ---- */
@@ -50,16 +84,17 @@
 }
 .site-nav__list li + li { border-top: 1px solid var(--mh-rule); }
 .site-nav a {
+  position: relative;
   display: flex;
   align-items: center;
   min-height: calc(var(--mh-space-6) + var(--mh-space-3));
   text-decoration: none;
 }
-.site-nav a:hover { text-decoration: underline; }
 /* Ivory, not gold: gold is kept for the logo, one button and the stave */
+.site-nav a:hover,
 .site-nav a[aria-current="page"] {
   text-decoration: underline;
-  text-decoration-thickness: 2px;
+  text-decoration-thickness: var(--mh-outline);
   text-underline-offset: 0.4em;
 }
 
@@ -72,30 +107,90 @@
   .site-header__menu[aria-expanded="false"] ~ .site-header__cta { display: none; }
 }
 
-/* ---- Hero: velvet, with the stave along the bottom ----------------------- */
-.hero { padding-top: var(--mh-space-7); }
-/* Above the stave, so the portrait overlaps it and the buttons stay clear */
-.hero__inner {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  column-gap: var(--mh-space-7);
+/* Sticky, and compact once the page moves (js/motion.js adds .is-compact).
+   Only with scripting, because without it the phone menu stays open and a
+   sticky header would cover the screen. The bar never changes height: it
+   slides up by --mh-header-tuck and its contents slide back by half of that,
+   so only transforms move. The mark shrinks to its 48px minimum. The bar
+   steps aside (.is-away) when the footer arrives, so two logos never share a
+   screen. An open menu always shows in full. */
+@media (scripting: enabled) {
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .site-header::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 1px;
+    background: var(--mh-rule);
+    opacity: 0;
+  }
+  .site-logo img { transform-origin: left center; }
+
+  .site-header.is-compact:not(:has(.site-header__menu[aria-expanded="true"])) { transform: translateY(calc(-1 * var(--mh-header-tuck))); }
+  .site-header.is-compact:not(:has(.site-header__menu[aria-expanded="true"])) .site-header__inner { transform: translateY(calc(var(--mh-header-tuck) / 2)); }
+  .site-header.is-compact::after { opacity: 1; }
+  .site-header.is-compact .site-logo img { transform: scale(0.857); }   /* 56px to 48px */
+  .site-header.is-away:not(:has(.site-header__menu[aria-expanded="true"])) { transform: translateY(-100%); }
 }
-/* The padding keeps the text off the stave, and spaces it from the portrait
-   when the two stack. They stack until 58em, when a Poster headline has room
-   beside the capsule. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .site-header,
+  .site-header__inner,
+  .site-logo img {
+    transition: transform var(--mh-time-2) var(--mh-ease), clip-path var(--mh-time-2) var(--mh-ease);
+  }
+  .site-header::after { transition: opacity var(--mh-time-2) var(--mh-ease); }
+}
+
+/* ---- Hero: the title page. Velvet, with the stave along the bottom --------
+   The words on the left (an optional label, the headline, the lead, then the
+   actions side by side), and a portrait, if there is one, beside them. */
+.hero { padding-top: var(--mh-space-7); }
+.hero__grid {
+  position: relative;
+  z-index: 1;                       /* the portrait sits in front of the stave */
+  row-gap: var(--mh-space-7);
+  align-items: center;
+  padding-bottom: var(--mh-space-7);
+}
 .hero__text {
-  flex: 1 1 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--mh-space-5);
-  padding-bottom: var(--mh-section);
 }
-.hero__lead { font-size: var(--mh-text-lg); line-height: var(--mh-leading-snug); color: var(--mh-color-text-muted); }
-.hero__photo { flex: 0 1 15rem; margin-inline: auto; }
+.hero__label { margin-bottom: var(--mh-space-4); }
+.hero__title { margin-bottom: var(--mh-space-5); }
+.hero__lead {
+  max-width: 30rem;
+  font-size: var(--mh-text-lg);
+  line-height: var(--mh-leading-snug);
+  color: var(--mh-color-text-muted);
+}
+.hero__text > p + p { margin-top: var(--mh-space-4); }
+.hero__text .btn-row { margin-top: var(--mh-space-6); }
+.hero__text .btn-row + p { margin-top: var(--mh-space-5); }
+.hero__text .btn-row .mh-btn { min-width: 0; }
+.hero__portrait {
+  width: min(80%, 16.5rem);
+  justify-self: center;
+}
+.hero__portrait img { object-position: 45% 50%; }
+
+/* A page that is only a hero (thank-you, 404) fills the first screen, so the
+   footer's gold logo and icons never share a screen with the header's logo,
+   the gold button and the stave. */
+main > .hero:only-child {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100svh - var(--mh-header));
+}
+main > .hero:only-child > .hero__grid {
+  flex: 1;
+  align-content: center;
+}
 
 /* The stave is cut flush at the section's sides and bottom, and the velvet
    ends at its last line. Where an ivory or gold section follows, a shape in
@@ -105,21 +200,16 @@
    the stave's box, so it scales with the stave. It reaches 1px past the
    bottom to hide any sub-pixel seam. */
 .hero__stave { position: relative; z-index: 0; }
-.hero:has(+ .mh-on-gold) .hero__stave::before { background: var(--mh-gold); }
+.hero:has(+ .mh-on-light) .hero__stave { --mh-stave-fill: var(--mh-ivory); }
+.hero:has(+ .mh-on-gold) .hero__stave { --mh-stave-fill: var(--mh-gold); }
 .hero:has(+ .mh-on-light, + .mh-on-gold) .hero__stave::before {
   content: "";
   position: absolute;
   inset: 0 0 -1px;
   z-index: -1;
+  background: var(--mh-stave-fill);
   clip-path: polygon(0% 92.26%, 1.37% 92.94%, 2.72% 93.56%, 6.14% 94.85%, 9.49% 95.73%, 12.88% 96.21%, 16.25% 96.27%, 19.62% 95.90%, 23.02% 95.11%, 26.35% 93.94%, 29.79% 92.37%, 33.08% 90.54%, 36.55% 88.31%, 50.05% 77.75%, 63.55% 67.21%, 67.01% 64.99%, 70.28% 63.16%, 73.70% 61.60%, 77.02% 60.43%, 80.40% 59.65%, 83.75% 59.28%, 87.11% 59.34%, 90.49% 59.81%, 93.82% 60.70%, 97.22% 61.99%, 98.60% 62.61%, 100% 63.31%, 100% 100%, 0% 100%);
 }
-/* The portrait stands on the last line. The negative margin is a share of
-   the width, like the stave's height, so it slides the stave up behind the
-   portrait until the top of the last line meets the portrait's foot. */
-.hero:has(.hero__photo) > .hero__stave { margin-top: -10%; }
-.hero:has(+ .mh-on-light) .hero__stave::before { background: var(--mh-ivory); }
-/* The gold rises out of the stave, so it needs less space above its text */
-.hero + .mh-on-gold { padding-top: var(--mh-space-7); }
 
 /* ---- Photo frames ----------------------------------------------------------
    brand.css draws them: .mh-capsule (5:9) for portraits, .mh-arch for wider
@@ -135,7 +225,8 @@
   height: 100%;
   object-fit: cover;
 }
-/* Names the shot on a placeholder. Delete it when the real photo goes in. */
+/* Names the shot on a placeholder: its number in PHOTOGRAPHY.md, then what's
+   in it. Delete it when the real photo goes in. */
 .photo-note {
   position: absolute;
   inset-inline: 0;
@@ -144,162 +235,212 @@
   max-width: none;
   padding-inline: var(--mh-space-4);
   text-align: center;
+  text-wrap: balance;
   font-size: var(--mh-text-sm);
+  line-height: var(--mh-leading-snug);
   color: var(--mh-mist);
 }
+.photo-note b {
+  display: block;
+  margin-bottom: var(--mh-space-1);
+  font-size: var(--mh-text-xs);
+  letter-spacing: var(--mh-tracking-label);
+  text-transform: uppercase;
+}
 .mh-on-light .photo-note { color: var(--mh-moss); }
-.photo-row .photo-note { padding-inline: var(--mh-space-2); font-size: var(--mh-text-xs); }
 
-/* ---- Posters: square panels on gold, level with each other. Each carries its
-   own surface class, ivory or velvet. --------------------------------------- */
-.posters {
+/* ---- Split: a headline that holds still beside a stack of cards ---------- */
+.split { row-gap: var(--mh-section-gap); }
+.split__head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--mh-space-4);
+}
+
+/* ---- Stacked cards ---------------------------------------------------------
+   Each card sticks under the header, a step lower than the one before, so the
+   next card slides over it and leaves its top edge showing. No script: with
+   JavaScript off they still stack, and nothing animates (sticky is
+   scrolling, not motion). Cards are square, each on its own surface. */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mh-space-5);
+  counter-reset: card;
+}
+.stack__card {
+  position: sticky;
+  top: calc(var(--mh-stick) + var(--n, 0) * var(--mh-space-4));
+  display: flex;
+  flex-direction: column;
+  gap: var(--mh-space-4);
+  min-height: 20rem;
+  padding: var(--mh-pad);
+  counter-increment: card;
+}
+.stack__card:nth-child(2) { --n: 1; }
+.stack__card:nth-child(3) { --n: 2; }
+.stack__card--outline { border: 1px solid currentColor; }
+.stack__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--mh-space-4);
+  margin-bottom: auto;
+  padding-bottom: var(--mh-space-7);
+}
+/* The card's number, like a programme: decorative, so screen readers skip it */
+.stack__top::after {
+  content: "(0" counter(card) ")";
+  content: "(0" counter(card) ")" / "";
+  margin-left: auto;
+  font-size: var(--mh-text-sm);
+  color: var(--mh-color-label);
+}
+.stack__title { font-size: var(--mh-text-xl); }
+.stack__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--mh-space-3);
+}
+.stack__body p { color: var(--mh-color-text-muted); }
+
+/* ---- Panel: a square block of a second colour inside a section ------------ */
+.panel {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--mh-space-7);
+  padding: var(--mh-pad);
+}
+.panel--outline { border: 1px solid currentColor; }
+.panel--narrow { max-width: 46rem; margin-inline: auto; }
+.panel__part {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   gap: var(--mh-space-5);
 }
-.poster {
+.panel__foot {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--mh-space-4);
-  padding: var(--mh-space-6);
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--mh-space-4) var(--mh-space-6);
 }
-.poster__title {
-  margin-bottom: var(--mh-space-2);
-  font-size: var(--mh-text-xl);
-  line-height: var(--mh-leading-snug);
-}
-.poster__link { margin-top: auto; }
 
-/* ---- How lessons work (home): the columns, then the big steps ------------- */
-.how__top { margin-bottom: var(--mh-section); }
-
-/* ---- Meet Michelle (home): the page's one staggered moment. The headline and
-   first photo start on the shared lines. ------------------------------------ */
-.meet {
+/* ---- Details: short labelled facts side by side, each under a hairline ---- */
+.details {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--mh-space-6) var(--mh-space-5);
+  gap: var(--mh-space-5);
 }
-.meet__head,
-.meet__body {
-  grid-column: 1 / -1;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.meet__head { gap: var(--mh-space-3); }
-.meet__body { gap: var(--mh-space-4); }
-.meet__capsule { grid-column: 1 / -1; width: min(100%, 16rem); margin-inline: auto; }
-.meet__capsule img { object-position: 45% 50%; }
-.meet__arch-a .mh-arch { aspect-ratio: 4 / 5; }
-.meet__arch-b .mh-arch { aspect-ratio: 1; }
-.meet__arch-b { margin-top: var(--mh-space-7); }
-
-/* ---- In person or online (lessons): each option under a rule --------------- */
-.formats__item {
-  display: flex;
-  flex-direction: column;
-  gap: var(--mh-space-4);
-  padding-top: var(--mh-space-4);
-  border-top: 1px solid currentColor;
-}
-.formats__item h3 { font-size: var(--mh-text-xl); }
-
-/* ---- Facts: short labelled details, each under a rule -------------------- */
-.facts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-  gap: var(--mh-space-6);
-}
-.fact {
+.detail {
   display: flex;
   flex-direction: column;
   gap: var(--mh-space-2);
   padding-top: var(--mh-space-4);
-  border-top: 1px solid currentColor;
+  border-top: 1px solid var(--mh-hairline);
 }
-.fact dd {
+.detail dd {
   font-family: var(--mh-font-display);
-  font-size: var(--mh-text-lg);
+  font-size: var(--mh-text-xl);
   line-height: var(--mh-leading-snug);
+  overflow-wrap: anywhere;   /* room for a long email address */
 }
-/* A single column, on the right-hand line */
-.facts--stacked { grid-template-columns: 1fr; gap: var(--mh-space-5); }
-/* About: larger values */
-.facts--large dd { font-size: var(--mh-text-xl); }
 
-/* ---- Big steps: numbered rows of Feature type, between rules. The detail
-   version (lessons) has a smaller title and a line of body. ---------------- */
-.first-steps__title { margin-bottom: var(--mh-space-5); }
-.big-steps {
+/* ---- Timeline: numbered steps, with one line through the numbers ----------
+   Down the page on phones, across it from 48em (from 58em for four steps). */
+.timeline {
+  position: relative;
+  display: grid;
+  gap: var(--mh-space-5);
+  width: 100%;
   margin: 0;
   padding: 0;
   list-style: none;
   counter-reset: step;
-  border-bottom: 1px solid currentColor;
 }
-.big-steps > li {
-  counter-increment: step;
+.timeline::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  left: calc(var(--mh-space-7) / 2);
+  width: 1px;
+  background: var(--mh-hairline);
+}
+.timeline > li {
+  position: relative;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
-  gap: var(--mh-space-3) var(--mh-space-5);
-  padding-block: var(--mh-space-5);
-  border-top: 1px solid currentColor;
+  gap: var(--mh-space-2) var(--mh-space-4);
+  counter-increment: step;
 }
-/* An outline circle, like the outline pills */
-.big-steps > li::before {
+.timeline > li::before {
   content: counter(step);
+  content: counter(step) / "";
+  grid-row: 1 / span 2;
+  align-self: start;
   display: grid;
   place-items: center;
   width: var(--mh-space-7);
   height: var(--mh-space-7);
-  border: var(--mh-outline) solid currentColor;
+  border: 1px solid currentColor;
   border-radius: var(--mh-radius-pill);
+  background: var(--mh-ring-bg);       /* the line stops at each number */
   font-family: var(--mh-font-display);
   font-size: var(--mh-text-lg);
   line-height: 1;
 }
-.big-steps__title {
+.timeline > li > * { grid-column: 2; }
+.timeline > li > h3 {
+  display: flex;
+  align-items: center;
+  min-height: var(--mh-space-7);
+  font-size: var(--mh-text-xl);
+}
+/* A step that's only a few words is set like a headline */
+.timeline--short > li::before { grid-row: 1; }
+.timeline--short p {
   max-width: none;
   font-family: var(--mh-font-display);
-  font-size: var(--mh-text-4xl);
-  line-height: var(--mh-leading-poster);
-  letter-spacing: var(--mh-tracking-poster);
+  font-size: var(--mh-text-xl);
+  line-height: var(--mh-leading-snug);
 }
-.big-steps--detail .big-steps__title {
-  font-size: var(--mh-text-2xl);
-  line-height: var(--mh-leading-tight);
-}
-.big-steps--detail > li > p { grid-column: 2; }
 
-/* ---- Prices -------------------------------------------------------------- */
+/* ---- In person or online (lessons): each option under a hairline ---------- */
+.formats { display: grid; }
+.formats__item {
+  display: grid;
+  gap: var(--mh-space-3);
+  padding-block: var(--mh-space-5);
+  border-top: 1px solid var(--mh-hairline);
+}
+.formats__item h3 { font-size: var(--mh-text-xl); }
+.formats__photo {
+  width: min(100%, 18rem);
+  justify-self: center;
+}
+.formats__photo .mh-arch { aspect-ratio: 4 / 5; }
+
+/* ---- Prices: what it is on the left, what it costs on the right ------------ */
 .price-list {
+  width: 100%;
   margin: 0;
   padding: 0;
   list-style: none;
-  border-top: 1px solid currentColor;
 }
 .price {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: var(--mh-space-3) var(--mh-space-6);
+  display: grid;
+  gap: var(--mh-space-2) var(--mh-space-5);
   padding-block: var(--mh-space-5);
-  border-bottom: 1px solid currentColor;
+  border-top: 1px solid var(--mh-hairline);
 }
-.price__body {
-  flex: 1 1 14rem;
-  display: flex;
-  flex-direction: column;
-  gap: var(--mh-space-2);
-}
+.price:last-child { border-bottom: 1px solid var(--mh-hairline); }
 .price__name { font-size: var(--mh-text-xl); }
 .price__amount {
+  margin-top: var(--mh-space-2);
   font-family: var(--mh-font-display);
-  font-size: var(--mh-text-lg);
+  font-size: var(--mh-text-xl);
   line-height: var(--mh-leading-snug);
 }
 .price-list__note {
@@ -307,38 +448,65 @@
   color: var(--mh-color-text-muted);
 }
 
-/* ---- Testimonial: a gold quote mark on the left, the quote on the right-hand
-   line. Keep the quote short, about 15 to 25 words. ------------------------- */
-.testimonial {
+/* ---- Facts: a label and a value on each row (about) ------------------------ */
+.facts { display: grid; }
+.fact {
   display: grid;
-  gap: var(--mh-space-5);
+  gap: var(--mh-space-2) var(--mh-space-5);
+  padding-block: var(--mh-space-4) var(--mh-space-5);
+  border-top: 1px solid var(--mh-hairline);
 }
-.testimonial::before {
-  content: "\201C";
-  content: "\201C" / "";
-  color: var(--mh-gold);
+.fact dd {
   font-family: var(--mh-font-display);
-  font-size: calc(2 * var(--mh-text-4xl));
-  line-height: 0.6;
+  font-size: var(--mh-text-xl);
+  line-height: var(--mh-leading-snug);
 }
-.testimonial blockquote {
+
+/* ---- Testimonial: centred, with the marks in the text colour (gold is kept
+   for the logo, one button and the stave). Keep the quote short, about 15 to
+   25 words. ------------------------------------------------------------------ */
+.quote {
+  display: grid;
+  justify-items: center;
+  gap: var(--mh-space-5);
+  max-width: 48rem;
+  margin-inline: auto;
+  text-align: center;
+}
+.quote blockquote {
   font-family: var(--mh-font-display);
   font-size: var(--mh-text-2xl);
   line-height: var(--mh-leading-snug);
 }
+.quote blockquote p {
+  max-width: none;
+  text-wrap: balance;
+}
+.quote blockquote p::before {
+  content: "\201C";
+  content: "\201C" / "";
+}
+.quote blockquote p::after {
+  content: "\201D";
+  content: "\201D" / "";
+}
 
-/* ---- Questions and answers ----------------------------------------------- */
-.faq { border-top: 1px solid currentColor; }
-.faq__item { border-bottom: 1px solid currentColor; }
+/* ---- Questions and answers: one centred column ---------------------------- */
+.faq {
+  max-width: 48rem;
+  margin-inline: auto;
+}
+.faq__item { border-top: 1px solid var(--mh-hairline); }
+.faq__item:last-child { border-bottom: 1px solid var(--mh-hairline); }
 .faq__question {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: var(--mh-space-4);
+  gap: var(--mh-space-5);
   min-height: calc(var(--mh-space-6) + var(--mh-space-3));
   padding-block: var(--mh-space-4);
   font-family: var(--mh-font-display);
-  font-size: var(--mh-text-lg);
+  font-size: var(--mh-text-xl);
   line-height: var(--mh-leading-snug);
   list-style: none;
   cursor: pointer;
@@ -357,16 +525,59 @@
   content: "\2212";
   content: "\2212" / "";
 }
-.faq__answer { padding-bottom: var(--mh-space-5); }
+.faq__answer { padding-bottom: var(--mh-space-6); }
+@media (prefers-reduced-motion: no-preference) {
+  .faq__item[open] > .faq__answer { animation: mh-rise var(--mh-time-2) var(--mh-ease); }
+}
 
-/* ---- Enquiry form: the intro under the headline, the form on the right-hand
-   line --------------------------------------------------------------------- */
+/* ---- A row of six capsules (home and about). Rows of three on phones, one
+   row from 48em, each standing a little higher than the one before, rising
+   like the stave. ------------------------------------------------------------ */
+.photo-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: var(--mh-space-5) var(--mh-space-4);
+}
+.photo-row__item:nth-child(3n + 1) { margin-top: var(--mh-space-5); }
+.photo-row__item:nth-child(3n + 2) { margin-top: var(--mh-space-3); }
+.photo-row__item--twirl img { object-position: 45% 50%; }
+.photo-row__item--reach img { object-position: 28% 50%; }
+.photo-row .photo-note { padding-inline: var(--mh-space-2); font-size: var(--mh-text-xs); }
+
+/* ---- Running text in one centred column (about's story) -------------------- */
+.prose {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mh-space-4);
+}
+.story {
+  max-width: var(--mh-measure);
+  margin: 0 auto var(--mh-section-gap);
+}
+
+/* ---- A list as lines of Marcellus between hairlines (about) ---------------- */
+.list-lines {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.list-lines li {
+  padding-block: var(--mh-space-4) var(--mh-space-5);
+  border-top: 1px solid var(--mh-hairline);
+  font-family: var(--mh-font-display);
+  font-size: var(--mh-text-xl);
+  line-height: var(--mh-leading-snug);
+}
+.list-lines li:last-child { border-bottom: 1px solid var(--mh-hairline); }
+.things__photo .mh-arch { aspect-ratio: 3 / 2; }
+
+/* ---- Enquiry: the intro beside the form ------------------------------------ */
 .enquiry__intro {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: var(--mh-space-4);
-  margin-top: var(--mh-space-4);
 }
 .enquiry__contact {
   display: flex;
@@ -377,39 +588,6 @@
   list-style: none;
   font-weight: var(--mh-weight-medium);
 }
-.contact-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--mh-space-4);
-  margin-block: var(--mh-space-3);
-}
-.contact-list dd { font-weight: var(--mh-weight-medium); }
-/* Contact page: the details as a list on the gold block, on the right-hand line */
-.contact-list--large {
-  display: grid;
-  gap: var(--mh-space-5);
-  margin: 0;
-}
-.contact-list--large > div {
-  display: flex;
-  flex-direction: column;
-  gap: var(--mh-space-2);
-  padding-top: var(--mh-space-4);
-  border-top: 1px solid currentColor;
-}
-.contact-list--large dd {
-  font-family: var(--mh-font-display);
-  font-weight: var(--mh-weight-regular);
-  font-size: var(--mh-text-xl);
-  line-height: var(--mh-leading-snug);
-  overflow-wrap: anywhere;   /* room for a long email address */
-}
-.contact-lessons {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--mh-space-2);
-}
 
 .form {
   display: flex;
@@ -418,7 +596,7 @@
 }
 .form__row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
   gap: var(--mh-space-5);
 }
 /* Honeypot: hidden from people. Web3Forms discards anything that ticks it. */
@@ -440,17 +618,18 @@
 }
 .field legend { margin-bottom: var(--mh-space-2); }
 .field__hint { font-size: var(--mh-text-sm); color: var(--mh-color-text-muted); }
-/* Fields are square: only buttons, tags, choices and photo frames are round */
+/* Fields are square: only buttons, tags and photo frames are round */
 .field__input {
   width: 100%;
   min-height: var(--mh-space-7);
   padding: var(--mh-space-3) var(--mh-space-4);
-  border: var(--mh-outline) solid var(--mh-field-border);
+  border: 1px solid var(--mh-field-border);
   border-radius: var(--mh-radius-none);
   background: transparent;
   color: inherit;
   font-size: var(--mh-text-base);
 }
+.field__input:hover { border-color: currentColor; }
 .field__input[aria-invalid="true"] { border-color: var(--mh-error); }
 textarea.field__input {
   min-height: calc(var(--mh-space-9) + var(--mh-space-6));
@@ -469,44 +648,6 @@ textarea.field__input {
 .field__error svg { flex: none; }
 .field__error svg path { stroke: var(--mh-ivory); }
 
-.choice-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--mh-space-3);
-}
-.choice {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--mh-space-2);
-  min-height: calc(var(--mh-space-6) + var(--mh-space-3));
-  padding: var(--mh-space-2) var(--mh-space-4);
-  border: var(--mh-outline) solid var(--mh-field-border);
-  border-radius: var(--mh-radius-pill);
-  cursor: pointer;
-}
-/* Chosen: velvet outline on the tag colour */
-.choice:has(input:checked) { border-color: currentColor; background: var(--mh-photo-light); }
-.check {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--mh-space-3);
-  font-size: var(--mh-text-sm);
-  cursor: pointer;
-}
-.choice input,
-.check input {
-  flex: none;
-  width: calc(var(--mh-space-4) + var(--mh-space-1));
-  height: calc(var(--mh-space-4) + var(--mh-space-1));
-  margin: 0;
-  accent-color: var(--mh-velvet);
-}
-.check input { margin-top: var(--mh-space-1); }
-/* The focus ring goes round the whole pill or line, not the small box */
-.choice:has(input:focus-visible),
-.check:has(input:focus-visible) { outline: 2px solid var(--mh-focus); outline-offset: 3px; }
-.choice input:focus-visible,
-.check input:focus-visible { outline: none; }
 
 /* Shown by js/site.js if the enquiry couldn't be sent */
 .form__status {
@@ -517,15 +658,21 @@ textarea.field__input {
 }
 .form__small { font-size: var(--mh-text-xs); color: var(--mh-color-text-muted); }
 
-/* ---- Running text (the privacy notice) ----------------------------------- */
-.prose {
+/* ---- Notes: the privacy notice, one centred column of headed notes -------- */
+.notes {
   display: flex;
   flex-direction: column;
-  gap: var(--mh-space-4);
+  max-width: 48rem;
+  margin-inline: auto;
 }
-.prose h2 { margin-top: var(--mh-space-6); font-size: var(--mh-text-xl); }
-.prose h2:first-child { margin-top: 0; }
-
+.notes__lead { margin-bottom: var(--mh-space-6); }
+.note {
+  display: grid;
+  gap: var(--mh-space-3);
+  padding-block: var(--mh-space-5) var(--mh-space-6);
+  border-top: 1px solid var(--mh-hairline);
+}
+.note h2 { font-size: var(--mh-text-xl); }
 .bullets {
   display: flex;
   flex-direction: column;
@@ -535,24 +682,7 @@ textarea.field__input {
 }
 .bullets li::marker { color: var(--mh-color-label); }
 
-/* A list as lines of Marcellus between rules (about, "A few things about me") */
-.list-lines {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border-bottom: 1px solid currentColor;
-}
-.list-lines li {
-  padding-block: var(--mh-space-4);
-  border-top: 1px solid currentColor;
-  font-family: var(--mh-font-display);
-  font-size: var(--mh-text-xl);
-  line-height: var(--mh-leading-snug);
-}
-
-/* ---- Footer: a sign-off and links on the shared lines, then the logo at the
-   full width ---------------------------------------------------------------- */
+/* ---- Footer: a sign-off and links, then the logo at the full width --------- */
 .site-footer {
   padding-block: var(--mh-section) var(--mh-space-6);
   border-top: 1px solid var(--mh-rule);   /* parts it from a velvet band above */
@@ -607,14 +737,14 @@ main:has(> .hero:last-child) + .site-footer { border-top-color: transparent; }
 .footer-col a:hover { text-decoration: underline; }
 .footer-icon { flex: none; color: var(--mh-gold); }
 
-/* The logo runs the full width, up to 28rem while it's the stacked one. Its
-   clear space is half the mark's width, so the margins grow with the logo:
-   the mark is 39.1% of the stacked logo's width (13.1% of the horizontal
-   one's, below), so half of that above and below. */
+/* The logo runs the full width of the grid: stacked on phones, horizontal
+   from 768px. Its clear space is half the mark's width, so the margins are
+   shares of the width and grow with it: the mark is 39.1% of the stacked
+   logo's width, so 19.6% above and below (6.6% for the horizontal logo,
+   below, where the mark is 13.1% of the width). */
 .site-footer__logo {
   display: block;
-  max-width: 28rem;
-  margin-block: calc(min(100%, 28rem) * 0.196);
+  margin-block: 19.6%;
 }
 .site-footer__logo img { width: 100%; }
 
@@ -630,7 +760,7 @@ main:has(> .hero:last-child) + .site-footer { border-top-color: transparent; }
 }
 
 /* ==========================================================================
-   Wider screens (mobile first: everything above is the phone layout)
+   From 48em
    ========================================================================== */
 @media (min-width: 48em) {
   /* The 64px horizontal logo's clear space is 18px */
@@ -642,62 +772,135 @@ main:has(> .hero:last-child) + .site-footer { border-top-color: transparent; }
   .site-nav__list { flex-direction: row; gap: var(--mh-space-5); }
   .site-nav__list li + li { border-top: 0; }
   .site-header__cta { display: none; }
-  .columns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .columns--statement > .columns__head { grid-column: 1 / -1; }
-  .photo-row { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--mh-space-5); }
-  .columns--statement > .columns__body { grid-column: 2; }
+  /* Inline, the links draw their line the way a text link does; the current
+     page keeps its line */
+  .site-nav a:hover,
+  .site-nav a[aria-current="page"] { text-decoration: none; }
+  .site-nav a::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: var(--mh-space-2);
+    height: var(--mh-outline);
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  .site-nav a:hover::after,
+  .site-nav a:focus-visible::after,
+  .site-nav a[aria-current="page"]::after { transform: scaleX(1); }
+
+  /* Hero: the words on the left, the portrait on the right */
   .hero { padding-top: var(--mh-space-8); }
-  .hero__photo { flex-basis: 18rem; }
-  .posters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .poster:nth-child(3) { grid-column: 1 / -1; }   /* two above, one across */
-  .testimonial { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .testimonial::before { grid-row: 1 / 3; }
-  .testimonial blockquote,
-  .testimonial figcaption { grid-column: 2; }
-  .contact-band .contact-list { grid-column: 2; grid-row: 1; }
-  .contact-band .contact-lessons { grid-column: 1; grid-row: 1; }
-  .columns__body--right { grid-column: 2; }
+  .hero__grid > .hero__text { grid-column: 1 / span 9; }
+  .hero__grid:has(.hero__portrait) > .hero__text { grid-column: 1 / span 6; }
+  .hero__grid > .hero__portrait {
+    grid-column: 8 / -1;
+    justify-self: end;
+    width: min(100%, 17rem);
+  }
+
+  /* The headline holds still while the cards pass beside it */
+  .split > .split__head {
+    grid-column: 1 / span 5;
+    position: sticky;
+    top: var(--mh-stick);
+    align-self: start;
+  }
+  .split > .stack { grid-column: 6 / -1; }
+
+  .panel--split { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--mh-space-8); }
+  .panel--form { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); column-gap: var(--mh-space-8); }
+  .panel--split > .formats__photo,
+  .panel--split > .things__photo { align-self: center; }
+  .formats__photo { justify-self: end; }
+
+  .details { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--mh-space-6); }
+  .details--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  /* Three steps run across; four wait for 58em */
+  .timeline:not(.timeline--four) { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--mh-space-6); }
+  .timeline:not(.timeline--four)::before {
+    inset: calc(var(--mh-space-7) / 2) 0 auto;
+    width: auto;
+    height: 1px;
+  }
+  .timeline:not(.timeline--four) > li {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+  .timeline:not(.timeline--four) > li::before { grid-row: auto; }
+  .timeline:not(.timeline--four) > li > * { grid-column: 1; }
+
+  .price { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
+  .price__name,
+  .price > p:not(.price__amount) { grid-column: 1; }
+  .price__amount {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    margin-top: 0;
+    text-align: right;
+  }
+
+  .fact { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+  .fact dt { padding-top: var(--mh-space-2); }
+
+  .photo-row { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--mh-space-5); }
+  .photo-row__item:nth-child(1) { margin-top: calc(5 * var(--mh-space-3)); }
+  .photo-row__item:nth-child(2) { margin-top: calc(4 * var(--mh-space-3)); }
+  .photo-row__item:nth-child(3) { margin-top: calc(3 * var(--mh-space-3)); }
+  .photo-row__item:nth-child(4) { margin-top: calc(2 * var(--mh-space-3)); }
+  .photo-row__item:nth-child(5) { margin-top: var(--mh-space-3); }
+  .photo-row__item:nth-child(6) { margin-top: 0; }
+
   .footer-col li { min-height: calc(var(--mh-space-6) + var(--mh-space-1)); }
 }
 
 /* The wide stave and the horizontal footer logo. In px, not em, to switch
    exactly when their <picture> sources (min-width: 768px) do. */
 @media (min-width: 768px) {
-  .site-footer__logo { max-width: none; margin-block: 6.6%; }
+  .site-footer__logo { margin-block: 6.6%; }
   .hero:has(+ .mh-on-light, + .mh-on-gold) .hero__stave::before {
     clip-path: polygon(0% 92.14%, 4.79% 94.38%, 11.25% 96.04%, 15.00% 96.30%, 17.71% 96.16%, 24.17% 94.75%, 30.63% 91.93%, 37.09% 87.91%, 43.55% 83.06%, 50.01% 77.78%, 56.47% 72.48%, 62.93% 67.63%, 69.38% 63.63%, 75.84% 60.80%, 82.29% 59.40%, 85.00% 59.26%, 88.75% 59.52%, 95.21% 61.17%, 100% 63.42%, 100% 100%, 0% 100%);
   }
-  .hero:has(.hero__photo) > .hero__stave { margin-top: -3.15%; }
+}
+/* On scroll the wordmark wipes away to leave the mark at its 48px minimum,
+   since the horizontal logo may not go below 60px. The mark is the first
+   13.1% of the horizontal logo. */
+@media (scripting: enabled) and (min-width: 768px) {
+  .site-logo img { clip-path: inset(0 0 0 0); }
+  .site-header.is-compact .site-logo img {
+    transform: scale(0.75);                 /* 64px to 48px */
+    clip-path: inset(0 86.5% 0 0);
+  }
 }
 
-/* The logo, nav and header button need 888px (55.5em) to share one line, so
-   the header button waits until 58em, leaving room for wider font rendering.
-   Between 48em and 58em, every page still has a "Book a first lesson" button
-   of its own in the hero. The staggered layouts need the same width. */
+/* ==========================================================================
+   From 58em: the header button has room (logo, nav and button need 888px to
+   share one line), the hero portrait grows, and four steps run across
+   ========================================================================== */
 @media (min-width: 58em) {
   .site-header__cta { display: inline-flex; }
 
-  .hero__text { flex-basis: 0; }
+  .hero__grid:has(.hero__portrait) > .hero__text { grid-column: 1 / span 7; }
+  .hero__grid > .hero__portrait { width: min(100%, 22.5rem); }
 
-  .posters { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .poster { padding: var(--mh-space-5); }
-  .poster:nth-child(3) { grid-column: auto; }
+  .split > .stack { grid-column: 7 / -1; }
 
-  /* The number and title fill the left column, so the text starts on the line */
-  .big-steps--detail > li {
-    grid-template-columns: var(--mh-space-7) calc(50% - 1.5 * var(--mh-space-5) - var(--mh-space-7)) minmax(0, 1fr);
+  .details--four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+  .timeline--four { grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--mh-space-6); }
+  .timeline--four::before {
+    inset: calc(var(--mh-space-7) / 2) 0 auto;
+    width: auto;
+    height: 1px;
   }
-  .big-steps--detail > li > p { grid-column: 3; }
-
-  .meet {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    grid-template-rows: auto 1fr auto;
+  .timeline--four > li {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
   }
-  .meet__head { grid-column: 1 / 7; grid-row: 1; }
-  .meet__body { grid-column: 1 / 6; grid-row: 2; align-self: start; }
-  .meet__arch-a { grid-column: 7 / 12; grid-row: 1 / 3; }
-  .meet__capsule { grid-column: 1 / 5; grid-row: 3; width: auto; margin: 0; }
-  .meet__arch-b { grid-column: 8 / 13; grid-row: 3; align-self: end; margin-top: 0; }
+  .timeline--four > li::before { grid-row: auto; }
+  .timeline--four > li > * { grid-column: 1; }
 
   .site-footer__top { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .site-footer__inner { grid-template-columns: 1fr 1.25fr 0.75fr; }

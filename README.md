@@ -15,19 +15,22 @@ thank-you.html    Where the forms land after sending (noindex)
 css/
   brand.css       The brand kit's fonts, colours, type sizes and patterns (buttons, frames, rings, stave). Unchanged
   tokens.css      The site's names for those values, plus spacing and layout
-  base.css        Reset, element styles, layout
-  components.css  Header, hero, posters, staggered photos, big steps, prices, testimonial, questions, forms, footer
+  base.css        Reset, element styles, sections, motion
+  components.css  Header, hero, stacked cards, panels, details, timelines, prices, testimonial, questions, forms, notes, footer
 js/
   site.js         The phone menu button, and form error messages (deferred; the site works without it)
+  motion.js       The compact header and the gentle reveals as you scroll (deferred; the site works without it)
 fonts/            Jost 400/500 (woff2) and Marcellus (the original ttf), with their OFL licences
 images/
   brand/          Logos (stacked, horizontal and mark, in gold, green and ivory), the stave bands, og-image.png
   placeholders/   Stand-ins until Michelle's photos arrive
   home-portrait-*   The stage photo in the home page's hero
-  about-portrait-*  The stage photo in the about page's hero, also on home
+  about-portrait-*  The stage photo in the about page's hero, also in the home page's row of six
   stage-twirl-*, stage-reach-*  Stage photos on home, lessons and about
   performing/     Original stage photos (not used by any page)
 docs/brand/       The original brief and the previous brand's summary (its photo and voice notes still apply)
+brand/            Working files kept on this machine only (gitignored), such as photo-shot-list.md
+_directions/      The November 2026 home page directions, including the "Refined" prototype (gitignored)
 favicon.ico, favicon.svg, apple-touch-icon.png, icon-192.png, icon-512.png, site.webmanifest
 robots.txt, sitemap.xml
 .nojekyll         Tells GitHub Pages to serve the files as they are
@@ -55,7 +58,7 @@ Then visit http://localhost:8000.
 2. Open **Settings → Pages**, choose **Deploy from a branch**, then `main` and `/ (root)`.
 3. The site then works at `username.github.io/repo-name/`. Add a custom domain on the same screen when there is one.
 
-GitHub Pages serves `404.html` for missing pages. It keeps its styling one level down, but not at a nested wrong URL such as `/repo-name/a/b`, because its paths are relative. It ignores `_headers`, so the security and cache headers there don't apply. The `docs/` folder and the `.md` files are published too; `robots.txt` asks search engines to skip `docs/`.
+GitHub Pages serves `404.html` for missing pages. It keeps its styling one level down, but not at a nested wrong URL such as `/repo-name/a/b`, because its paths are relative. It ignores `_headers`, so the security and cache headers there don't apply. The `docs/` folder and the `.md` files are published too; `robots.txt` asks search engines to skip `docs/`. The `brand/` and `_directions/` folders are gitignored, so they never reach the repository or the site.
 
 ### Netlify or Cloudflare Pages
 Drag the folder onto https://app.netlify.com/drop, or upload it in **Workers & Pages → Create → Pages → Upload assets**. Both read `_headers`.
@@ -76,18 +79,18 @@ The wording of each error lives in the HTML, in the `data-missing` and `data-inv
 
 ## Swapping in real photos
 
-Each photo slot points at a stand-in from `images/placeholders/`, with a small note naming the shot. `PHOTOGRAPHY.md` lists the shape and widths for each one. Export the photo at those widths as AVIF, WebP and JPG, save them in `images/`, and replace the `<img>` with this pattern. This one is for the home page's "Meet Michelle" portrait, a 5:9 capsule; keep the slot's `loading` or `fetchpriority`, and set `width` and `height` to the largest file's size:
+Each photo slot points at a stand-in from `images/placeholders/`, with a small note naming the shot. `PHOTOGRAPHY.md` lists the shape and widths for each one. Export the photo at those widths as AVIF, WebP and JPG, save them in `images/`, and replace the `<img>` with this pattern. This one is for a hero portrait, a 5:9 capsule; keep the slot's `loading` or `fetchpriority`, and set `width` and `height` to the largest file's size:
 
 ```html
 <picture>
-  <source type="image/avif" srcset="images/home-meet-480.avif 480w, images/home-meet-800.avif 800w" sizes="(min-width: 48em) 20rem, 16rem">
-  <source type="image/webp" srcset="images/home-meet-480.webp 480w, images/home-meet-800.webp 800w" sizes="(min-width: 48em) 20rem, 16rem">
-  <img src="images/home-meet-800.jpg"
-       srcset="images/home-meet-480.jpg 480w, images/home-meet-800.jpg 800w"
-       sizes="(min-width: 48em) 20rem, 16rem"
+  <source type="image/avif" srcset="images/home-hero-480.avif 480w, images/home-hero-800.avif 800w" sizes="(min-width: 58em) 22.5rem, (min-width: 48em) 17rem, 16.5rem">
+  <source type="image/webp" srcset="images/home-hero-480.webp 480w, images/home-hero-800.webp 800w" sizes="(min-width: 58em) 22.5rem, (min-width: 48em) 17rem, 16.5rem">
+  <img src="images/home-hero-800.jpg"
+       srcset="images/home-hero-480.jpg 480w, images/home-hero-800.jpg 800w"
+       sizes="(min-width: 58em) 22.5rem, (min-width: 48em) 17rem, 16.5rem"
        width="800" height="1440"
        alt="Describe what is actually in the photo"
-       loading="lazy" decoding="async">
+       fetchpriority="high" decoding="async">
 </picture>
 ```
 
@@ -99,8 +102,8 @@ The brand rules are in `BRAND.md`, and every design decision follows them. In sh
 
 - Every brand value comes from `css/brand.css`, the brand kit's file, unchanged. `css/tokens.css` gives the site's own names to those values. Change a brand value in brand.css and it changes everywhere.
 - Fonts: Marcellus for headlines, Jost for everything else. Nothing else.
-- Colour: velvet green does most of the work, ivory is for reading, and gold is the spotlight: the logo, one solid button and one line (the stave or the rings) per screen, plus one full-width block per page. Neighbouring sections always change colour. Only the text pairings in BRAND.md's table.
-- Layout and type: most sections put the headline on the left and the content on one shared line on the right. The hero and one other moment per page are big enough to work as graphics, up to 128 px; other section headlines are up to 64 px.
+- Colour: velvet green does most of the work, ivory is for reading, and gold is the spotlight: the logo, one solid button and the stave per screen, plus one full-width block per page. Neighbouring sections always change colour. Only the text pairings in BRAND.md's table.
+- Layout and type: every section has the same padding and opens with a centred headline, then its content, often in a square panel of a second colour. The hero headline is up to 64 px and section headlines up to 44 px.
 - Corners are square or fully round. Portraits sit in capsules, wider photos in arches, and the stave runs along the bottom of each page's hero.
 
 The fonts are self-hosted, so pages don't contact Google. To change a font, replace its file in `/fonts`, update the `@font-face` rules at the top of `css/brand.css`, and update the preload links in each page's `<head>`.

@@ -1,16 +1,18 @@
 /* ==========================================================================
    Michelle Handley · base
    --------------------------------------------------------------------------
-   Reset, element styles and layout. Load order on every page: brand.css,
-   tokens.css, then this file, then components.css. The fonts are declared in
-   brand.css. Every value comes from a token; mobile first, wider screens in
-   components.css.
+   Reset, element styles, sections and motion. Load order on every page:
+   brand.css, tokens.css, then this file, then components.css. The fonts are
+   declared in brand.css. Every value comes from a token; mobile first, wider
+   screens in components.css.
    ========================================================================== */
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /* Anchors land below the sticky header */
+  scroll-padding-top: calc(var(--mh-header) - var(--mh-header-tuck) + var(--mh-space-5));
 }
 
 body {
@@ -47,14 +49,22 @@ p, ul, ol, dl, dd, figure, blockquote { margin: 0; }
 p { max-width: var(--mh-measure); text-wrap: pretty; }
 strong, b { font-weight: var(--mh-weight-medium); }
 
+/* Underlines: one thickness and one offset everywhere */
 a {
   color: inherit;
   text-decoration-thickness: 1px;
-  text-underline-offset: 0.2em;
+  text-underline-offset: 0.24em;
 }
-a:hover { text-decoration-thickness: 2px; }
 
 button, input, select, textarea { font: inherit; }
+
+/* Selection: velvet on gold on the greens, ivory on velvet on ivory and gold.
+   Both are pairings from BRAND.md's table. */
+::selection { background: var(--mh-gold); color: var(--mh-velvet); }
+.mh-on-light ::selection,
+.mh-on-gold ::selection { background: var(--mh-velvet); color: var(--mh-ivory); }
+.mh-on-dark ::selection,
+.mh-on-stage ::selection { background: var(--mh-gold); color: var(--mh-velvet); }
 
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
@@ -67,7 +77,7 @@ button, input, select, textarea { font: inherit; }
   position: absolute;
   top: calc(-1 * var(--mh-space-9));
   left: var(--mh-space-4);
-  z-index: 2;
+  z-index: 20;
   padding: var(--mh-space-3) var(--mh-space-4);
   background: var(--mh-ivory);
   color: var(--mh-velvet);
@@ -84,10 +94,16 @@ button, input, select, textarea { font: inherit; }
   margin-inline: auto;
 }
 
-/* Every section also carries a surface class: .mh-on-dark, .mh-on-stage,
-   .mh-on-light, or .mh-on-gold (at most one per page). A section never sits
-   next to one on the same surface: the colour change is the divider. */
-.section { padding-block: var(--mh-section); }
+/* The grid: twelve columns from 48em, one column below. Used for the hero
+   and the split sections (a still headline beside cards). */
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: var(--mh-space-5);
+}
+@media (min-width: 48em) {
+  .grid { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+}
 
 /* The fourth surface. brand.css is the kit's file, so it's defined here, with
    the same parts as the kit's three. */
@@ -102,67 +118,90 @@ button, input, select, textarea { font: inherit; }
   outline-offset: 3px;
 }
 
-/* Graphical type: headlines above the kit's scale, so one line can fill a
-   block. Poster is for the biggest hero headlines, Feature for section
-   headlines. Display sets a smaller headline beside one of those. */
-.type-poster,
-.type-feature {
-  line-height: var(--mh-leading-poster);
-  letter-spacing: var(--mh-tracking-poster);
+/* Headline sizes. The hero's headline is Display (40 to 64px), sitting a
+   hair left so its stems line up with the text below. Every section headline
+   is one size down (32 to 44px), so the hero is the one big moment. */
+.type-display {
+  margin-left: -0.04em;
+  font-size: var(--mh-text-3xl);
+  line-height: var(--mh-leading-tight);
 }
-.type-poster { font-size: var(--mh-text-5xl); text-wrap: wrap; }
-.type-feature { font-size: var(--mh-text-4xl); }
-.type-display { font-size: var(--mh-text-3xl); line-height: var(--mh-leading-tight); }
-
-/* Section intro: an optional label, the headline, then a line of body */
-.section__head {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--mh-space-3);
-  max-width: var(--mh-measure);
-  margin-bottom: var(--mh-space-7);
-}
-/* For a headline that runs the width of the page */
-.section__head--wide { max-width: none; }
-
-/* The shared two-column layout: the headline on the left, the content on one
-   line on the right, so the eye learns where to look. Two gaps only under a
-   headline: --mh-space-5 above text, --mh-space-7 above a list. */
-.columns {
-  display: grid;
-  gap: var(--mh-space-5) var(--mh-space-5);
-}
-.columns--list { row-gap: var(--mh-space-7); }
-.columns__head {
-  display: flex;
-  flex-direction: column;
-  gap: var(--mh-space-3);
-  min-width: 0;
-}
-/* Under the headline: a button or link, or a picture */
-.columns__action { align-self: flex-start; margin-top: var(--mh-space-4); }
-.columns__media { max-width: 24rem; margin-top: var(--mh-space-6); }
-.columns__body {
-  display: flex;
-  flex-direction: column;
-  gap: var(--mh-space-5);
-  min-width: 0;
-}
-.columns__body > .mh-btn,
-.columns__body > .text-link { align-self: flex-start; }
-/* A row of capsules across the full width, ending a section like a divider.
-   Six, so they fall into rows of three on phones and one row from 48em. */
-.photo-row {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--mh-space-4);
-  margin-top: var(--mh-space-7);
-}
-.photo-row__item--twirl img { object-position: 45% 50%; }
-.photo-row__item--reach img { object-position: 28% 50%; }
 
 /* Labels: brand.css sets the type (Jost 500, caps, tracked). They introduce;
    they never carry the message. Mist on dark, ivory on stage, brass on light. */
 .mh-label { color: var(--mh-color-label); }
+
+/* ---- A section ----------------------------------------------------------------
+   Every section has the same padding and opens the same way: a centred head
+   (an optional label, the headline, then a line of text or one action), then
+   its content. Every section also carries a surface class, and never sits
+   next to a section on the same surface: the colour change is the divider. */
+.sec { padding-block: var(--mh-section); }
+.sec__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--mh-space-4);
+  max-width: 40rem;
+  margin: 0 auto var(--mh-section-gap);
+  text-align: center;
+}
+.sec__head .mh-btn,
+.sec__head .text-link,
+.sec__head .btn-row { margin-top: var(--mh-space-2); }
+.sec__head .btn-row { justify-content: center; }
+.sec__title {
+  font-size: var(--mh-text-2xl);
+  line-height: var(--mh-leading-snug);
+}
+
+/* ==========================================================================
+   Motion
+   --------------------------------------------------------------------------
+   js/motion.js adds .has-motion to <html>, then .is-in to each [data-reveal]
+   element as it enters view. Without JavaScript, or with reduced motion,
+   none of the hidden states below apply: everything is simply there.
+   The timings and the curve are in tokens.css.
+   ========================================================================== */
+
+/* Cross-page transitions: a progressive enhancement. The header holds still
+   while the page changes under it. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: var(--mh-time-2);
+    animation-timing-function: var(--mh-ease);
+  }
+  .site-header { view-transition-name: site-header; }
+
+  /* Fade and rise. --i is the element's place among whatever arrives with
+     it, set by the script. */
+  .has-motion [data-reveal=""] {
+    transition:
+      opacity var(--mh-time-3) var(--mh-ease) calc(var(--i, 0) * var(--mh-stagger)),
+      transform var(--mh-time-3) var(--mh-ease) calc(var(--i, 0) * var(--mh-stagger));
+  }
+  .has-motion [data-reveal=""]:not(.is-in) {
+    opacity: 0;
+    transform: translateY(var(--mh-rise));
+  }
+}
+
+/* The stave draws from left to right. It's decoration and is on screen as
+   the page loads, so its hidden state is set here in CSS (only where
+   scripting is on) to avoid a flash before the script runs. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  [data-reveal="draw"] img {
+    clip-path: inset(0 0 0 0);
+    transition: clip-path var(--mh-time-4) var(--mh-ease) var(--mh-time-2);
+  }
+  [data-reveal="draw"]:not(.is-in) img { clip-path: inset(0 100% 0 0); }
+}
+/* An answer rises into place as its question opens */
+@keyframes mh-rise {
+  from {
+    opacity: 0;
+    transform: translateY(var(--mh-space-2));
+  }
+}

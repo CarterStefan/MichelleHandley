@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <script src="js/site.js" defer></script>
+  <script src="js/motion.js" defer></script>
 
   <!-- Icons and theme -->
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -68,23 +69,23 @@
 
   <main id="main">
 
+    <!-- The whole page is a title page. The frame is empty on purpose: its photo has wandered off -->
     <section class="hero mh-on-dark" aria-labelledby="page-title">
-      <div class="container">
-        <div class="hero__inner">
-          <div class="hero__text">
-            <p class="mh-label">Page not found</p>
-            <h1 class="type-feature" id="page-title">That page has wandered off</h1>
-            <p class="hero__lead">Sorry, the page you were looking for isn’t here. It may have moved, or the link may have a typo. Here are the places most people are heading:</p>
-            <div class="btn-row">
-              <a class="mh-btn mh-btn--gold" href="lessons.html">Singing lessons</a>
-              <a class="mh-btn mh-btn--outline-on-dark" href="about.html">About me</a>
-              <a class="mh-btn mh-btn--outline-on-dark" href="contact.html">Contact</a>
-            </div>
-            <p><a href="./">Or start again from the home page</a></p>
+      <div class="container grid hero__grid">
+        <div class="hero__text">
+          <p class="mh-label hero__label">Page not found</p>
+          <h1 class="type-display hero__title" id="page-title">That page has wandered off</h1>
+          <p class="hero__lead">Sorry, the page you were looking for isn’t here. It may have moved, or the link may have a typo. Here are the places most people are heading:</p>
+          <div class="btn-row">
+            <a class="mh-btn mh-btn--gold" href="lessons.html">Singing lessons</a>
+            <a class="mh-btn mh-btn--outline-on-dark" href="about.html">About me</a>
+            <a class="mh-btn mh-btn--outline-on-dark" href="contact.html">Contact</a>
           </div>
+          <p><a href="./">Or start again from the home page</a></p>
         </div>
+        <div class="hero__portrait mh-capsule" aria-hidden="true"></div>
       </div>
-      <picture class="mh-stave hero__stave" aria-hidden="true">
+      <picture class="mh-stave hero__stave" data-reveal="draw" aria-hidden="true">
         <source media="(min-width: 768px)" srcset="images/brand/stave-wide-gold.svg" width="1440" height="81">
         <img src="images/brand/stave-narrow-gold.svg" width="600" height="81" alt="">
       </picture>
