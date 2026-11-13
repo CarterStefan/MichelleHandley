@@ -60,8 +60,16 @@
   .text-link::after { transition: transform var(--mh-time-2) var(--mh-ease); }
 }
 
-/* ---- Header: velvet, the mark on phones, the horizontal logo from 48em ---- */
+/* ---- Header: stage, the mark on phones, the horizontal logo from 48em ------
+   Stage on every page (since November 2026), so it holds the same colour
+   while pages change under it, and the width of the page less the gutter,
+   like the home page's hero card. Its hairline is velvet. */
+.site-header {
+  --mh-rule: var(--mh-velvet);
+  background-color: var(--mh-stage);
+}
 .site-header__inner {
+  width: calc(100% - 2 * var(--mh-gutter));
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -198,17 +206,74 @@ main > .hero:only-child > .hero__grid {
    line paints over the join. The polygon traces the last line of
    stave-narrow-gold.svg (stave-wide-gold.svg from 768px, below) in shares of
    the stave's box, so it scales with the stave. It reaches 1px past the
-   bottom to hide any sub-pixel seam. */
+   bottom to hide any sub-pixel seam. The home page's card hero (below)
+   fills from its top line instead. */
 .hero__stave { position: relative; z-index: 0; }
-.hero:has(+ .mh-on-light) .hero__stave { --mh-stave-fill: var(--mh-ivory); }
-.hero:has(+ .mh-on-gold) .hero__stave { --mh-stave-fill: var(--mh-gold); }
-.hero:has(+ .mh-on-light, + .mh-on-gold) .hero__stave::before {
+.hero:not(.hero--card):has(+ .mh-on-light) .hero__stave { --mh-stave-fill: var(--mh-ivory); }
+.hero:not(.hero--card):has(+ .mh-on-gold) .hero__stave { --mh-stave-fill: var(--mh-gold); }
+.hero:not(.hero--card):has(+ .mh-on-light, + .mh-on-gold) .hero__stave::before,
+.hero__card .hero__stave::before {
   content: "";
   position: absolute;
   inset: 0 0 -1px;
   z-index: -1;
   background: var(--mh-stave-fill);
   clip-path: polygon(0% 92.26%, 1.37% 92.94%, 2.72% 93.56%, 6.14% 94.85%, 9.49% 95.73%, 12.88% 96.21%, 16.25% 96.27%, 19.62% 95.90%, 23.02% 95.11%, 26.35% 93.94%, 29.79% 92.37%, 33.08% 90.54%, 36.55% 88.31%, 50.05% 77.75%, 63.55% 67.21%, 67.01% 64.99%, 70.28% 63.16%, 73.70% 61.60%, 77.02% 60.43%, 80.40% 59.65%, 83.75% 59.28%, 87.11% 59.34%, 90.49% 59.81%, 93.82% 60.70%, 97.22% 61.99%, 98.60% 62.61%, 100% 63.31%, 100% 100%, 0% 100%);
+}
+
+/* ---- The home hero: an inset card ----------------------------------------------
+   The page around it is stage and the card velvet. Michelle stands at its
+   centre: her photo is toned to the palette and its background is exactly
+   velvet, so it needs no frame. The stave's top line is the card's foot: the
+   card fills down to the middle of that line and the other three lines run
+   below it on the stage, so its fill traces the top line (the last line's
+   trace, 45/81 higher, since the lines are 15 units apart). Her photo's foot
+   sits at 41% of the stave's height, just below the top line's lowest point,
+   so the line always hides the edge where the photo is cut. The headline
+   sits top left, the place and the button bottom right; below 58em they
+   stack above her. */
+.hero.hero--card { padding: 0 0 var(--mh-gutter); }
+/* The card runs the width of the page, less the gutter, like the header */
+.hero__card {
+  width: calc(100% - 2 * var(--mh-gutter));
+  --mh-stave-fill: var(--mh-stage);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+/* On phones the words sit 16px in from the card's edge, so the headline
+   keeps its two lines on a 360px screen, and the place is one size down so
+   it keeps to one */
+.hero--card .hero__text {
+  position: relative;
+  z-index: 1;
+  padding: var(--mh-space-5) var(--mh-space-4) 0;
+}
+.hero--card .hero__title {
+  max-width: 8em;   /* "Singing lessons" over "for every voice" */
+  text-wrap: balance;
+}
+.hero__place {
+  margin-bottom: var(--mh-space-6);
+  font-family: var(--mh-font-display);
+  font-size: var(--mh-text-2xl);
+  line-height: var(--mh-leading-tight);
+}
+.hero__photo {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  margin-top: var(--mh-space-5);
+}
+.hero__photo img { width: min(100%, 30rem); }
+.hero__card .hero__stave {
+  z-index: 2;
+  margin-top: calc(-0.41 * 81 / 600 * 100%);
+}
+.hero__card .hero__stave::before {
+  clip-path: polygon(0% 36.70%, 1.37% 37.38%, 2.72% 38.00%, 6.14% 39.29%, 9.49% 40.17%, 12.88% 40.65%, 16.25% 40.71%, 19.62% 40.34%, 23.02% 39.55%, 26.35% 38.38%, 29.79% 36.81%, 33.08% 34.98%, 36.55% 32.75%, 50.05% 22.19%, 63.55% 11.65%, 67.01% 9.43%, 70.28% 7.60%, 73.70% 6.04%, 77.02% 4.87%, 80.40% 4.09%, 83.75% 3.72%, 87.11% 3.78%, 90.49% 4.25%, 93.82% 5.14%, 97.22% 6.43%, 98.60% 7.05%, 100% 7.75%, 100% 100%, 0% 100%);
 }
 
 /* ---- Photo frames ----------------------------------------------------------
@@ -530,9 +595,9 @@ main > .hero:only-child > .hero__grid {
   .faq__item[open] > .faq__answer { animation: mh-rise var(--mh-time-2) var(--mh-ease); }
 }
 
-/* ---- A row of six capsules (home and about). Rows of three on phones, one
-   row from 48em, each standing a little higher than the one before, rising
-   like the stave. ------------------------------------------------------------ */
+/* ---- A row of six capsules (about). Rows of three on phones, one row from
+   48em, each standing a little higher than the one before, rising like the
+   stave. --------------------------------------------------------------------- */
 .photo-row {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -541,9 +606,62 @@ main > .hero:only-child > .hero__grid {
 }
 .photo-row__item:nth-child(3n + 1) { margin-top: var(--mh-space-5); }
 .photo-row__item:nth-child(3n + 2) { margin-top: var(--mh-space-3); }
-.photo-row__item--twirl img { object-position: 45% 50%; }
-.photo-row__item--reach img { object-position: 28% 50%; }
-.photo-row .photo-note { padding-inline: var(--mh-space-2); font-size: var(--mh-text-xs); }
+.photo-row__item--twirl img,
+.photo-grid__item--twirl img { object-position: 45% 50%; }
+.photo-row__item--reach img,
+.photo-grid__item--reach img { object-position: 28% 50%; }
+.photo-row .photo-note,
+.photo-grid .photo-note { padding-inline: var(--mh-space-2); font-size: var(--mh-text-xs); }
+/* Narrow enough to stay clear of the screen's edge in a capsule it cuts */
+.photo-grid .photo-note {
+  width: min(100%, 7rem);
+  margin-inline: auto;
+  padding-inline: var(--mh-space-1);
+}
+
+/* ---- Twelve capsules in three sizes (home), in a band wider than the screen
+   so both ends run off its edges. One unit is a 5:9 cell: a small capsule
+   takes one, a medium one two by two and a large one three by three, so a
+   bigger capsule is the same shape with the gaps added in. The areas below
+   draw the layout: five units across on phones, in three stacked groups; one
+   band of fifteen from 48em. The letters follow the order of the photos in
+   the page, so a photo's size is the size of its slot. ---------------------- */
+.photo-grid {
+  --cols: 5;
+  --gap: var(--mh-space-3);
+  --band: min(108vw, 34rem);
+  --unit: calc((var(--band) - (var(--cols) - 1) * var(--gap)) / var(--cols));
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--unit));
+  grid-auto-rows: calc(var(--unit) * 9 / 5);
+  grid-template-areas:
+    "a a a b b"
+    "a a a b b"
+    "a a a c d"
+    "e f g g g"
+    "h h g g g"
+    "h h g g g"
+    "i i i j j"
+    "i i i j j"
+    "i i i k l";
+  gap: var(--gap);
+  justify-content: center;
+  overflow: hidden;         /* for browsers without clip */
+  overflow: clip visible;   /* cut at the screen's edges, never from above or below */
+}
+.photo-grid__item { aspect-ratio: auto; }   /* its cells give it its size */
+.photo-grid__item:nth-child(1) { grid-area: a; }
+.photo-grid__item:nth-child(2) { grid-area: b; }
+.photo-grid__item:nth-child(3) { grid-area: c; }
+.photo-grid__item:nth-child(4) { grid-area: d; }
+.photo-grid__item:nth-child(5) { grid-area: e; }
+.photo-grid__item:nth-child(6) { grid-area: f; }
+.photo-grid__item:nth-child(7) { grid-area: g; }
+.photo-grid__item:nth-child(8) { grid-area: h; }
+.photo-grid__item:nth-child(9) { grid-area: i; }
+.photo-grid__item:nth-child(10) { grid-area: j; }
+.photo-grid__item:nth-child(11) { grid-area: k; }
+.photo-grid__item:nth-child(12) { grid-area: l; }
 
 /* ---- Running text in one centred column (about's story) -------------------- */
 .prose {
@@ -799,6 +917,8 @@ main:has(> .hero:last-child) + .site-footer { border-top-color: transparent; }
     justify-self: end;
     width: min(100%, 17rem);
   }
+  .hero--card .hero__text { padding: var(--mh-pad) var(--mh-pad) 0; }
+  .hero__place { font-size: var(--mh-text-3xl); }
 
   /* The headline holds still while the cards pass beside it */
   .split > .split__head {
@@ -853,6 +973,16 @@ main:has(> .hero:last-child) + .site-footer { border-top-color: transparent; }
   .photo-row__item:nth-child(5) { margin-top: var(--mh-space-3); }
   .photo-row__item:nth-child(6) { margin-top: 0; }
 
+  .photo-grid {
+    --cols: 15;
+    --gap: clamp(var(--mh-space-3), 1.25vw, var(--mh-space-5));
+    --band: clamp(54rem, 108vw, 134rem);
+    grid-template-areas:
+      "a a a b b e f g g g j j i i i"
+      "a a a b b h h g g g j j i i i"
+      "a a a c d h h g g g k l i i i";
+  }
+
   .footer-col li { min-height: calc(var(--mh-space-6) + var(--mh-space-1)); }
 }
 
@@ -860,8 +990,12 @@ main:has(> .hero:last-child) + .site-footer { border-top-color: transparent; }
    exactly when their <picture> sources (min-width: 768px) do. */
 @media (min-width: 768px) {
   .site-footer__logo { margin-block: 6.6%; }
-  .hero:has(+ .mh-on-light, + .mh-on-gold) .hero__stave::before {
+  .hero:not(.hero--card):has(+ .mh-on-light, + .mh-on-gold) .hero__stave::before {
     clip-path: polygon(0% 92.14%, 4.79% 94.38%, 11.25% 96.04%, 15.00% 96.30%, 17.71% 96.16%, 24.17% 94.75%, 30.63% 91.93%, 37.09% 87.91%, 43.55% 83.06%, 50.01% 77.78%, 56.47% 72.48%, 62.93% 67.63%, 69.38% 63.63%, 75.84% 60.80%, 82.29% 59.40%, 85.00% 59.26%, 88.75% 59.52%, 95.21% 61.17%, 100% 63.42%, 100% 100%, 0% 100%);
+  }
+  .hero__card .hero__stave { margin-top: calc(-0.41 * 81 / 1440 * 100%); }
+  .hero__card .hero__stave::before {
+    clip-path: polygon(0% 36.58%, 4.79% 38.82%, 11.25% 40.48%, 15.00% 40.74%, 17.71% 40.60%, 24.17% 39.19%, 30.63% 36.37%, 37.09% 32.35%, 43.55% 27.50%, 50.01% 22.22%, 56.47% 16.92%, 62.93% 12.07%, 69.38% 8.07%, 75.84% 5.24%, 82.29% 3.84%, 85.00% 3.70%, 88.75% 3.96%, 95.21% 5.61%, 100% 7.86%, 100% 100%, 0% 100%);
   }
 }
 /* On scroll the wordmark wipes away to leave the mark at its 48px minimum,
@@ -884,6 +1018,48 @@ main:has(> .hero:last-child) + .site-footer { border-top-color: transparent; }
 
   .hero__grid:has(.hero__portrait) > .hero__text { grid-column: 1 / span 7; }
   .hero__grid > .hero__portrait { width: min(100%, 22.5rem); }
+
+  /* The card hero: the words at two corners, Michelle between them. The
+     card fills the first screen but grows no taller than 68% of its width.
+     The headline and the place keep their rows; the spare height splits
+     1 : 4 : 1.5 above, between and below them, as in the drawing. */
+  .hero__card {
+    container-type: inline-size;
+    display: grid;
+    min-height: min(100svh - var(--mh-header) - var(--mh-gutter), 0.68 * (100vw - 2 * var(--mh-gutter)));
+  }
+  /* The two display lines scale with the card, so the composition keeps its
+     shape on smaller screens: Display, but never more than 5.6% of the
+     card's width (64px from a 1143px card, 48px on an 850px one) */
+  .hero--card .hero__title,
+  .hero__place { font-size: min(var(--mh-text-3xl), 5.6cqw); }
+  .hero--card .hero__text {
+    display: grid;
+    grid-template-rows: 1fr auto 4fr auto auto 1.5fr;
+    padding: var(--mh-pad) var(--mh-pad) calc(81 / 1440 * 100%);   /* the stave's height */
+  }
+  .hero--card .hero__title { grid-row: 2; margin-bottom: 0; }
+  .hero__place {
+    grid-row: 4;
+    justify-self: end;
+    margin-bottom: var(--mh-space-4);
+    text-align: right;
+  }
+  .hero--card .hero__text > .mh-btn { grid-row: 5; justify-self: end; }
+  .hero__photo {
+    position: absolute;
+    inset: 6% 0 0;
+    align-items: flex-end;
+    margin: 0;
+    padding-bottom: calc(0.59 * 81 / 1440 * 100%);   /* her foot at 41% of the stave */
+  }
+  /* She stands a touch right of centre, clear of the headline */
+  .hero__photo img { width: auto; max-width: none; height: 100%; translate: 6% 0; }
+  .hero__card .hero__stave {
+    position: absolute;
+    inset: auto 0 0;
+    margin: 0;
+  }
 
   .split > .stack { grid-column: 7 / -1; }
 

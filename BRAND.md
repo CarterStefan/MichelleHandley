@@ -46,8 +46,8 @@ Footer logo: `michelle-handley-logo-stacked-gold.svg` with `width="255" height="
 
 | Token | Hex | Role |
 |---|---|---|
-| `--mh-velvet` | #0F4A35 | Royal green. Main background (hero, header, footer, call-to-action bands); text on ivory |
-| `--mh-stage` | #0B3727 | A deeper shade of velvet; panels and cards on dark |
+| `--mh-velvet` | #0F4A35 | Royal green. Main background (heroes, footer, call-to-action bands); text on ivory |
+| `--mh-stage` | #0B3727 | A deeper shade of velvet; panels and cards on dark, the header on every page, and the page around the home page's hero card |
 | `--mh-gold` | #E2C08A | The spotlight: logo, one solid button, one line device |
 | `--mh-ivory` | #F7F1E6 | Reading sections; text on velvet |
 | `--mh-brass` | #7E5F27 | Gold for small text and lines on ivory |
@@ -92,7 +92,7 @@ Gold on ivory is 1.5 : 1. Use it for shapes only, never text. Don't use any pair
 | Buttons | Jost 500 | 17px | 1 |
 | Labels | Jost 500, caps, +12% tracking | 14px | 1.2 |
 
-- On the website, each page's hero headline is Display and every section headline is Heading 1 (32 to 44px), so the hero is the one big moment and the rest of the page stays calm. Card titles, details and questions are Heading 2. Footer links are Small. (Two bigger sizes, Poster and Feature, were tried in November 2026 and retired the same month: the type read as too loud.)
+- On the website, each page's hero headline is Display and every section headline is Heading 1 (32 to 44px), so the hero is the one big moment and the rest of the page stays calm. In the home page's hero card, the headline and the place line under it are Display but never more than 5.6% of the card's width, so the composition keeps its shape on smaller screens. Card titles, details and questions are Heading 2. Footer links are Small. (Two bigger sizes, Poster and Feature, were tried in November 2026 and retired the same month: the type read as too loud.)
 - Headlines are sentence case. Marcellus has one weight: never bold it (`font-synthesis: none`) and never set it in capitals.
 - Labels are short (three words at most) and used sparingly.
 - Keep body text to about 66 characters a line (`--mh-measure`).
@@ -102,8 +102,9 @@ Gold on ivory is 1.5 : 1. Use it for shapes only, never text. Don't use any pair
 - **Corners are square or fully round, nothing in between.** Cards and panels are square. Buttons, tags and photo frames are fully round. No other radii, and no shadows.
 - **Capsule** (`.mh-capsule`): portraits, 5 : 9, the mark's own proportion.
 - **Arch** (`.mh-arch`): wider photos. Round top, square base.
+- **Hero card** (home page only, since November 2026): the hero is an inset velvet card, the width of the page less a small margin, on a stage page. The header above it (stage on every page) runs the same width, so the page reads as one surface with the card on it. Michelle stands in the card without a frame: her photo is toned to the palette (velvet shadows, gold and ivory lights) and its background is exactly velvet. The card's foot is the stave's top line, and the other three lines run below it on the stage. Her toned lights are part of the photo, not a gold detail, so the screen's gold is still the logo, one solid button and the stave. Like any card, its corners are square.
 - **Rings** (`.mh-rings`): three gold lines around a capsule, for one feature moment per page at most. Set the section's surface class so the gaps match its background. The website doesn't use them at present: they need more room than a row of capsules gives them.
-- **Stave**: four lines rising left to right, gold on velvet or brass on ivory. Full width, cut flush at the section's edges, once per page at most, decorative only:
+- **Stave**: four lines rising left to right, gold on velvet or brass on ivory. Full width, cut flush at the section's edges (on the home page, the hero card's width instead), once per page at most, decorative only:
 
 ```html
 <picture class="mh-stave" aria-hidden="true">

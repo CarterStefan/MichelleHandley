@@ -31,7 +31,7 @@ When you replace a placeholder, delete both the comment and the bracketed token.
 | Her story, training, experience, why she teaches, insurance and a few personal details | About |
 | Real testimonials, with permission and how to credit them (about 15 to 25 words) | Home, lessons |
 | Usual response time | Home and lessons enquiry intros, contact, thank-you |
-| Photos (see PHOTOGRAPHY.md) | Home and about (the row of capsules), lessons "In person or online", about "A few things about me" |
+| Photos (see PHOTOGRAPHY.md) | Home (the band of capsules), about (the row of capsules), lessons "In person or online", about "A few things about me" |
 | Privacy notice details: email and hosting providers, retention periods, date | Privacy |
 
 ## By page
@@ -43,17 +43,17 @@ When you replace a placeholder, delete both the comment and the bracketed token.
 | 8 | | Domain: replace every `https://michellehandley.example` in the project |
 | 57 | `[PHONE]` in the structured data | Phone number |
 | 67–68 | `PLACEHOLDER-HANDLE`, `PLACEHOLDER-PAGE` in the structured data | Instagram and Facebook URLs |
-| 182 | `[DAYS AND TIMES]` | Days and times lessons are available |
-| 186 | `[PRICE]` for `[LESSON LENGTH]` | Lesson price and length |
-| 210 | `[ONE OR TWO LINES ABOUT YOUR PERFORMING AND TEACHING.]` | Michelle's own words |
-| 215–217, 227–229, 239–241 | Three placeholder capsules and their labels, in the row under "Meet Michelle" | Photos: shots 4, 5 and 10 (5:9 capsule) |
-| 257–260 | The bracketed quote and `[NAME]` | A real testimonial, with permission |
-| 275 | `[RESPONSE TIME]` | Usual response time, in the enquiry intro |
-| 278–279 | `[PHONE]`, `[EMAIL]` | Enquiry intro; make them `tel:` and `mailto:` links |
-| 283 | | Web3Forms access key (replace `YOUR_WEB3FORMS_ACCESS_KEY`) |
-| 287 | | Domain, in the form's redirect to the thank-you page |
-| 317 | `[EMAIL]` | In the "didn't send" message |
-| 352–353, 360, 362 | `[PHONE]`, `[EMAIL]` | Footer, Instagram and Facebook URLs |
+| 178 | `[DAYS AND TIMES]` | Days and times lessons are available |
+| 182 | `[PRICE]` for `[LESSON LENGTH]` | Lesson price and length |
+| 209 | `[ONE OR TWO LINES ABOUT YOUR PERFORMING AND TEACHING.]` | Michelle's own words |
+| 223–245, 256–258, 269–281 | Nine placeholder capsules and their labels, in the band under "Meet Michelle" | Photos: shots 1, 5 and 3 (medium capsules) and 4, 9, 7, 8, 6 and 10 (small capsules), all 5:9 |
+| 289–292 | The bracketed quote and `[NAME]` | A real testimonial, with permission |
+| 307 | `[RESPONSE TIME]` | Usual response time, in the enquiry intro |
+| 310–311 | `[PHONE]`, `[EMAIL]` | Enquiry intro; make them `tel:` and `mailto:` links |
+| 315 | | Web3Forms access key (replace `YOUR_WEB3FORMS_ACCESS_KEY`) |
+| 319 | | Domain, in the form's redirect to the thank-you page |
+| 349 | `[EMAIL]` | In the "didn't send" message |
+| 384–385, 392, 394 | `[PHONE]`, `[EMAIL]` | Footer, Instagram and Facebook URLs |
 
 ### lessons.html
 

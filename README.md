@@ -24,7 +24,8 @@ fonts/            Jost 400/500 (woff2) and Marcellus (the original ttf), with th
 images/
   brand/          Logos (stacked, horizontal and mark, in gold, green and ivory), the stave bands, og-image.png
   placeholders/   Stand-ins until Michelle's photos arrive
-  home-portrait-*   The stage photo in the home page's hero
+  home-hero-*       The toned stage photo in the home page's hero card
+  home-portrait-*   The same photo in colour, used only by the prototypes in _directions/
   about-portrait-*  The stage photo in the about page's hero, also in the home page's row of six
   stage-twirl-*, stage-reach-*  Stage photos on home, lessons and about
   performing/     Original stage photos (not used by any page)
@@ -83,10 +84,10 @@ Each photo slot points at a stand-in from `images/placeholders/`, with a small n
 
 ```html
 <picture>
-  <source type="image/avif" srcset="images/home-hero-480.avif 480w, images/home-hero-800.avif 800w" sizes="(min-width: 58em) 22.5rem, (min-width: 48em) 17rem, 16.5rem">
-  <source type="image/webp" srcset="images/home-hero-480.webp 480w, images/home-hero-800.webp 800w" sizes="(min-width: 58em) 22.5rem, (min-width: 48em) 17rem, 16.5rem">
-  <img src="images/home-hero-800.jpg"
-       srcset="images/home-hero-480.jpg 480w, images/home-hero-800.jpg 800w"
+  <source type="image/avif" srcset="images/your-photo-480.avif 480w, images/your-photo-800.avif 800w" sizes="(min-width: 58em) 22.5rem, (min-width: 48em) 17rem, 16.5rem">
+  <source type="image/webp" srcset="images/your-photo-480.webp 480w, images/your-photo-800.webp 800w" sizes="(min-width: 58em) 22.5rem, (min-width: 48em) 17rem, 16.5rem">
+  <img src="images/your-photo-800.jpg"
+       srcset="images/your-photo-480.jpg 480w, images/your-photo-800.jpg 800w"
        sizes="(min-width: 58em) 22.5rem, (min-width: 48em) 17rem, 16.5rem"
        width="800" height="1440"
        alt="Describe what is actually in the photo"
