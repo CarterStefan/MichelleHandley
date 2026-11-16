@@ -60,7 +60,7 @@ When you replace a placeholder, delete both the comment and the bracketed token.
 | Line | Visible token | What's needed |
 |---|---|---|
 | 8 | | Domain |
-| 120 | `[AGE]` | Youngest age taught, on the "Children and teens" card |
+| 113 | `[AGE]` | Youngest age taught, on the "Children and teens" card |
 | 127 | `[EXAM BOARDS]` | Exam boards |
 | 139 | `[LESSON LENGTH]`, `[DAYS AND TIMES]` | Lesson length or lengths; days and times lessons are available |
 | 145 | `[STUDIO DESCRIPTION]`, `[AREA OF STAFFORD]`, `[WHERE TO PARK, …]` | Where in-person lessons happen and which part of Stafford (not the full address); parking, step-free access and where parents can wait, or delete that last token |
