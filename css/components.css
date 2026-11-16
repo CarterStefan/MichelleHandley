@@ -568,6 +568,23 @@ main > .hero:only-child > .hero__grid {
   line-height: var(--mh-leading-snug);
 }
 
+/* Roles inside a fact (about: Performing): the role in display type, the
+   production under it in body-size Jost, a step of space between each. */
+.roles {
+  display: grid;
+  gap: var(--mh-space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.roles li { display: grid; gap: var(--mh-space-1); }
+.roles__show {
+  font-family: var(--mh-font-body);
+  font-size: var(--mh-text-base);
+  line-height: var(--mh-leading-body);
+  color: var(--mh-color-text-muted);
+}
+
 /* ---- Testimonial: centred, with the marks in the text colour (gold is kept
    for the logo, one button and the stave). Keep the quote short, about 15 to
    25 words. ------------------------------------------------------------------ */

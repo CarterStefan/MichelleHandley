@@ -93,10 +93,10 @@ When you replace a placeholder, delete both the comment and the bracketed token.
 | 109–110 | `[A PERFORMING MOMENT THAT STAYED WITH YOU]` | A moment from performing |
 | 111–112 | `[WHY YOU TEACH, IN YOUR OWN WORDS]` | Why she teaches, in her own words |
 | 116–118, 128–130, 140–142, 145–147 | Four placeholder capsules and their labels, in the row under "My story" | Photos: shots 4, 5, 10 and 3 (5:9 capsule) |
-| 160–184 | Five credentials, from `[QUALIFICATION AND WHERE YOU TRAINED]` to `[PUBLIC LIABILITY INSURANCE]` (Performing is filled in) | Real qualifications and experience; delete any that don't apply |
-| 198–203 | Three personal details and `[HOBBY]` | In Michelle's own words |
-| 207–209 | Placeholder image and the label "Shot 9" | Detail photo (3:2 arch, shot 9) |
-| 257–258, 265, 267 | `[PHONE]`, `[EMAIL]` | Footer, Instagram and Facebook URLs |
+| 160–191 | Five credentials, from `[QUALIFICATION AND WHERE YOU TRAINED]` to `[PUBLIC LIABILITY INSURANCE]` (Performing is filled in) | Real qualifications and experience; delete any that don't apply |
+| 205–210 | Three personal details and `[HOBBY]` | In Michelle's own words |
+| 214–216 | Placeholder image and the label "Shot 9" | Detail photo (3:2 arch, shot 9) |
+| 264–265, 272, 274 | `[PHONE]`, `[EMAIL]` | Footer, Instagram and Facebook URLs |
 
 ### contact.html
 
